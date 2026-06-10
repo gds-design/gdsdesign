@@ -36,12 +36,15 @@ h3 { margin-top: 0; font-size: 1.2rem; margin-bottom: 1rem; border-bottom: 1px s
 .features-list li::before { content: '✓'; color: var(--primary); font-weight: bold; }
 
 .toggle-card { border: 1px solid var(--border); border-radius: var(--radius); padding: 1rem; margin-bottom: 1rem; cursor: pointer; transition: 0.2s; }
-.toggle-card.active { border-color: var(--primary); background: #F0F7FF; }
+.toggle-card.selected { border-color: var(--primary); background: #F0F7FF; }
 .toggle-header { display: flex; justify-content: space-between; align-items: center; }
 .toggle-title { font-weight: 600; }
 .toggle-price { color: var(--primary); font-weight: 600; }
 .toggle-content { display: none; margin-top: 1rem; border-top: 1px solid var(--border); padding-top: 1rem; animation: fadeIn 0.3s ease; }
-.toggle-card.active .toggle-content { display: block; border-color: #D3E4F5; }
+.toggle-card.expanded .toggle-content { display: block; border-color: #D3E4F5; }
+.toggle-card.selected.expanded .toggle-content { border-color: #D3E4F5; }
+.chevron-icon { transition: transform 0.2s; color: var(--text-muted); }
+.toggle-card.expanded .chevron-icon { transform: rotate(180deg); }
 
 @keyframes fadeIn {
   from { opacity: 0; transform: translateY(-5px); }
@@ -122,10 +125,16 @@ footer { text-align: center; color: var(--text-muted); font-size: 0.85rem; borde
     <h3>Complementos Opcionais</h3>
     
     <!-- Galeria -->
-    <div class="toggle-card" id="card-galeria" onclick="toggleAddon('galeria')">
+    <div class="toggle-card" id="card-galeria" onclick="toggleExpand('galeria')">
       <div class="toggle-header">
-        <div class="toggle-title">Galeria de Obras</div>
-        <div class="toggle-price" id="label-price-galeria"></div>
+        <div style="display: flex; align-items: center; gap: 0.75rem;">
+          <input type="checkbox" id="checkbox-galeria" style="width: 18px; height: 18px; cursor: pointer; accent-color: var(--primary);" onclick="event.stopPropagation(); toggleAddon('galeria')">
+          <span class="toggle-title">Galeria de Obras</span>
+        </div>
+        <div style="display: flex; align-items: center; gap: 0.5rem;">
+          <span class="toggle-price" id="label-price-galeria"></span>
+          <svg class="chevron-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+        </div>
       </div>
       <div class="toggle-content" onclick="event.stopPropagation()">
         <p style="font-size: 0.9rem; color: var(--text-muted); margin-top: 0; margin-bottom: 1rem;">Mostre o portfólio da sua construtora com fotos em alta qualidade organizadas em grid.</p>
@@ -141,10 +150,16 @@ footer { text-align: center; color: var(--text-muted); font-size: 0.85rem; borde
     </div>
 
     <!-- Wizard -->
-    <div class="toggle-card" id="card-wizard" onclick="toggleAddon('wizard')">
+    <div class="toggle-card" id="card-wizard" onclick="toggleExpand('wizard')">
       <div class="toggle-header">
-        <div class="toggle-title">Formulário de Orçamento em Etapas</div>
-        <div class="toggle-price" id="label-price-wizard"></div>
+        <div style="display: flex; align-items: center; gap: 0.75rem;">
+          <input type="checkbox" id="checkbox-wizard" style="width: 18px; height: 18px; cursor: pointer; accent-color: var(--primary);" onclick="event.stopPropagation(); toggleAddon('wizard')">
+          <span class="toggle-title">Formulário de Orçamento em Etapas</span>
+        </div>
+        <div style="display: flex; align-items: center; gap: 0.5rem;">
+          <span class="toggle-price" id="label-price-wizard"></span>
+          <svg class="chevron-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+        </div>
       </div>
       <div class="toggle-content" onclick="event.stopPropagation()">
         <p style="font-size: 0.9rem; color: var(--text-muted); margin-top: 0; margin-bottom: 1rem;">Capte clientes qualificados com um formulário interativo focado na conversão.</p>
@@ -254,6 +269,7 @@ footer { text-align: center; color: var(--text-muted); font-size: 0.85rem; borde
       <a href="https://gdsdesign.site" target="_blank">gdsdesign.site</a> • +595 973 953 874
     </div>
     <div style="margin-top: 0.5rem;">Pagamentos via Pix, Transferência PY ou Espécie.</div>
+    <div style="margin-top: 0.5rem; color: var(--text-muted); font-size: 0.8rem;">* O registro e o custo do domínio não estão inclusos.</div>
   </footer>
 
 </div>
@@ -271,6 +287,7 @@ footer { text-align: center; color: var(--text-muted); font-size: 0.85rem; borde
   // ==========================================
 
   let addons = { galeria: false, wizard: false };
+  let expanded = { galeria: false, wizard: false };
   
   function formatMoney(value) {
     return 'R$ ' + value.toLocaleString('pt-BR');
@@ -289,12 +306,27 @@ footer { text-align: center; color: var(--text-muted); font-size: 0.85rem; borde
     updateTotal();
   }
 
+  function toggleExpand(id) {
+    expanded[id] = !expanded[id];
+    document.getElementById('card-' + id).classList.toggle('expanded', expanded[id]);
+  }
+
   function toggleAddon(id) {
     addons[id] = !addons[id];
     
-    // Toggle UI
-    document.getElementById('card-' + id).classList.toggle('active');
+    // Sincroniza o checkbox
+    const chk = document.getElementById('checkbox-' + id);
+    if (chk) chk.checked = addons[id];
+    
+    // Altera o estilo do card
+    document.getElementById('card-' + id).classList.toggle('selected', addons[id]);
     document.getElementById('row-' + id).style.display = addons[id] ? 'flex' : 'none';
+    
+    // Auto-expande se for selecionado
+    if (addons[id] && !expanded[id]) {
+      expanded[id] = true;
+      document.getElementById('card-' + id).classList.add('expanded');
+    }
     
     updateTotal();
   }
