@@ -6,25 +6,49 @@ backend:
 media_folder: public/assets/uploads
 public_folder: /assets/uploads
 
-i18n:
-  structure: single_file
-  locales: [pt, es]
-  default_locale: pt
-
 collections:
-  - name: "vehicles"
-    label: "Veículos"
-    label_singular: "Veículo"
-    folder: "public/landing-page-automotiva/data/vehicles"
-    create: true
-    slug: "{{slug}}"
-    i18n: true
-    fields:
-      - { label: "Slug/ID", name: "slug", widget: "string", i18n: false }
-      - { label: "Nome do Carro", name: "title", widget: "string", i18n: true }
-      - { label: "Ano/Modelo", name: "year", widget: "string", i18n: true }
-      - { label: "Quilometragem", name: "km", widget: "string", i18n: true }
-      - { label: "Câmbio", name: "transmission", widget: "string", i18n: true }
-      - { label: "Preço", name: "price", widget: "string", i18n: true }
-      - { label: "Status do Carro", name: "status", widget: "select", options: ["Disponível", "Vendido"], i18n: true }
-      - { label: "Imagem Principal", name: "image", widget: "image", i18n: false }
+  - name: "content"
+    label: "Gerenciar Estoque"
+    delete: false
+    editor:
+      preview: false
+    files:
+      - file: "public/landing-page-automotiva/data/vehicles.json"
+        label: "Estoque de Carros"
+        name: "vehicles_list"
+        fields:
+          - name: "vehicles"
+            label: "Carros no Estoque"
+            label_singular: "Carro"
+            widget: "list"
+            fields:
+              - { label: "ID único (sem espaços)", name: "id", widget: "string" }
+              - { label: "Nome do Veículo", name: "name", widget: "string" }
+              - { label: "Imagem (Link ou Upload)", name: "image", widget: "image" }
+              - { label: "Vendido?", name: "isSold", widget: "boolean", default: false }
+              
+              # Multilingual specifications (Portuguese)
+              - label: "Especificações (Português)"
+                name: "specs_pt"
+                widget: "object"
+                fields:
+                  - { label: "Ano/Modelo", name: "year", widget: "string" }
+                  - { label: "Quilometragem", name: "km", widget: "string" }
+                  - { label: "Câmbio", name: "transmission", widget: "string" }
+              
+              # Multilingual specifications (Spanish)
+              - label: "Especificaciones (Español)"
+                name: "specs_es"
+                widget: "object"
+                fields:
+                  - { label: "Año/Modelo", name: "year", widget: "string" }
+                  - { label: "Kilometraje", name: "km", widget: "string" }
+                  - { label: "Transmisión", name: "transmission", widget: "string" }
+                  
+              # Multilingual pricing (Portuguese / Spanish)
+              - label: "Preços (Português & Espanhol)"
+                name: "price"
+                widget: "object"
+                fields:
+                  - { label: "Preço em R$ (ex: R$ 899.900)", name: "pt", widget: "string" }
+                  - { label: "Precio en USD (ex: USD 165.000)", name: "es", widget: "string" }

@@ -115,7 +115,7 @@ const TRANSLATIONS = {
 };
 
 // Vehicles Database (JSON Schema Internacionalizado)
-const VEHICLES_DATA = [
+let VEHICLES_DATA = [
     {
         id: "porsche-911",
         name: "Porsche 911 Carrera S",
@@ -181,6 +181,33 @@ const CALC_VALORES = {
 let currentLang = "pt";
 let selectedAddons = { item_1: false, item_2: false, item_3: false };
 
+async function loadDynamicStock() {
+    try {
+        const response = await fetch("data/vehicles.json");
+        if (response.ok) {
+            const data = await response.json();
+            if (data && data.vehicles) {
+                VEHICLES_DATA = data.vehicles.map(car => ({
+                    id: car.id,
+                    name: car.name,
+                    image: car.image,
+                    specs: {
+                        pt: { year: car.specs_pt.year, km: car.specs_pt.km, transmission: car.specs_pt.transmission },
+                        es: { year: car.specs_es.year, km: car.specs_es.km, transmission: car.specs_es.transmission }
+                    },
+                    price: {
+                        pt: car.price.pt,
+                        es: car.price.es
+                    },
+                    isSold: car.isSold
+                }));
+            }
+        }
+    } catch (e) {
+        console.warn("Could not load dynamic stock from vehicles.json, using fallback.", e);
+    }
+}
+
 // Initial Load & Listeners
 document.addEventListener("DOMContentLoaded", () => {
     // Detect Browser Lang if possible, default to pt
@@ -189,7 +216,9 @@ document.addEventListener("DOMContentLoaded", () => {
         currentLang = "es";
     }
 
-    setLanguage(currentLang);
+    loadDynamicStock().then(() => {
+        setLanguage(currentLang);
+    });
     initCalculator();
 
     // Scroll header styling
