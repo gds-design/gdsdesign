@@ -66,7 +66,7 @@ const translations = {
         ideal_contadores: "Contadores",
         ideal_servicos: "Empresas de Serviços",
         ideal_comercio: "Comércio",
-        ideal_stands: "Stands de Veículos",
+        ideal_stands: "Loja de Veículos",
         ideal_stands_desc: "Painel simplificado para atualizar seu estoque em segundos.",
         ideal_prestadores: "Prestadores de Serviço",
 
@@ -261,7 +261,7 @@ const translations = {
         ideal_contadores: "Contadores",
         ideal_servicos: "Empresas de Servicios",
         ideal_comercio: "Comercios",
-        ideal_stands: "Stands de Vehículos",
+        ideal_stands: "Tienda de Vehículos",
         ideal_stands_desc: "Panel simplificado para actualizar tu stock en segundos.",
         ideal_prestadores: "Prestadores de Servicio",
 
