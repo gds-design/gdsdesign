@@ -12,16 +12,17 @@ const translations = {
         nav_ideal: "Ideal Para",
         nav_quem_somos: "Quem Somos",
         nav_testimonials: "Depoimentos",
-        nav_briefing: "Fazer Briefing",
+        nav_briefing: "Simular Projeto",
         nav_admin: "Painel CRM",
         btn_start_now: "Começar Projeto",
         
         // Hero Section
         hero_badge: "Estúdio de Web Design & Social Media",
-        hero_title: "Seu negócio merece um site que <br><span class='grad-text'>trabalha por você 24 horas por dia</span>",
+        hero_title: "Seu negócio merece um site que <span class='grad-text'>trabalha por você 24 horas por dia</span>",
         hero_desc: "Transforme visitantes em clientes com páginas profissionais, rápidas e pensadas para gerar contatos, vendas e autoridade para sua marca.",
-        hero_btn_briefing: "Iniciar Briefing Rápido",
+        hero_btn_briefing: "Simular Meu Projeto",
         hero_btn_portfolio: "Ver Quem Somos",
+        btn_whatsapp: "Conversar no WhatsApp",
         
         // Seção Por Que (Dor / Copys)
         why_tagline: "Oportunidade de Mercado",
@@ -81,6 +82,12 @@ const translations = {
         badge_lang_desc: "Português & Espanhol",
         badge_creds_title: "Confiança",
         badge_creds_desc: "Design que Converte",
+        hero_badge_ux_title: "UX/UI",
+        hero_badge_ux_desc: "Design Intuitivo & Moderno",
+        hero_badge_opt_title: "Otimização",
+        hero_badge_opt_desc: "Focado em Conversão",
+        hero_badge_perf_title: "Performance",
+        hero_badge_perf_desc: "Carregamento Ultra Rápido",
         
         // Testemunhos
         testimonials_title: "O Que Nossos Clientes Dizem",
@@ -104,8 +111,8 @@ const translations = {
         proc3_desc: "Tudo alinhado com transparência.",
         proc4_title: "4. Pagamento da entrada",
         proc4_desc: "Início do projeto.",
-        proc5_title: "5. Envio do briefing",
-        proc5_desc: "Coleta dos materiais e informações.",
+        proc5_title: "5. Envio de informações",
+        proc5_desc: "Envio de fotos, textos e preferências.",
         proc6_title: "6. Desenvolvimento",
         proc6_desc: "Criação da sua landing page.",
         proc7_title: "7. Revisão e entrega",
@@ -166,7 +173,7 @@ const translations = {
         faq_desc: "Confira as respostas para as principais dúvidas dos nossos clientes sobre a criação de sites e prazos.",
         
         faq1_q: "Quanto tempo demora para meu site ficar pronto?",
-        faq1_a: "O prazo médio de entrega para uma Landing Page profissional é de 1 a 2 semanas, a partir do envio de todo o briefing e aprovação do layout.",
+        faq1_a: "O prazo médio de entrega para uma Landing Page profissional é de 1 a 2 semanas, a partir do envio de todas as informações da página e aprovação do layout.",
         
         faq2_q: "Como funciona a forma de pagamento?",
         faq2_a: "Trabalhamos com 50% de sinal no início do projeto e os 50% restantes na aprovação e entrega do site. Aceitamos Pix, transferências no Paraguai e Guaranis.",
@@ -195,16 +202,17 @@ const translations = {
         nav_ideal: "Ideal Para",
         nav_quem_somos: "Quiénes Somos",
         nav_testimonials: "Testimonios",
-        nav_briefing: "Hacer Briefing",
+        nav_briefing: "Simular Proyecto",
         nav_admin: "Panel CRM",
         btn_start_now: "Comenzar Proyecto",
         
         // Hero Section
         hero_badge: "Estudio de Web Design & Social Media",
-        hero_title: "Tu negocio merece un sitio web que <br><span class='grad-text'>trabaje para ti las 24 horas del día</span>",
+        hero_title: "Tu negocio merece un sitio web que <span class='grad-text'>trabaje para ti las 24 horas del día</span>",
         hero_desc: "Transforma visitantes en clientes con páginas profesionales, rápidas y pensadas para generar contactos, ventas y autoridad para tu marca.",
-        hero_btn_briefing: "Iniciar Briefing Rápido",
+        hero_btn_briefing: "Simular Mi Proyecto",
         hero_btn_portfolio: "Ver Quiénes Somos",
+        btn_whatsapp: "Conversar en WhatsApp",
         
         // Seção Por Que (Dor / Copys)
         why_tagline: "Oportunidad de Mercado",
@@ -264,6 +272,12 @@ const translations = {
         badge_lang_desc: "Portugués & Español",
         badge_creds_title: "Confianza",
         badge_creds_desc: "Diseño que Convierte",
+        hero_badge_ux_title: "UX/UI",
+        hero_badge_ux_desc: "Diseño Intuitivo y Moderno",
+        hero_badge_opt_title: "Optimización",
+        hero_badge_opt_desc: "Enfocado en Conversión",
+        hero_badge_perf_title: "Performance",
+        hero_badge_perf_desc: "Carga Ultra Rápida",
         
         // Testemunios
         testimonials_title: "Lo Que Dicen Nuestros Clientes",
@@ -287,8 +301,8 @@ const translations = {
         proc3_desc: "Todo alineado con transparencia.",
         proc4_title: "4. Pago de la entrega inicial",
         proc4_desc: "Inicio del proyecto.",
-        proc5_title: "5. Envío del briefing",
-        proc5_desc: "Recopilación de materiales e información.",
+        proc5_title: "5. Envío de información",
+        proc5_desc: "Envío de fotos, textos y preferencias.",
         proc6_title: "6. Desarrollo",
         proc6_desc: "Creación de tu landing page.",
         proc7_title: "7. Revisión y entrega",
@@ -349,7 +363,7 @@ const translations = {
         faq_desc: "Confira las respuestas a las principales dudas de nuestros clientes sobre a criação de sites e plazos.",
         
         faq1_q: "¿Cuánto tiempo toma tener mi sitio listo?",
-        faq1_a: "El plazo promedio de entrega para una Landing Page profesional es de 1 a 2 semanas, a partir del envío de todo el briefing y aprobación del diseño.",
+        faq1_a: "El plazo promedio de entrega para una Landing Page profesional es de 1 a 2 semanas, a partir del envío de toda la información de la página y aprobación del diseño.",
         
         faq2_q: "¿Como funciona la forma de pago?",
         faq2_a: "Trabajamos con 50% de señal al inicio del proyecto y el 50% restante al aprobar y entregar la web. Aceptamos Pix, transferencias en Paraguay y Guaraníes.",
@@ -602,11 +616,11 @@ async function submitBriefing() {
     storedLeads.push(leadEntry);
     localStorage.setItem('gds_viagens', JSON.stringify(storedLeads));
     
-    const adminPhone = localStorage.getItem('gds_admin_phone') || "595973953874";
+    const adminPhone = localStorage.getItem('gds_admin_phone') || "595973977991";
     
     let text = "";
     if (currentLang === 'pt') {
-        text = `Olá, Maria! Gostaria de fazer uma cotação de projeto para minha empresa. Seguem as informações do meu briefing:
+        text = `Olá, Maria! Gostaria de fazer uma cotação de projeto para minha empresa. Seguem as informações do meu projeto:
         
 📋 *Dados do Projeto:*
 • *Serviço:* ${briefingData.service}
@@ -620,7 +634,7 @@ async function submitBriefing() {
 • *WhatsApp:* ${briefingData.clientWhatsapp}
 • *E-mail:* ${briefingData.clientEmail}`;
     } else {
-        text = `¡Hola, Maria! Me gustaría cotizar un proyecto para mi empresa. Aquí están las especificaciones de mi briefing:
+        text = `¡Hola, Maria! Me gustaría cotizar un proyecto para mi empresa. Aquí están los detalles de mi proyecto:
         
 📋 *Detalles del Proyecto:*
 • *Servicio:* ${briefingData.service}
@@ -639,7 +653,7 @@ async function submitBriefing() {
     const whatsappUrl = `https://wa.me/${adminPhone}?text=${encodedText}`;
     window.open(whatsappUrl, '_blank');
     
-    alert(currentLang === 'pt' ? 'Briefing enviado com sucesso! Abrindo WhatsApp...' : '¡Briefing enviado con éxito! Abriendo WhatsApp...');
+    alert(currentLang === 'pt' ? 'Simulação enviada com sucesso! Abrindo WhatsApp...' : '¡Simulación enviada con éxito! Abriendo WhatsApp...');
     resetBriefingForm();
 }
 
@@ -716,24 +730,6 @@ function initGsapAnimations() {
         ease: "power3.out"
     });
 
-    // Flutuação sutil dos mockups decorativos no Hero (hardware-accelerated)
-    gsap.to(".mockup-1", {
-        duration: 4,
-        y: "-=12",
-        rotation: "-=1.5",
-        yoyo: true,
-        repeat: -1,
-        ease: "power1.inOut"
-    });
-
-    gsap.to(".mockup-2", {
-        duration: 5,
-        y: "+=10",
-        rotation: "+=2",
-        yoyo: true,
-        repeat: -1,
-        ease: "power1.inOut"
-    });
 
     // Revelação de cards à medida que rola a página (Intersection Observer leve)
     const observer = new IntersectionObserver((entries) => {
@@ -779,4 +775,28 @@ document.addEventListener('DOMContentLoaded', () => {
     showStep();
     setupFaqAccordion();
     initGsapAnimations();
+
+    // Observer para animação do Dashboard Hero (hero-image e badges)
+    const heroImage = document.querySelector('.hero-image');
+    if (heroImage) {
+        const dashboardWrapper = document.querySelector('.dashboard-wrapper');
+        const heroBadges = document.querySelectorAll('.hero-visual .floating-badge-card');
+        const heroObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    heroImage.classList.add('visible');
+                    if (dashboardWrapper) {
+                        dashboardWrapper.classList.add('visible');
+                    }
+                    heroBadges.forEach(badge => {
+                        badge.classList.add('visible');
+                    });
+                    heroObserver.unobserve(entry.target);
+                }
+            });
+        }, {
+            threshold: 0.2
+        });
+        heroObserver.observe(heroImage);
+    }
 });
