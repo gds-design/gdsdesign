@@ -54,7 +54,7 @@ const TRANSLATIONS = {
         footer_sun: "Domingos e Feriados",
         footer_closed: "Fechado",
         footer_map: "Localização",
-        copyright: "© 2026 Apex Motors. Desenvolvido por GDS Design. Todos os direitos reservados."
+        copyright: "© 2026 Apex Motors. Desenvolvido por <a href=\"https://gdsdesign.site\" target=\"_blank\" style=\"color: var(--primary); text-decoration: none; font-weight: 600;\">GDS Design</a>. Todos os direitos reservados."
     },
     es: {
         nav_inventory: "Inventario",
@@ -110,7 +110,7 @@ const TRANSLATIONS = {
         footer_sun: "Domingos y Feriados",
         footer_closed: "Cerrado",
         footer_map: "Ubicación",
-        copyright: "© 2026 Apex Motors. Desarrollado por GDS Design. Todos los derechos reservados."
+        copyright: "© 2026 Apex Motors. Desarrollado por <a href=\"https://gdsdesign.site\" target=\"_blank\" style=\"color: var(--primary); text-decoration: none; font-weight: 600;\">GDS Design</a>. Todos los derechos reservados."
     }
 };
 
@@ -234,7 +234,7 @@ function setLanguage(lang) {
     document.querySelectorAll("[data-i18n]").forEach(el => {
         const key = el.getAttribute("data-i18n");
         if (TRANSLATIONS[lang] && TRANSLATIONS[lang][key]) {
-            el.innerText = TRANSLATIONS[lang][key];
+            el.innerHTML = TRANSLATIONS[lang][key];
         }
     });
 
