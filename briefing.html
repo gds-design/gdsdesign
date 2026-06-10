@@ -533,16 +533,6 @@
         <input type="hidden" id="prazo">
       </div>
 
-      <div class="field">
-        <label>Faixa de investimento</label>
-        <div class="options-grid">
-          <div class="option" onclick="selectOption(this,'investimento')" data-val="Até R$1.000 / Gs. 3.5M">💚 Até R$1k</div>
-          <div class="option" onclick="selectOption(this,'investimento')" data-val="R$1.000 a R$2.000">💛 R$1k–2k</div>
-          <div class="option" onclick="selectOption(this,'investimento')" data-val="Acima de R$2.000 / Gs. 7M+">💜 Acima R$2k</div>
-          <div class="option" onclick="selectOption(this,'investimento')" data-val="Prefiro discutir">🤝 A combinar</div>
-        </div>
-        <input type="hidden" id="investimento">
-      </div>
 
       <div class="field">
         <label>Alguma observação extra? (opcional)</label>
@@ -658,7 +648,6 @@
       descricao: document.getElementById('descricao').value,
       textos: document.getElementById('textos').value,
       prazo: document.getElementById('prazo').value,
-      investimento: document.getElementById('investimento').value,
       obs: document.getElementById('obs').value,
       logoAnexado: files['logo'] ? 'Sim — ' + Array.from(files['logo']).map(f=>f.name).join(', ') : 'Não',
       fotosAnexadas: files['fotos'] ? 'Sim — ' + Array.from(files['fotos']).map(f=>f.name).join(', ') : 'Não',
@@ -688,7 +677,6 @@ Nicho: ${d.nicho}
 Objetivos: ${d.objetivos}
 Público-alvo: ${d.publico}
 Prazo desejado: ${d.prazo}
-Investimento: ${d.investimento}
 
 MATERIAIS
 ---------
