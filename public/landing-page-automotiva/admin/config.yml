@@ -1,0 +1,30 @@
+backend:
+  name: github
+  repo: gds-design/gdsdesign
+  branch: main
+
+media_folder: public/assets/uploads
+public_folder: /assets/uploads
+
+i18n:
+  structure: single_file
+  locales: [pt, es]
+  default_locale: pt
+
+collections:
+  - name: "vehicles"
+    label: "Veículos"
+    label_singular: "Veículo"
+    folder: "public/landing-page-automotiva/data/vehicles"
+    create: true
+    slug: "{{slug}}"
+    i18n: true
+    fields:
+      - { label: "Slug/ID", name: "slug", widget: "string", i18n: false }
+      - { label: "Nome do Carro", name: "title", widget: "string", i18n: true }
+      - { label: "Ano/Modelo", name: "year", widget: "string", i18n: true }
+      - { label: "Quilometragem", name: "km", widget: "string", i18n: true }
+      - { label: "Câmbio", name: "transmission", widget: "string", i18n: true }
+      - { label: "Preço", name: "price", widget: "string", i18n: true }
+      - { label: "Status do Carro", name: "status", widget: "select", options: ["Disponível", "Vendido"], i18n: true }
+      - { label: "Imagem Principal", name: "image", widget: "image", i18n: false }

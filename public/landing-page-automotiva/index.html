@@ -3,38 +3,230 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Landing Page Automotiva - Em breve</title>
-    <style>
-        body {
-            font-family: system-ui, sans-serif;
-            background: #111;
-            color: #eee;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            height: 100vh;
-            margin: 0;
-            text-align: center;
-        }
-        .container {
-            max-width: 600px;
-            padding: 2rem;
-        }
-        h1 {
-            color: #378ADD;
-            font-size: 2.5rem;
-            margin-bottom: 1rem;
-        }
-        p {
-            color: #888;
-            font-size: 1.2rem;
-        }
-    </style>
+    
+    <!-- SEO & Search Engine Optimization (Multilíngue) -->
+    <title>Apex Motors | Revenda de Veículos Premium Tríplice Fronteira</title>
+    <meta name="description" content="Apex Motors é referência em veículos premium multimarcas na região de Foz do Iguaçu e Ciudad del Este. Estoque selecionado e procedência garantida.">
+    <meta name="robots" content="index, follow">
+    <link rel="alternate" hreflang="pt" href="https://gdsdesign.pages.dev/landing-page-automotiva/?lang=pt">
+    <link rel="alternate" hreflang="es" href="https://gdsdesign.pages.dev/landing-page-automotiva/?lang=es">
+    <link rel="alternate" hreflang="x-default" href="https://gdsdesign.pages.dev/landing-page-automotiva/">
+
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="container">
-        <h1>Landing Page Automotiva</h1>
-        <p>Projeto inicializado com sucesso no diretório public. Aguardando definições de design e conteúdo para iniciar a construção do site premium.</p>
-    </div>
+
+    <!-- Header / Nav bar -->
+    <header>
+        <div class="container nav-container">
+            <div class="logo">Apex <span>Motors</span></div>
+            <button class="menu-toggle" onclick="toggleMenu()" aria-label="Toggle Menu">☰</button>
+            <nav id="main-nav">
+                <a href="#inventory" data-i18n="nav_inventory">Estoque</a>
+                <a href="#sell" data-i18n="nav_sell">Vender Carro</a>
+                <a href="#features" data-i18n="nav_features">Diferenciais</a>
+                <a href="#calculator" data-i18n="sec_calc_badge">Estética</a>
+                <a href="#contact" data-i18n="nav_contact">Contato</a>
+                
+                <!-- Language Switcher -->
+                <div class="lang-switcher">
+                    <button class="lang-btn active" data-lang="pt" onclick="setLanguage('pt')">PT</button>
+                    <button class="lang-btn" data-lang="es" onclick="setLanguage('es')">ES</button>
+                </div>
+            </nav>
+            <a href="https://wa.me/595973977991" target="_blank" class="btn-secondary" data-i18n="btn_whatsapp" style="display: inline-flex;">Chamar no WhatsApp</a>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-bg"></div>
+        <div class="hero-img-wrap">
+            <img src="https://images.unsplash.com/photo-1617814076367-b759c7d7e738?auto=format&fit=crop&q=80&w=1200" alt="Supercar Sports Car">
+        </div>
+        <div class="container hero-content">
+            <div class="trust-badge" data-i18n="hero_badge">✓ Procedência garantida e laudo cautelar aprovado em 100% do estoque.</div>
+            <h1 data-i18n="hero_title">Onde a exclusividade encontra a sua próxima estrada.</h1>
+            <p data-i18n="hero_subtitle">Curadoria rigorosa de veículos multimarcas premium e seminovos selecionados na região de tríplice fronteira.</p>
+            <div class="hero-ctas">
+                <a href="#inventory" class="btn-primary" data-i18n="hero_cta_stock">Ver Estoque</a>
+                <a href="https://wa.me/595973977991" target="_blank" class="btn-secondary" data-i18n="hero_cta_chat">Falar com Consultor</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Inventory Section -->
+    <section id="inventory">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-badge" data-i18n="sec_inventory_badge">Seleção Exclusiva</span>
+                <h2 data-i18n="sec_inventory_title">Nosso Inventário</h2>
+                <p data-i18n="sec_inventory_desc">Veículos inspecionados, de altíssima qualidade e prontos para entrega imediata.</p>
+            </div>
+            
+            <div class="inventory-grid" id="inventory-grid">
+                <!-- Vehicle Cards Rendered Dynamically via JS -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Venda seu Carro (Trade-In) -->
+    <section class="trade-in" id="sell">
+        <div class="container trade-wrap">
+            <div class="trade-content">
+                <span class="section-badge" data-i18n="sec_trade_badge">Avaliação Rápida</span>
+                <h2 data-i18n="sec_trade_title">Quer vender ou trocar seu carro hoje?</h2>
+                <p data-i18n="sec_trade_desc">Avaliamos seu veículo premium com transparência, segurança e rapidez. Sem burocracia, pagamento imediato na região de fronteira.</p>
+                <a id="sell-car-cta" href="#" target="_blank" class="btn-primary">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" style="margin-right: 8px;"><path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z"/><path d="M12 6v12m-6-6h12"/></svg>
+                    <span data-i18n="sec_trade_cta">Solicitar Avaliação via WhatsApp</span>
+                </a>
+            </div>
+            <div class="trade-visual">
+                <img src="https://images.unsplash.com/photo-1549399542-7e3f8b79c341?auto=format&fit=crop&q=80&w=800" alt="Avaliação de veículo">
+            </div>
+        </div>
+    </section>
+
+    <!-- Diferenciais -->
+    <section id="features">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-badge" data-i18n="sec_features_badge">Por que nos escolher</span>
+                <h2 data-i18n="sec_features_title">Diferenciais Apex Motors</h2>
+                <p data-i18n="sec_features_desc">Garantia de segurança, credibilidade e pós-venda premium do início ao fim da sua compra.</p>
+            </div>
+            
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feat-icon-wrap">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M22 11.08V12a10 10 0 11-5.93-9.14M22 4L12 14.01l-3-3"/></svg>
+                    </div>
+                    <h3 data-i18n="feat_1_title">Procedência Garantida</h3>
+                    <p data-i18n="feat_1_desc">100% dos nossos veículos passam por vistoria cautelar rigorosa e verificação de histórico completo.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feat-icon-wrap">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"/><path d="M16 21V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v16"/></svg>
+                    </div>
+                    <h3 data-i18n="feat_2_title">Taxas Exclusivas</h3>
+                    <p data-i18n="feat_2_desc">Parcerias com as principais financeiras brasileiras e internacionais para garantir as melhores taxas do mercado.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feat-icon-wrap">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg>
+                    </div>
+                    <h3 data-i18n="feat_3_title">Pós-Venda Premium</h3>
+                    <p data-i18n="feat_3_desc">Suporte completo e consultoria de manutenção personalizada nos primeiros meses pós-entrega do veículo.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Calculator Simulator Detail -->
+    <section class="calc-section" id="calculator">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-badge" data-i18n="sec_calc_badge">Simulador de Estética</span>
+                <h2 data-i18n="sec_calc_title">Pacotes de Detalhamento e Proteção</h2>
+                <p data-i18n="sec_calc_desc">Personalize e proteja seu novo veículo. Selecione os serviços abaixo para simular o investimento de proteção.</p>
+            </div>
+
+            <div class="calc-grid">
+                <div class="calc-options">
+                    
+                    <div class="calc-item" data-id="item_1">
+                        <div class="calc-checkbox">✓</div>
+                        <div class="calc-details">
+                            <h4 data-i18n="calc_item_1">Polimento Comercial + Selante</h4>
+                            <p data-i18n="calc_item_1_desc">Eliminação de micro-riscos e brilho protetor por até 6 meses.</p>
+                        </div>
+                        <div class="calc-price" id="calc-price-item1">+ R$ 450</div>
+                    </div>
+                    
+                    <div class="calc-item" data-id="item_2">
+                        <div class="calc-checkbox">✓</div>
+                        <div class="calc-details">
+                            <h4 data-i18n="calc_item_2">Vitrificação de Pintura Premium (9H)</h4>
+                            <p data-i18n="calc_item_2_desc">Proteção cerâmica contra intempéries e raios UV por até 3 anos.</p>
+                        </div>
+                        <div class="calc-price" id="calc-price-item2">+ R$ 1.200</div>
+                    </div>
+                    
+                    <div class="calc-item" data-id="item_3">
+                        <div class="calc-checkbox">✓</div>
+                        <div class="calc-details">
+                            <h4 data-i18n="calc_item_3">Proteção PPF Frontal (Película Regenerativa)</h4>
+                            <p data-i18n="calc_item_3_desc">Película termoplástica ultra-resistente contra impactos de pedras na estrada.</p>
+                        </div>
+                        <div class="calc-price" id="calc-price-item3">+ R$ 3.500</div>
+                    </div>
+
+                </div>
+
+                <div class="calc-summary-card">
+                    <h3 data-i18n="calc_sum_title">Resumo dos Serviços</h3>
+                    <div id="calc-summary-list">
+                        <!-- Dynamic selections go here -->
+                    </div>
+                    
+                    <div class="summary-item total">
+                        <span data-i18n="calc_sum_total">Total Previsto</span>
+                        <span class="price-val" id="calc-total-val">R$ 0</span>
+                    </div>
+                    <button class="btn-primary" style="width: 100%; margin-top: 1.5rem;" onclick="sendCalcToWhatsApp()" data-i18n="calc_sum_cta">Adicionar Proteção ao Pedido</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer & Map -->
+    <footer id="contact">
+        <div class="container footer-grid">
+            <div class="footer-info">
+                <div class="logo">Apex <span>Motors</span></div>
+                <p data-i18n="footer_desc">A Apex Motors é referência em curadoria e venda de automóveis premium na tríplice fronteira. Credibilidade e atendimento de alto padrão.</p>
+                <div class="social-links">
+                    <a href="#" class="social-btn">FB</a>
+                    <a href="#" class="social-btn">IG</a>
+                    <a href="#" class="social-btn">YT</a>
+                </div>
+            </div>
+            
+            <div class="footer-hours">
+                <h3 data-i18n="footer_hours">Horário de Funcionamento</h3>
+                <ul class="hours-list">
+                    <li>
+                        <strong data-i18n="footer_week">Segunda a Sexta</strong>
+                        <span>08:00 - 18:00</span>
+                    </li>
+                    <li>
+                        <strong data-i18n="footer_sat">Sábados</strong>
+                        <span>08:00 - 13:00</span>
+                    </li>
+                    <li>
+                        <strong data-i18n="footer_sun">Domingos e Feriados</strong>
+                        <span data-i18n="footer_closed" style="color: var(--primary);">Fechado</span>
+                    </li>
+                </ul>
+            </div>
+            
+            <div class="footer-map">
+                <h3 data-i18n="footer_map">Localização</h3>
+                <div class="map-box">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3600.67252243407!2d-54.57211142514336!3d-25.515967077508492!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94f69085817bd4c3%3A0xc48c08fb3c6cb19!2sAv.%20Paran%C3%A1%2C%20Foz%20do%20Igua%C3%A7u%20-%20PR!5e0!3m2!1spt-BR!2sbr!4v1700000000000!5m2!1spt-BR!2sbr" allowfullscreen="" loading="lazy"></iframe>
+                </div>
+            </div>
+        </div>
+        <div class="copyright" data-i18n="copyright">
+            © 2026 Apex Motors. Desenvolvido por GDS Design. Todos os direitos reservados.
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="script.js"></script>
 </body>
 </html>
