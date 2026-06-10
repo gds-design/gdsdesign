@@ -940,6 +940,44 @@ button, input, select, textarea {
     .badge-creds { right: 10px; }
 }
 
+@media (max-width: 576px) {
+    .profile-image-frame {
+        width: 230px;
+        height: 230px;
+    }
+    .profile-visual-bg-circle {
+        width: 230px;
+        height: 230px;
+    }
+    .profile-visual-bg-dashed {
+        width: 260px;
+        height: 260px;
+    }
+    .floating-badge-card {
+        padding: 6px 10px;
+        gap: 8px;
+    }
+    .badge-icon-circle {
+        width: 24px;
+        height: 24px;
+        font-size: 11px;
+    }
+    .badge-card-title {
+        font-size: 11px;
+    }
+    .badge-card-desc {
+        font-size: 9px;
+    }
+    .badge-web { left: -10px; top: 10%; }
+    .badge-social { left: -5px; bottom: 12%; }
+    .badge-lang { right: -10px; top: 30%; }
+    .badge-creds { right: -5px; bottom: 0%; }
+    
+    .profile-content h2 {
+        font-size: 32px;
+    }
+}
+
 /* Seção Como Funciona o Processo */
 .process-section {
     background: var(--bg-surface);
