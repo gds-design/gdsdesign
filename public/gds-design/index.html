@@ -1,0 +1,754 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GDS Design | Web Design Premium & Landing Pages</title>
+    
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="GDS Design - Landing Pages de alta performance e flyers para Instagram para empresas no Paraguai e no Brasil.">
+    <meta name="keywords" content="web design paraguai, landing page paraguai, design de flyers, criacao de sites, rota cde, behance mariagilmara, design profissional cde">
+    <meta name="author" content="GDS Design">
+
+    <!-- Open Graph / Facebook / WhatsApp -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="GDS Design | Conectando marcas com design premium">
+    <meta property="og:description" content="Eleve a credibilidade do seu negócio com sites modernos e flyers de alto impacto.">
+    <meta property="og:image" content="assets/og-image.jpg">
+
+    <!-- Stylesheet -->
+    <link rel="stylesheet" href="styles.css">
+    
+    <!-- Icons FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+    <!-- Bolhas de Brilho Gradiente (Glow Blobs estilo KazzyTu) -->
+    <div class="glow-blob blob-1"></div>
+    <div class="glow-blob blob-2"></div>
+    <div class="glow-blob blob-3"></div>
+
+    <!-- Header Section -->
+    <header class="header">
+        <div class="container header-container">
+            <a href="#" class="logo">
+                <div class="logo-dot"></div>
+                <span data-i18n="nav_logo">GDS Design</span>
+            </a>
+                        <nav class="nav-links">
+                <a href="#servicos" class="nav-link" data-i18n="nav_servicos">Serviços</a>
+                <a href="#por-que" class="nav-link" data-i18n="nav_por_que">Por que ter um site?</a>
+                <a href="#ideal-para" class="nav-link" data-i18n="nav_ideal">Ideal Para</a>
+                <a href="#quem-somos" class="nav-link" data-i18n="nav_quem_somos">Quem Somos</a>
+                <a href="#depoimentos" class="nav-link" data-i18n="nav_testimonials">Depoimentos</a>
+                <a href="#faq" class="nav-link">FAQ</a>
+            </nav>
+            
+            <div class="header-actions">
+                <button id="langBtn" class="lang-switch" aria-label="Mudar idioma / Cambiar idioma">
+                    <span id="langBtnText">🇵🇹 PT</span> <i class="fa-solid fa-chevron-down"></i>
+                </button>
+                <a href="#briefing" class="btn btn-primary" style="padding: 10px 20px; font-size: 13px;" data-i18n="btn_start_now">Começar Projeto</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="container hero-grid">
+            <div class="hero-content">
+                <span class="badge" data-i18n="hero_badge">Estúdio de Web Design & Social Media</span>
+                <h1 class="hero-title" data-i18n="hero_title">
+                    Seu negócio merece um site que <span class="grad-text">trabalha por você 24 horas por dia</span>
+                </h1>
+                <p class="hero-desc" data-i18n="hero_desc">
+                    Transforme visitantes em clientes com páginas profissionais, rápidas e pensadas para gerar contatos, vendas e autoridade para sua marca.
+                </p>
+                <div class="hero-buttons">
+                    <a href="#briefing" class="btn btn-primary" data-i18n="hero_btn_briefing">Simular Meu Projeto</a>
+                    <a href="https://wa.me/595973977991" class="btn btn-whatsapp" target="_blank" rel="noopener noreferrer">
+                        <i class="fa-brands fa-whatsapp"></i> <span data-i18n="btn_whatsapp">Conversar no WhatsApp</span>
+                    </a>
+                    <a href="#quem-somos" class="btn btn-secondary" data-i18n="hero_btn_portfolio">Ver Quem Somos</a>
+                </div>
+            </div>
+            
+            <!-- Representação Visual Interativa (Mockups que se movem de forma suave) -->
+            <div class="hero-visual">
+                <div class="visual-container">
+                    <div class="circle-bg"></div>
+                    <div class="dashboard-wrapper">
+                        <img src="assets/dashboard-hero.png" alt="GDS Design Dashboard" class="hero-image">
+                    </div>
+
+                    <!-- Floating Pop-up Badge Cards for Hero (Quem Somos style) -->
+                    <div class="floating-badge-card hero-badge-ux">
+                        <div class="badge-icon-circle" style="background: rgba(124, 58, 237, 0.1); color: var(--primary);"><i class="fa-solid fa-wand-magic-sparkles"></i></div>
+                        <div class="badge-text-group">
+                            <span class="badge-card-title" data-i18n="hero_badge_ux_title">UX/UI</span>
+                            <span class="badge-card-desc" data-i18n="hero_badge_ux_desc">Design Intuitivo & Moderno</span>
+                        </div>
+                    </div>
+                    <div class="floating-badge-card hero-badge-opt">
+                        <div class="badge-icon-circle" style="background: rgba(255, 107, 53, 0.1); color: var(--accent-orange);"><i class="fa-solid fa-chart-line"></i></div>
+                        <div class="badge-text-group">
+                            <span class="badge-card-title" data-i18n="hero_badge_opt_title">Otimização</span>
+                            <span class="badge-card-desc" data-i18n="hero_badge_opt_desc">Focado em Conversão</span>
+                        </div>
+                    </div>
+                    <div class="floating-badge-card hero-badge-perf">
+                        <div class="badge-icon-circle" style="background: rgba(217, 70, 239, 0.1); color: var(--accent-pink);"><i class="fa-solid fa-bolt"></i></div>
+                        <div class="badge-text-group">
+                            <span class="badge-card-title" data-i18n="hero_badge_perf_title">Performance</span>
+                            <span class="badge-card-desc" data-i18n="hero_badge_perf_desc">Carregamento Ultra Rápido</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Section (Dor / Copys Persuasivos) -->
+    <section class="why-section section-padding" id="por-que">
+        <div class="container why-grid">
+            <div>
+                <span class="badge" data-i18n="why_tagline">Oportunidade de Mercado</span>
+                <h2 class="section-title-large" data-i18n="why_title">Enquanto você trabalha, seu site continua apresentando sua empresa.</h2>
+                <p class="section-desc-large" data-i18n="why_desc">
+                    Muitas pessoas pesquisam antes de entrar em contato.<br><br>Quando encontram uma empresa com presença profissional online, a confiança aumenta e a decisão de compra se torna mais fácil.
+                </p>
+                
+                <a href="#briefing" class="btn btn-sunset" data-i18n="hero_btn_briefing">Simular Meu Projeto</a>
+            </div>
+            
+            <div class="pain-points">
+
+                <!-- Pain Card 2 -->
+                <div class="glass-card pain-card">
+                    <div class="glass-card pain-icon">
+                        <i class="fa-solid fa-shield-halved"></i>
+                    </div>
+                    <div>
+                        <h3 class="pain-title" data-i18n="pain2_title">Credibilidade que Converte</h3>
+                        <p class="pain-desc" data-i18n="pain2_desc">
+                            O cliente moderno pesquisa no Google antes de comprar. Um site elegante com carregamento rápido e design exclusivo prova que você domina seu segmento e valoriza a experiência de quem te procura.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Pain Card 3 -->
+                <div class="glass-card pain-card">
+                    <div class="pain-icon">
+                        <i class="fa-solid fa-chart-line"></i>
+                    </div>
+                    <div>
+                        <h3 class="pain-title" data-i18n="pain3_title">Captação Automática de Leads</h3>
+                        <p class="pain-desc" data-i18n="pain3_desc">
+                            Sua página trabalha 24 horas por dia coletando contatos e direcionando clientes qualificados direto para o seu WhatsApp, sem depender de panfletos físicos ou posts orgânicos no Instagram.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="services-section section-padding" id="servicos">
+        <div class="container">
+            <div style="text-align: center; max-width: 600px; margin: 0 auto 50px auto;">
+                <span class="badge" data-i18n="services_tagline">Nossas Soluções</span>
+                <h2 class="hero-title" style="font-size: 36px; margin-bottom: 16px;" data-i18n="services_title">O que criamos para impulsionar seu negócio?</h2>
+                <p style="color: var(--text-secondary);" data-i18n="services_desc">Projetos sob medida focados em estética premium e facilidade de navegação.</p>
+            </div>
+            
+            <div class="services-grid" style="grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));">
+                <!-- Servico 1 -->
+                <div class="glass-card service-item">
+                    <div class="service-icon-box">
+                        <i class="fa-solid fa-code"></i>
+                    </div>
+                    <h3 class="service-title" data-i18n="srv1_title">Landing Pages de Alta Conversão</h3>
+                    <p class="service-desc" data-i18n="srv1_desc">Páginas únicas focadas na venda de um produto ou serviço. Ideais para médicos, advogados, consultórios e empresas de serviços.</p>
+                    <ul class="service-features">
+                        <li data-i18n="srv1_f1">Design 100% Responsivo (Mobile First)</li>
+                        <li data-i18n="srv1_f2">Foco total na dor do seu cliente</li>
+                        <li data-i18n="srv1_f3">Botões estrategicamente posicionados</li>
+                    </ul>
+                </div>
+
+                <!-- Servico 2 -->
+                <div class="glass-card service-item">
+                    <div class="service-icon-box">
+                        <i class="fa-solid fa-palette"></i>
+                    </div>
+                    <h3 class="service-title" data-i18n="srv2_title">Flyers e Posts para Instagram</h3>
+                    <p class="service-desc" data-i18n="srv2_desc">Criação de criativos visuais modernos e autênticos que se destacam no feed e atraem a atenção do seu público de forma imediata.</p>
+                    <ul class="service-features">
+                        <li data-i18n="srv2_f1">Alinhamento com a identidade da marca</li>
+                        <li data-i18n="srv2_f2">Layouts magnéticos e de alta qualidade</li>
+                        <li data-i18n="srv2_f3">Pronto para tráfego pago ou orgânico</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Ideal Para Section -->
+    <section class="section-padding" id="ideal-para" style="background-color: var(--bg-surface);">
+        <div class="container">
+            <div style="text-align: center; max-width: 600px; margin: 0 auto 50px auto;">
+                <span class="badge" data-i18n="ideal_tagline">Público-Alvo</span>
+                <h2 class="hero-title" style="font-size: 36px; margin-bottom: 16px;" data-i18n="ideal_title">Ideal para profissionais e empresas que querem crescer</h2>
+            </div>
+            
+            <div class="ideal-grid">
+                <!-- Card 1 -->
+                <div class="ideal-card">
+                    <div class="ideal-icon-wrapper">
+                        <i class="fa-solid fa-user-doctor"></i>
+                    </div>
+                    <div class="ideal-info">
+                        <h3 data-i18n="ideal_medicos">Médicos</h3>
+                        <p data-i18n="srv1_f2">Foco total na dor do seu cliente</p>
+                    </div>
+                </div>
+
+                <!-- Card 2 -->
+                <div class="ideal-card">
+                    <div class="ideal-icon-wrapper">
+                        <i class="fa-solid fa-hospital"></i>
+                    </div>
+                    <div class="ideal-info">
+                        <h3 data-i18n="ideal_clinicas">Clínicas</h3>
+                        <p data-i18n="pain2_title">Credibilidade que Converte</p>
+                    </div>
+                </div>
+
+                <!-- Card 3 -->
+                <div class="ideal-card">
+                    <div class="ideal-icon-wrapper">
+                        <i class="fa-solid fa-tooth"></i>
+                    </div>
+                    <div class="ideal-info">
+                        <h3 data-i18n="ideal_dentistas">Dentistas</h3>
+                        <p data-i18n="srv1_f1">Design 100% Responsivo</p>
+                    </div>
+                </div>
+
+                <!-- Card 4 -->
+                <div class="ideal-card">
+                    <div class="ideal-icon-wrapper">
+                        <i class="fa-solid fa-scale-balanced"></i>
+                    </div>
+                    <div class="ideal-info">
+                        <h3 data-i18n="ideal_advogados">Advogados</h3>
+                        <p data-i18n="pain1_title">Diferenciação e Autoridade</p>
+                    </div>
+                </div>
+
+                <!-- Card 5 -->
+                <div class="ideal-card">
+                    <div class="ideal-icon-wrapper">
+                        <i class="fa-solid fa-house-chimney"></i>
+                    </div>
+                    <div class="ideal-info">
+                        <h3 data-i18n="ideal_corretores">Corretores</h3>
+                        <p data-i18n="pain3_title">Captação Automática de Leads</p>
+                    </div>
+                </div>
+
+                <!-- Card 6 -->
+                <div class="ideal-card">
+                    <div class="ideal-icon-wrapper">
+                        <i class="fa-solid fa-calculator"></i>
+                    </div>
+                    <div class="ideal-info">
+                        <h3 data-i18n="ideal_contadores">Contadores</h3>
+                        <p data-i18n="services_desc">Design moderno e credibilidade</p>
+                    </div>
+                </div>
+
+                <!-- Card 7 -->
+                <div class="ideal-card">
+                    <div class="ideal-icon-wrapper">
+                        <i class="fa-solid fa-briefcase"></i>
+                    </div>
+                    <div class="ideal-info">
+                        <h3 data-i18n="ideal_servicos">Empresas de Serviços</h3>
+                        <p data-i18n="hero_desc">Landing pages de alta performance</p>
+                    </div>
+                </div>
+
+                <!-- Card 8 -->
+                <div class="ideal-card">
+                    <div class="ideal-icon-wrapper">
+                        <i class="fa-solid fa-store"></i>
+                    </div>
+                    <div class="ideal-info">
+                        <h3 data-i18n="ideal_comercio">Comércio</h3>
+                        <p data-i18n="srv2_title">Atração visual e vendas</p>
+                    </div>
+                </div>
+
+                <!-- Card 9 -->
+                <div class="ideal-card">
+                    <div class="ideal-icon-wrapper">
+                        <i class="fa-solid fa-screwdriver-wrench"></i>
+                    </div>
+                    <div class="ideal-info">
+                        <h3 data-i18n="ideal_prestadores">Prestadores de Serviço</h3>
+                        <p data-i18n="pain3_desc">Seu site trabalhando 24 horas por dia</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Quem Somos Section (Perfil da Maria Gilmara) -->
+    <section class="profile-section section-padding" id="quem-somos">
+        <div class="container profile-grid">
+            <div class="profile-visual-container">
+                <div class="profile-dashed-wrapper">
+                    <div class="profile-visual-bg-dashed"></div>
+                </div>
+                <div class="profile-visual-bg-circle"></div>
+                
+                <div class="profile-image-frame">
+                    <img src="maria.png" alt="Maria Gilmara">
+                </div>
+                
+                <!-- Floating Pop-up Badge Cards (pop-ups style from reference) -->
+                <div class="floating-badge-card badge-web">
+                    <div class="badge-icon-circle"><i class="fa-solid fa-code"></i></div>
+                    <div class="badge-text-group">
+                        <span class="badge-card-title" data-i18n="badge_web_title">Web Design</span>
+                        <span class="badge-card-desc" data-i18n="badge_web_desc">Sites de Alta Performance</span>
+                    </div>
+                </div>
+                <div class="floating-badge-card badge-social">
+                    <div class="badge-icon-circle" style="background: rgba(255, 107, 53, 0.1); color: var(--accent-orange);"><i class="fa-solid fa-palette"></i></div>
+                    <div class="badge-text-group">
+                        <span class="badge-card-title" data-i18n="badge_social_title">Social Media</span>
+                        <span class="badge-card-desc" data-i18n="badge_social_desc">Feed & Criativos Premium</span>
+                    </div>
+                </div>
+                <div class="floating-badge-card badge-lang">
+                    <div class="badge-icon-circle" style="background: rgba(217, 70, 239, 0.1); color: var(--accent-pink);"><i class="fa-solid fa-language"></i></div>
+                    <div class="badge-text-group">
+                        <span class="badge-card-title" data-i18n="badge_lang_title">Bilingue</span>
+                        <span class="badge-card-desc" data-i18n="badge_lang_desc">Português & Espanhol</span>
+                    </div>
+                </div>
+                <div class="floating-badge-card badge-creds">
+                    <div class="badge-icon-circle" style="background: rgba(34, 197, 94, 0.1); color: #22c55e;"><i class="fa-solid fa-shield-halved"></i></div>
+                    <div class="badge-text-group">
+                        <span class="badge-card-title" data-i18n="badge_creds_title">Confiança</span>
+                        <span class="badge-card-desc" data-i18n="badge_creds_desc">Design que Converte</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="profile-content">
+                <span class="badge" data-i18n="profile_tagline">Quem Somos</span>
+                <h2 data-i18n="profile_title">Olá, sou Maria Gilmara</h2>
+                <p data-i18n="profile_desc">
+                    Sou designer web e social media. Meu objetivo é ajudar empresas e profissionais a construírem uma presença digital profissional através de sites, landing pages e materiais visuais que transmitam credibilidade e confiança.<br><br>
+                    Atendo clientes em português e espanhol, desenvolvendo soluções para negócios que desejam crescer e fortalecer sua marca na internet.
+                </p>
+                <a href="#briefing" class="btn btn-primary" data-i18n="btn_start_now">Começar Projeto</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Como funciona o processo Section -->
+    <section class="process-section section-padding" id="processo">
+        <div class="container">
+            <div style="text-align: center; max-width: 600px; margin: 0 auto 50px auto;">
+                <span class="badge" data-i18n="process_tagline">O Fluxo</span>
+                <h2 class="hero-title" style="font-size: 36px; margin-bottom: 16px;" data-i18n="process_title">Como funciona o processo?</h2>
+                <p style="color: var(--text-secondary);" class="section-desc" data-i18n="process_desc">Do primeiro contato até o suporte contínuo: passos claros para o sucesso do seu projeto.</p>
+            </div>
+            
+            <div class="process-grid">
+                <!-- Card 1 -->
+                <div class="process-card">
+                    <div class="process-number">01</div>
+                    <div class="process-icon-circle"><i class="fa-solid fa-file-invoice-dollar"></i></div>
+                    <h3 class="process-card-title" data-i18n="proc1_title">1. Solicite um orçamento</h3>
+                    <p class="process-card-desc" data-i18n="proc1_desc">Preencha a cotação rápida.</p>
+                </div>
+                <!-- Card 2 -->
+                <div class="process-card">
+                    <div class="process-number">02</div>
+                    <div class="process-icon-circle"><i class="fa-brands fa-whatsapp"></i></div>
+                    <h3 class="process-card-title" data-i18n="proc2_title">2. Atendimento personalizado</h3>
+                    <p class="process-card-desc" data-i18n="proc2_desc">Conversamos pelo WhatsApp.</p>
+                </div>
+                <!-- Card 3 -->
+                <div class="process-card">
+                    <div class="process-number">03</div>
+                    <div class="process-icon-circle"><i class="fa-solid fa-file-signature"></i></div>
+                    <h3 class="process-card-title" data-i18n="proc3_title">3. Proposta e contrato</h3>
+                    <p class="process-card-desc" data-i18n="proc3_desc">Tudo alinhado com transparência.</p>
+                </div>
+                <!-- Card 4 -->
+                <div class="process-card">
+                    <div class="process-number">04</div>
+                    <div class="process-icon-circle"><i class="fa-solid fa-credit-card"></i></div>
+                    <h3 class="process-card-title" data-i18n="proc4_title">4. Pagamento da entrada</h3>
+                    <p class="process-card-desc" data-i18n="proc4_desc">Início do projeto.</p>
+                </div>
+                <!-- Card 5 -->
+                <div class="process-card">
+                    <div class="process-number">05</div>
+                    <div class="process-icon-circle"><i class="fa-solid fa-clipboard-question"></i></div>
+                    <h3 class="process-card-title" data-i18n="proc5_title">5. Envio de informações</h3>
+                    <p class="process-card-desc" data-i18n="proc5_desc">Envio de fotos, textos e preferências.</p>
+                </div>
+                <!-- Card 6 -->
+                <div class="process-card">
+                    <div class="process-number">06</div>
+                    <div class="process-icon-circle"><i class="fa-solid fa-laptop-code"></i></div>
+                    <h3 class="process-card-title" data-i18n="proc6_title">6. Desenvolvimento</h3>
+                    <p class="process-card-desc" data-i18n="proc6_desc">Criação da sua landing page.</p>
+                </div>
+                <!-- Card 7 -->
+                <div class="process-card">
+                    <div class="process-number">07</div>
+                    <div class="process-icon-circle"><i class="fa-solid fa-circle-check"></i></div>
+                    <h3 class="process-card-title" data-i18n="proc7_title">7. Revisão e entrega</h3>
+                    <p class="process-card-desc" data-i18n="proc7_desc">Ajustes finais e publicação.</p>
+                </div>
+                <!-- Card 8 -->
+                <div class="process-card">
+                    <div class="process-number">08</div>
+                    <div class="process-icon-circle"><i class="fa-solid fa-headset"></i></div>
+                    <h3 class="process-card-title" data-i18n="proc8_title">8. Suporte opcional</h3>
+                    <p class="process-card-desc" data-i18n="proc8_desc">Manutenção e atualizações quando necessário.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section (Gradient Background & Curved Transition) -->
+    <section class="testimonials-gradient-section section-padding" id="depoimentos">
+        <div class="container">
+            <div style="text-align: center; max-width: 600px; margin: 0 auto 50px auto;">
+                <span class="badge" data-i18n="portfolio_tagline">Depoimentos</span>
+                <h2 class="hero-title" style="font-size: 36px; margin-bottom: 16px; color: #ffffff;" data-i18n="testimonials_title">O Que Nossos Clientes Dizem</h2>
+                <p style="color: rgba(255,255,255,0.85);" class="section-desc" data-i18n="testimonials_desc">Histórias reais, resultados reais. Descubra o impacto de um design de alto padrão nos negócios.</p>
+            </div>
+
+            <div class="testimonial-grid-white">
+                <!-- Card 1 -->
+                <div class="testimonial-card-white">
+                    <div class="testimonial-rating">★★★★★</div>
+                    <p class="testimonial-text" data-i18n="test1_text">"O site desenvolvido pela GDS triplicou o agendamento de consultas na minha clínica em Foz. A experiência do paciente no celular ficou perfeita e o design transmite muita credibilidade."</p>
+                    <div class="testimonial-user">
+                        <div class="avatar testimonial-avatar">LS</div>
+                        <div class="testimonial-info">
+                            <h4 class="user-name">Dra. Letícia Souza</h4>
+                            <span class="user-role" data-i18n="test1_user_role">Dermatologista / Clínica CDE</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 2 -->
+                <div class="testimonial-card-white">
+                    <div class="testimonial-rating">★★★★★</div>
+                    <p class="testimonial-text" data-i18n="test2_text">"Excelente trabalho com os posts e criativos do Instagram. O visual ficou incrivelmente limpo, moderno e atraente, o que aumentou diretamente nossas vendas de importações no Paraguai."</p>
+                    <div class="testimonial-user">
+                        <div class="avatar testimonial-avatar">CB</div>
+                        <div class="testimonial-info">
+                            <h4 class="user-name">Claudio Benitez</h4>
+                            <span class="user-role" data-i18n="test2_user_role">Gerente de Importadora / CDE</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 3 -->
+                <div class="testimonial-card-white">
+                    <div class="testimonial-rating">★★★★★</div>
+                    <p class="testimonial-text" data-i18n="test3_text">"Como estudante de medicina em Cidade de Leste, precisava de um portfólio digital para oferecer serviços de assessoria a novos alunos brasileiros. O site criado pela GDS ficou impecável!"</p>
+                    <div class="testimonial-user">
+                        <div class="avatar testimonial-avatar">LF</div>
+                        <div class="testimonial-info">
+                            <h4 class="user-name">Larissa Fonseca</h4>
+                            <span class="user-role" data-i18n="test3_user_role">Assessoria e Estudante de Medicina</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Interactive Funnel Section -->
+    <section class="funnel-section section-padding" id="briefing">
+        <div class="container funnel-grid">
+            <div>
+                <span class="badge" data-i18n="funnel_tagline">Fazer Orçamento</span>
+                <h2 class="funnel-intro-title" data-i18n="funnel_title">Simule seu projeto em 1 minuto</h2>
+                <p class="funnel-intro-desc" data-i18n="funnel_desc">Responda às etapas abaixo e me envie as especificações. Entrarei em contato com a proposta ideal para você.</p>
+                <div style="font-size: 14px; color: var(--text-muted); display: flex; align-items: center; gap: 10px;">
+                    <i class="fa-solid fa-shield-halved" style="color: var(--primary);"></i>
+                    <span>Seus dados são confidenciais e protegidos.</span>
+                </div>
+            </div>
+            
+            <div class="glass-card funnel-card">
+                <!-- Indicador de Etapas -->
+                <div class="steps-indicator">
+                    <div class="step-indicator-bar" id="indicatorBar"></div>
+                    <div class="step-node active" id="stepNode1">1</div>
+                    <div class="step-node" id="stepNode2">2</div>
+                    <div class="step-node" id="stepNode3">3</div>
+                    <div class="step-node" id="stepNode4">4</div>
+                    <div class="step-node" id="stepNode5">5</div>
+                </div>
+                
+                <!-- Passo 1: Seleção de Serviço -->
+                <div class="step-pane active" id="stepPane1">
+                    <h3 class="step-title" data-i18n="step1_title">Qual é o principal serviço que você deseja divulgar?</h3>
+                    <p class="step-desc" data-i18n="step1_desc">Ex.: Direito Previdenciário, Harmonização Facial, Venda de Imóveis.</p>
+                    
+                    <div class="options-grid">
+                        <div class="option-box service-opt-box" onclick="selectService('Landing Page', this)">
+                            <div class="option-icon"><i class="fa-solid fa-code"></i></div>
+                            <div class="option-label" data-i18n="opt_lp">Landing Page</div>
+                        </div>
+                        <div class="option-box service-opt-box" onclick="selectService('Flyers Instagram', this)">
+                            <div class="option-icon"><i class="fa-brands fa-instagram"></i></div>
+                            <div class="option-label" data-i18n="opt_flyer">Flyers de Instagram</div>
+                        </div>
+                        <div class="option-box service-opt-box" onclick="selectService('Site Completo', this)">
+                            <div class="option-icon"><i class="fa-solid fa-globe"></i></div>
+                            <div class="option-label" data-i18n="opt_site">Site Completo</div>
+                        </div>
+                        <div class="option-box service-opt-box" onclick="selectService('Outro Projeto', this)">
+                            <div class="option-icon"><i class="fa-solid fa-ellipsis"></i></div>
+                            <div class="option-label" data-i18n="opt_other">Outro Projeto</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Passo 2: Dados da Empresa -->
+                <div class="step-pane" id="stepPane2">
+                    <h3 class="step-title" data-i18n="step2_title">Fale sobre a sua empresa</h3>
+                    <p class="step-desc" data-i18n="step2_desc">Quem é seu público-alvo? O que sua empresa vende? Isso nos ajudará a criar a mensagem certa.</p>
+                    
+                    <div class="form-group">
+                        <label for="inputNiche" data-i18n="lbl_niche">Nicho / Área de Atuação</label>
+                        <input type="text" id="inputNiche" class="form-control" data-i18n-placeholder="placeholder_niche" placeholder="Ex: Clínica médica, Advocacia, Venda de eletrônicos...">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="inputAudience" data-i18n="lbl_audience">Público-Alvo principal</label>
+                        <input type="text" id="inputAudience" class="form-control" data-i18n-placeholder="placeholder_audience" placeholder="Ex: Estudantes de medicina, Empresas locais, Pacientes...">
+                    </div>
+                </div>
+
+                <!-- Passo 3: Objetivo da Página -->
+                <div class="step-pane" id="stepPane3">
+                    <h3 class="step-title" data-i18n="step3_title">Objetivo da página</h3>
+                    <p class="step-desc" data-i18n="step3_desc">Qual resultado você espera com o site?</p>
+                    
+                    <div class="options-grid">
+                        <div class="option-box style-opt-box" onclick="selectStyle('Receber mensagens no WhatsApp', this)">
+                            <div class="option-icon">💬</div>
+                            <div class="option-label" data-i18n="opt_style_wpp">Receber mensagens no WhatsApp</div>
+                        </div>
+                        <div class="option-box style-opt-box" onclick="selectStyle('Captar leads', this)">
+                            <div class="option-icon">🎯</div>
+                            <div class="option-label" data-i18n="opt_style_leads">Captar leads</div>
+                        </div>
+                        <div class="option-box style-opt-box" onclick="selectStyle('Apresentar minha empresa', this)">
+                            <div class="option-icon">🏢</div>
+                            <div class="option-label" data-i18n="opt_style_company">Apresentar minha empresa</div>
+                        </div>
+                        <div class="option-box style-opt-box" onclick="selectStyle('Agendamentos', this)">
+                            <div class="option-icon">📅</div>
+                            <div class="option-label" data-i18n="opt_style_schedule">Agendamentos</div>
+                        </div>
+                        <div class="option-box style-opt-box" onclick="selectStyle('Outro', this)">
+                            <div class="option-icon">➕</div>
+                            <div class="option-label" data-i18n="opt_style_other">Outro</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Passo 4: Faixa de investimento do projeto -->
+                <div class="step-pane" id="stepPane4">
+                    <h3 class="step-title" data-i18n="step4_title">Faixa de investimento do projeto</h3>
+                    <p class="step-desc" data-i18n="step4_desc">Qual dessas opções mais se aproxima do investimento que você pretende fazer?</p>
+                    
+                    <div class="options-grid" style="grid-template-columns: 1fr;">
+                        <div class="option-box budget-opt-box" onclick="selectBudget('Até R$ 1.000', this)">
+                            <div class="option-label" data-i18n="opt_budget_1" style="font-weight: 500;">Até R$ 1.000</div>
+                        </div>
+                        <div class="option-box budget-opt-box" onclick="selectBudget('R$ 1.000 a R$ 2.000', this)">
+                            <div class="option-label" data-i18n="opt_budget_2" style="font-weight: 500;">R$ 1.000 a R$ 2.000</div>
+                        </div>
+                        <div class="option-box budget-opt-box" onclick="selectBudget('Acima de R$ 2.000', this)">
+                            <div class="option-label" data-i18n="opt_budget_3" style="font-weight: 500;">Acima de R$ 2.000</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Passo 5: Contato do Cliente -->
+                <div class="step-pane" id="stepPane5">
+                    <h3 class="step-title" data-i18n="step5_title">Seus dados de contato</h3>
+                    <p class="step-desc" data-i18n="step5_desc">Onde entraremos em contato para apresentar a proposta.</p>
+                    
+                    <div class="form-group">
+                        <label for="inputName" data-i18n="lbl_name">Seu Nome Completo</label>
+                        <input type="text" id="inputName" class="form-control" data-i18n-placeholder="placeholder_name" placeholder="Digite seu nome">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="inputWhatsapp" data-i18n="lbl_whatsapp">WhatsApp (com DDD / DDI)</label>
+                        <input type="text" id="inputWhatsapp" class="form-control" data-i18n-placeholder="placeholder_whatsapp" placeholder="Ex: +55 45 99999-9999 ou +595...">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="inputEmail" data-i18n="lbl_email">E-mail de Contato</label>
+                        <input type="email" id="inputEmail" class="form-control" data-i18n-placeholder="placeholder_email" placeholder="Ex: contato@empresa.com">
+                    </div>
+                </div>
+
+                <!-- Controles do Funil -->
+                <div class="funnel-nav">
+                    <button class="btn btn-secondary" id="btnPrev" style="visibility: hidden;">
+                        <i class="fa-solid fa-arrow-left"></i> <span data-i18n="btn_prev">Voltar</span>
+                    </button>
+                    <button class="btn btn-primary" id="btnNext" disabled>
+                        <span data-i18n="btn_next">Próximo</span> <i class="fa-solid fa-arrow-right"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section (Dúvidas Frequentes dos Clientes) -->
+    <section class="faq-section section-padding" id="faq">
+        <div class="container">
+            <div style="text-align: center; max-width: 600px; margin: 0 auto 50px auto;">
+                <span class="badge" data-i18n="faq_tagline">FAQ</span>
+                <h2 class="hero-title" style="font-size: 36px; margin-bottom: 16px;" data-i18n="faq_title">Perguntas Frequentes</h2>
+                <p style="color: var(--text-secondary);" data-i18n="faq_desc">Confira as respostas para as principais dúvidas dos nossos clientes sobre a criação de sites e prazos.</p>
+            </div>
+            
+            <div class="faq-container">
+                <!-- Item 1 -->
+                <div class="faq-item">
+                    <button class="faq-question">
+                        <span data-i18n="faq1_q">Quanto tempo demora para meu site ficar pronto?</span>
+                        <span class="faq-icon">+</span>
+                    </button>
+                    <div class="faq-answer">
+                        <p data-i18n="faq1_a">O prazo médio de entrega para uma Landing Page profissional é de 1 a 2 semanas, a partir do envio de todas as informações da página e aprovação do layout.</p>
+                    </div>
+                </div>
+                
+                <!-- Item 2 -->
+                <div class="faq-item">
+                    <button class="faq-question">
+                        <span data-i18n="faq2_q">Como funciona a forma de pagamento?</span>
+                        <span class="faq-icon">+</span>
+                    </button>
+                    <div class="faq-answer">
+                        <p data-i18n="faq2_a">Trabalhamos com 50% de sinal no início do projeto e os 50% restantes na aprovação e entrega do site. Aceitamos Pix, transferências no Paraguai e Guaranis.</p>
+                    </div>
+                </div>
+                
+                <!-- Item 3 -->
+                <div class="faq-item">
+                    <button class="faq-question">
+                        <span data-i18n="faq3_q">Eu preciso ter os textos e fotos prontos?</span>
+                        <span class="faq-icon">+</span>
+                    </button>
+                    <div class="faq-answer">
+                        <p data-i18n="faq3_a">Não se preocupe com isso! Eu te guio na elaboração do conteúdo e ajudo a estruturar os textos ideais focados em convencer o seu cliente.</p>
+                    </div>
+                </div>
+                
+                <!-- Item 4 -->
+                <div class="faq-item">
+                    <button class="faq-question">
+                        <span data-i18n="faq4_q">O site será meu após a entrega?</span>
+                        <span class="faq-icon">+</span>
+                    </button>
+                    <div class="faq-answer">
+                        <p data-i18n="faq4_a">Sim, 100% seu! O site é registrado no seu nome ou da sua empresa, e você recebe todos os acessos do painel e da hospedagem.</p>
+                    </div>
+                </div>
+                
+                <!-- Item 5 -->
+                <div class="faq-item">
+                    <button class="faq-question">
+                        <span data-i18n="faq5_q">Vocês fazem sites para empresas do Paraguai?</span>
+                        <span class="faq-icon">+</span>
+                    </button>
+                    <div class="faq-answer">
+                        <p data-i18n="faq5_a">Sim, atendemos e criamos páginas específicas focadas no público paraguaio e nas particularidades do mercado local em Cidade de Leste ou Assunção.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer Section -->
+    <footer class="footer">
+        <div class="container footer-grid">
+            <div class="footer-brand">
+                <a href="#" class="logo" style="margin-bottom: 16px;">
+                    <div class="logo-dot"></div>
+                    <span data-i18n="nav_logo">GDS Design</span>
+                </a>
+                <p class="footer-desc" data-i18n="footer_brand_desc">GDS Design — Criação de landing pages e design estratégico para empresas brasileiras e paraguaias. Elevando negócios através do design.</p>
+            </div>
+            
+            <div>
+                <h3 class="footer-title" data-i18n="footer_quick_links">Links Rápidos</h3>
+                <ul class="footer-links">
+                    <li><a href="#servicos" data-i18n="nav_servicos">Serviços</a></li>
+                    <li><a href="#por-que" data-i18n="nav_por_que">Por que ter um site?</a></li>
+                    <li><a href="#ideal-para" data-i18n="nav_ideal">Ideal Para</a></li>
+                    <li><a href="#quem-somos" data-i18n="nav_quem_somos">Quem Somos</a></li>
+                    <li><a href="#depoimentos" data-i18n="nav_testimonials">Depoimentos</a></li>
+                    <li><a href="#faq">FAQ</a></li>
+                    <li><a href="#briefing" data-i18n="nav_briefing">Simular Projeto</a></li>
+                    <li><a href="admin/index.html" data-i18n="nav_admin"><i class="fa-solid fa-lock"></i> Painel CRM</a></li>
+                </ul>
+            </div>
+
+            <div>
+                <h3 class="footer-title" data-i18n="footer_contact">Contato</h3>
+                <ul class="footer-links" style="color: var(--text-secondary);">
+                    <li><i class="fa-brands fa-whatsapp" style="color: var(--accent-orange); margin-right: 8px;"></i> +595 973 977 991</li>
+                    <li><i class="fa-solid fa-envelope" style="color: var(--accent-pink); margin-right: 8px;"></i> mariagilmara.design@gmail.com</li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="container footer-bottom">
+            <span class="footer-copy" data-i18n="footer_rights">© 2026 GDS Design. Todos os direitos reservados.</span>
+            <!-- Referência de fé discreta e elegante -->
+            <div class="faith-quote" data-i18n="footer_faith">
+                Guiados pela fé, criamos com propósito. "Tudo posso naquele que me fortalece."
+            </div>
+        </div>
+    </footer>
+
+    <!-- GSAP Library via CDN -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    
+    <!-- Floating WhatsApp Button -->
+    <a href="https://wa.me/595973977991" class="whatsapp-float" target="_blank" rel="noopener noreferrer" aria-label="Fale Conosco no WhatsApp">
+        <i class="fa-brands fa-whatsapp"></i>
+    </a>
+
+    <!-- App Script -->
+    <script src="app.js"></script>
+</body>
+</html>

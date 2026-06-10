@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Acesso Restrito | GDS Design CRM</title>
+    <link rel="stylesheet" href="../styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+        
+        .login-card {
+            width: 100%;
+            max-width: 420px;
+            padding: 48px;
+            text-align: center;
+        }
+        
+        .login-logo {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 28px;
+            font-weight: 950;
+            margin-bottom: 30px;
+        }
+        
+        .login-icon {
+            font-size: 48px;
+            color: var(--accent-pink);
+            margin-bottom: 20px;
+        }
+        
+        .login-title {
+            font-size: 24px;
+            margin-bottom: 8px;
+        }
+        
+        .login-subtitle {
+            color: var(--text-secondary);
+            font-size: 14px;
+            margin-bottom: 32px;
+        }
+        
+        .form-group {
+            text-align: left;
+        }
+        
+        .error-message {
+            color: #ff5f56;
+            font-size: 13px;
+            margin-top: 10px;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    
+    <div class="hero-glow"></div>
+
+    <div class="glass-card login-card">
+        <div class="login-icon">
+            <i class="fa-solid fa-lock-open"></i>
+        </div>
+        
+        <div class="login-logo">
+            <div class="logo-dot"></div>
+            <span>GDS CRM</span>
+        </div>
+        
+        <h2 class="login-title">Acesso Restrito</h2>
+        <p class="login-subtitle">Faça login para gerenciar clientes, projetos e finanças.</p>
+        
+        <form id="loginForm">
+            <div class="form-group" style="margin-bottom: 24px;">
+                <label for="password">Senha de Administrador</label>
+                <div style="position: relative;">
+                    <i class="fa-solid fa-key" style="position: absolute; left: 16px; top: 50%; transform: translateY(-50%); color: var(--text-muted);"></i>
+                    <input type="password" id="password" class="form-control" placeholder="Digite sua senha" style="padding-left: 48px;" required>
+                </div>
+                <div class="error-message" id="errorMessage">Senha incorreta. Tente novamente!</div>
+            </div>
+            
+            <button type="submit" class="btn btn-primary" style="width: 100%;">
+                Entrar no Painel <i class="fa-solid fa-arrow-right-to-bracket"></i>
+            </button>
+        </form>
+        
+        <div style="margin-top: 30px;">
+            <a href="../index.html" style="font-size: 13px; color: var(--text-muted);"><i class="fa-solid fa-arrow-left"></i> Voltar para o Site</a>
+        </div>
+    </div>
+
+    <!-- Admin Authentication Logic -->
+    <script>
+        // Senha padrão de acesso
+        const DEFAULT_PASSWORD = "gds123";
+
+        // Verifica se já está logado e sessão ativa
+        const session = localStorage.getItem('gds_admin_session');
+        if (session) {
+            try {
+                const sessionData = JSON.parse(session);
+                if (Date.now() < sessionData.expireAt) {
+                    window.location.href = 'dashboard.html';
+                }
+            } catch(e) {}
+        }
+
+        // Lógica de Rate Limiting
+        function checkRateLimit() {
+            const attempts = JSON.parse(localStorage.getItem('gds_login_attempts') || '{"count": 0, "blockedUntil": 0}');
+            if (Date.now() < attempts.blockedUntil) {
+                const remaining = Math.ceil((attempts.blockedUntil - Date.now()) / 1000);
+                return { blocked: true, remaining: remaining };
+            }
+            return { blocked: false };
+        }
+
+        function registerAttempt(success) {
+            let attempts = JSON.parse(localStorage.getItem('gds_login_attempts') || '{"count": 0, "blockedUntil": 0}');
+            if (success) {
+                localStorage.removeItem('gds_login_attempts');
+            } else {
+                attempts.count++;
+                if (attempts.count >= 5) {
+                    attempts.blockedUntil = Date.now() + (60 * 1000); // 1 minuto de bloqueio
+                    attempts.count = 0;
+                }
+                localStorage.setItem('gds_login_attempts', JSON.stringify(attempts));
+            }
+        }
+
+        document.getElementById('loginForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const errorEl = document.getElementById('errorMessage');
+            errorEl.style.display = 'none';
+
+            // Verifica rate limit
+            const limit = checkRateLimit();
+            if (limit.blocked) {
+                errorEl.textContent = `Muitas tentativas incorretas. Tente novamente em ${limit.remaining}s.`;
+                errorEl.style.display = 'block';
+                return;
+            }
+
+            const inputPassword = document.getElementById('password').value.trim();
+            const actualPassword = localStorage.getItem('gds_admin_password') || DEFAULT_PASSWORD;
+
+            if (inputPassword === actualPassword) {
+                // Sucesso
+                registerAttempt(true);
+                
+                // Cria sessão de 8 horas
+                const sessionData = {
+                    loginAt: Date.now(),
+                    expireAt: Date.now() + (8 * 60 * 60 * 1000)
+                };
+                localStorage.setItem('gds_admin_session', JSON.stringify(sessionData));
+                
+                window.location.href = 'dashboard.html';
+            } else {
+                // Erro
+                registerAttempt(false);
+                errorEl.textContent = 'Senha incorreta. Tente novamente!';
+                errorEl.style.display = 'block';
+            }
+        });
+    </script>
+</body>
+</html>
