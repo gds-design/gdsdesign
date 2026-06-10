@@ -753,9 +753,41 @@ function initGsapAnimations() {
     });
 }
 
+// --- Menu Mobile Alternável ---
+function setupMobileMenu() {
+    const menuBtn = document.getElementById('menuBtn');
+    const navLinks = document.querySelector('.nav-links');
+    
+    if (menuBtn && navLinks) {
+        menuBtn.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            const icon = menuBtn.querySelector('i');
+            if (icon) {
+                if (navLinks.classList.contains('active')) {
+                    icon.className = 'fa-solid fa-xmark';
+                } else {
+                    icon.className = 'fa-solid fa-bars';
+                }
+            }
+        });
+        
+        // Fechar menu quando clicar em um link
+        navLinks.querySelectorAll('.nav-link, .btn').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+                const icon = menuBtn.querySelector('i');
+                if (icon) {
+                    icon.className = 'fa-solid fa-bars';
+                }
+            });
+        });
+    }
+}
+
 // --- Inicialização Automática ---
 document.addEventListener('DOMContentLoaded', () => {
     translatePage();
+    setupMobileMenu();
     window.addEventListener('scroll', handleHeaderScroll);
     
     const langBtn = document.getElementById('langBtn');

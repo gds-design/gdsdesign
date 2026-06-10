@@ -44,7 +44,12 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+}
+
+html {
     scroll-behavior: smooth;
+    overflow-x: hidden;
+    max-width: 100%;
 }
 
 body {
@@ -311,6 +316,10 @@ button, input, select, textarea {
     font-size: 24px;
     color: var(--text-primary);
     cursor: pointer;
+}
+
+.mobile-only-btn {
+    display: none !important;
 }
 
 /* Bolhas de Brilho Gradiente (Glow Blobs estilo KazzyTu) */
@@ -922,6 +931,11 @@ button, input, select, textarea {
         gap: 50px;
         text-align: center;
     }
+    .profile-visual-container {
+        width: 280px;
+        height: 280px;
+        margin: 0 auto;
+    }
     .profile-image-frame {
         width: 280px;
         height: 280px;
@@ -929,6 +943,10 @@ button, input, select, textarea {
     .profile-visual-bg-circle {
         width: 280px;
         height: 280px;
+    }
+    .profile-dashed-wrapper {
+        width: 310px;
+        height: 295px;
     }
     .profile-visual-bg-dashed {
         width: 310px;
@@ -941,6 +959,11 @@ button, input, select, textarea {
 }
 
 @media (max-width: 576px) {
+    .profile-visual-container {
+        width: 230px;
+        height: 230px;
+        margin: 0 auto;
+    }
     .profile-image-frame {
         width: 230px;
         height: 230px;
@@ -948,6 +971,10 @@ button, input, select, textarea {
     .profile-visual-bg-circle {
         width: 230px;
         height: 230px;
+    }
+    .profile-dashed-wrapper {
+        width: 260px;
+        height: 245px;
     }
     .profile-visual-bg-dashed {
         width: 260px;
@@ -968,10 +995,10 @@ button, input, select, textarea {
     .badge-card-desc {
         font-size: 9px;
     }
-    .badge-web { left: -10px; top: 10%; }
-    .badge-social { left: -5px; bottom: 12%; }
-    .badge-lang { right: -10px; top: 30%; }
-    .badge-creds { right: -5px; bottom: 0%; }
+    .badge-web { left: -20px; top: 10%; }
+    .badge-social { left: -10px; bottom: 15%; }
+    .badge-lang { right: -20px; top: 30%; }
+    .badge-creds { right: -10px; bottom: 5%; }
     
     .profile-content h2 {
         font-size: 32px;
@@ -1558,10 +1585,44 @@ textarea.form-control {
     
     .nav-links {
         display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background: rgba(255, 255, 255, 0.98);
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+        border-bottom: 1px solid var(--border-color);
+        flex-direction: column;
+        padding: 24px;
+        gap: 20px;
+        box-shadow: var(--shadow-lg);
+        z-index: 999;
+        align-items: center;
+    }
+    
+    .nav-links.active {
+        display: flex;
     }
     
     .menu-btn {
         display: block;
+    }
+    
+    .header-actions .btn {
+        display: none;
+    }
+    
+    .mobile-only-btn {
+        display: block !important;
+    }
+    
+    .whatsapp-float {
+        width: 50px;
+        height: 50px;
+        bottom: 20px;
+        right: 20px;
+        font-size: 24px;
     }
     
     .hero-visual {
@@ -1578,7 +1639,50 @@ textarea.form-control {
     .hero-badge-ux,
     .hero-badge-opt,
     .hero-badge-perf {
+        display: flex !important;
+        opacity: 1 !important;
+        transform: none !important;
+        animation: none !important;
+        padding: 6px 10px !important;
+        gap: 6px !important;
+        position: absolute !important;
+        z-index: 10 !important;
+    }
+    
+    .hero-visual .badge-icon-circle {
+        width: 24px;
+        height: 24px;
+        font-size: 11px;
+    }
+    
+    .hero-visual .badge-card-title {
+        font-size: 11px;
+    }
+    
+    .hero-visual .badge-card-desc {
         display: none !important;
+    }
+    
+    .hero-badge-ux {
+        top: auto !important;
+        bottom: 5% !important;
+        left: 5% !important;
+        right: auto !important;
+    }
+    
+    .hero-badge-opt {
+        top: auto !important;
+        bottom: 15% !important;
+        left: 50% !important;
+        transform: translateX(-50%) !important;
+        right: auto !important;
+    }
+    
+    .hero-badge-perf {
+        top: auto !important;
+        bottom: 5% !important;
+        right: 5% !important;
+        left: auto !important;
     }
 
     .footer-grid {
