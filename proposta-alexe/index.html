@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Proposta Exclusiva — Alexe Construções | GDS Design</title>
+<meta name="robots" content="noindex, nofollow">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --primary: #378ADD;
+  --bg: #F8F9FA;
+  --card-bg: #FFFFFF;
+  --text-dark: #212529;
+  --text-muted: #6C757D;
+  --border: #DEE2E6;
+  --radius: 8px;
+}
+body { font-family: 'Inter', sans-serif; background: var(--bg); color: var(--text-dark); margin: 0; padding: 0; line-height: 1.6; }
+.container { max-width: 800px; margin: 0 auto; padding: 2rem 1rem; }
+header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 2rem; flex-wrap: wrap; gap: 1rem; }
+.logo { font-size: 1.5rem; font-weight: 700; }
+.logo span { color: var(--primary); }
+.badge { background: #E9ECEF; color: var(--text-muted); font-size: 0.85rem; padding: 0.35rem 0.75rem; border-radius: 50px; font-weight: 500; }
+
+.card { background: var(--card-bg); border: 1px solid var(--border); border-radius: var(--radius); padding: 1.5rem; margin-bottom: 1.5rem; }
+.client-card { display: flex; align-items: center; gap: 1rem; }
+.avatar { width: 48px; height: 48px; background: var(--primary); color: #fff; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 600; font-size: 1.2rem; }
+.client-info h2 { margin: 0; font-size: 1.25rem; }
+.client-info p { margin: 0; color: var(--text-muted); font-size: 0.9rem; }
+
+h3 { margin-top: 0; font-size: 1.2rem; margin-bottom: 1rem; border-bottom: 1px solid var(--border); padding-bottom: 0.5rem; }
+.features-list { list-style: none; padding: 0; margin: 0; display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem; }
+@media(max-width: 600px) { .features-list { grid-template-columns: 1fr; } }
+.features-list li { display: flex; align-items: center; gap: 0.5rem; font-size: 0.95rem; }
+.features-list li::before { content: '✓'; color: var(--primary); font-weight: bold; }
+
+.toggle-card { border: 1px solid var(--border); border-radius: var(--radius); padding: 1rem; margin-bottom: 1rem; cursor: pointer; transition: 0.2s; }
+.toggle-card.active { border-color: var(--primary); background: #F0F7FF; }
+.toggle-header { display: flex; justify-content: space-between; align-items: center; }
+.toggle-title { font-weight: 600; }
+.toggle-price { color: var(--primary); font-weight: 600; }
+.toggle-content { display: none; margin-top: 1rem; border-top: 1px solid var(--border); padding-top: 1rem; animation: fadeIn 0.3s ease; }
+.toggle-card.active .toggle-content { display: block; border-color: #D3E4F5; }
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-5px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Galeria preview */
+.galeria-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.5rem; }
+.galeria-item { background: #E9ECEF; height: 80px; border-radius: 4px; display: flex; align-items: center; justify-content: center; color: var(--text-muted); font-size: 0.8rem; }
+
+/* Wizard preview */
+.wizard-preview { background: #fff; border: 1px solid var(--border); padding: 1rem; border-radius: var(--radius); }
+.wizard-steps { display: flex; gap: 0.5rem; margin-bottom: 1rem; }
+.wizard-step { height: 4px; flex: 1; background: var(--border); border-radius: 2px; transition: 0.3s; }
+.wizard-step.active { background: var(--primary); }
+.wizard-pane { display: none; animation: fadeIn 0.3s ease; }
+.wizard-pane.active { display: block; }
+.wizard-title { font-weight: 600; margin-bottom: 0.5rem; font-size: 0.95rem; }
+.wizard-options { display: grid; grid-template-columns: 1fr 1fr; gap: 0.5rem; margin-bottom: 1rem;}
+.w-opt { border: 1px solid var(--border); padding: 0.5rem; text-align: center; border-radius: 4px; font-size: 0.85rem; cursor: pointer; transition: 0.2s; }
+.w-opt:hover { border-color: var(--primary); background: #F0F7FF; color: var(--primary); }
+.w-input { width: 100%; border: 1px solid var(--border); padding: 0.6rem; border-radius: 4px; font-family: inherit; margin-bottom: 0.5rem; box-sizing: border-box;}
+.wizard-footer { display: flex; justify-content: space-between; margin-top: 1rem; }
+.w-btn { padding: 0.5rem 1rem; border: none; border-radius: 4px; cursor: pointer; font-family: inherit; font-size: 0.85rem; font-weight: 600; transition: 0.2s;}
+.w-btn-back { background: #E9ECEF; color: var(--text-dark); }
+.w-btn-back:hover { background: #DEE2E6; }
+.w-btn-next { background: var(--primary); color: #fff; }
+.w-btn-next:hover { opacity: 0.9; }
+
+.summary { background: var(--text-dark); color: #fff; }
+.summary h3 { border-color: #495057; }
+.summary-row { display: flex; justify-content: space-between; margin-bottom: 0.5rem; font-size: 0.95rem; }
+.summary-row.total { font-size: 1.25rem; font-weight: 700; margin-top: 1rem; border-top: 1px solid #495057; padding-top: 1rem; color: var(--primary); }
+
+.payments { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+@media(max-width: 500px) { .payments { grid-template-columns: 1fr; } }
+.pay-card { border: 1px solid var(--border); background: var(--card-bg); padding: 1.5rem; border-radius: var(--radius); text-align: center; }
+.pay-val { font-size: 1.5rem; font-weight: 700; color: var(--primary); margin: 0.5rem 0; }
+
+footer { text-align: center; color: var(--text-muted); font-size: 0.85rem; border-top: 1px solid var(--border); padding-top: 1.5rem; margin-top: 2rem; }
+.footer-links { margin: 0.5rem 0; }
+.footer-links a { color: var(--primary); text-decoration: none; font-weight: 500; }
+</style>
+</head>
+<body>
+
+<div class="container">
+  <header>
+    <div class="logo">GDS <span>Design</span></div>
+    <div class="badge">Proposta Exclusiva · Alexe Construções</div>
+  </header>
+
+  <div class="card client-card">
+    <div class="avatar">AC</div>
+    <div class="client-info">
+      <h2>Alexe Construções</h2>
+      <p>Construção Civil</p>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>Pacote Base Incluso</h3>
+    <ul class="features-list">
+      <li>Design profissional e responsivo</li>
+      <li>Página otimizada para celular (mobile-first)</li>
+      <li>Seção de serviços</li>
+      <li>Mapa de localização integrado</li>
+      <li>Integração com redes sociais</li>
+      <li>Otimização básica para Google (SEO)</li>
+      <li>Botões de WhatsApp estratégicos</li>
+      <li>Seção de depoimentos</li>
+      <li>2 rodadas de revisão</li>
+      <li>Suporte técnico por 30 dias</li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <h3>Complementos Opcionais</h3>
+    
+    <!-- Galeria -->
+    <div class="toggle-card" id="card-galeria" onclick="toggleAddon('galeria', 200)">
+      <div class="toggle-header">
+        <div class="toggle-title">Galeria de Obras</div>
+        <div class="toggle-price">+ R$ 200</div>
+      </div>
+      <div class="toggle-content" onclick="event.stopPropagation()">
+        <p style="font-size: 0.9rem; color: var(--text-muted); margin-top: 0; margin-bottom: 1rem;">Mostre o portfólio da sua construtora com fotos em alta qualidade organizadas em grid.</p>
+        <div class="galeria-grid">
+          <div class="galeria-item">Obra 1</div>
+          <div class="galeria-item">Obra 2</div>
+          <div class="galeria-item">Obra 3</div>
+          <div class="galeria-item">Obra 4</div>
+          <div class="galeria-item">Obra 5</div>
+          <div class="galeria-item">Obra 6</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Wizard -->
+    <div class="toggle-card" id="card-wizard" onclick="toggleAddon('wizard', 150)">
+      <div class="toggle-header">
+        <div class="toggle-title">Formulário de Orçamento em Etapas</div>
+        <div class="toggle-price">+ R$ 150</div>
+      </div>
+      <div class="toggle-content" onclick="event.stopPropagation()">
+        <p style="font-size: 0.9rem; color: var(--text-muted); margin-top: 0; margin-bottom: 1rem;">Capte clientes qualificados com um formulário interativo focado na conversão.</p>
+        
+        <div class="wizard-preview">
+          <div class="wizard-steps">
+            <div class="wizard-step active" id="w-step-1"></div>
+            <div class="wizard-step" id="w-step-2"></div>
+            <div class="wizard-step" id="w-step-3"></div>
+            <div class="wizard-step" id="w-step-4"></div>
+          </div>
+
+          <div class="wizard-pane active" id="pane-1">
+            <div class="wizard-title">Qual tipo de serviço você precisa?</div>
+            <div class="wizard-options">
+              <div class="w-opt">Construção do zero</div>
+              <div class="w-opt">Reforma</div>
+              <div class="w-opt">Construção comercial</div>
+              <div class="w-opt">Fundação e estrutura</div>
+            </div>
+            <div class="wizard-footer">
+              <div></div>
+              <button class="w-btn w-btn-next" onclick="wizGo(2)">Próximo</button>
+            </div>
+          </div>
+
+          <div class="wizard-pane" id="pane-2">
+            <div class="wizard-title">Qual a metragem aproximada?</div>
+            <input type="text" class="w-input" placeholder="Ex: 150m²">
+            <select class="w-input">
+              <option>Até 100m²</option>
+              <option>100m² a 200m²</option>
+              <option>Acima de 200m²</option>
+            </select>
+            <div class="wizard-footer">
+              <button class="w-btn w-btn-back" onclick="wizGo(1)">Voltar</button>
+              <button class="w-btn w-btn-next" onclick="wizGo(3)">Próximo</button>
+            </div>
+          </div>
+
+          <div class="wizard-pane" id="pane-3">
+            <div class="wizard-title">Onde fica o terreno/imóvel?</div>
+            <input type="text" class="w-input" placeholder="Cidade e Bairro">
+            <input type="text" class="w-input" placeholder="Ponto de referência">
+            <div class="wizard-footer">
+              <button class="w-btn w-btn-back" onclick="wizGo(2)">Voltar</button>
+              <button class="w-btn w-btn-next" onclick="wizGo(4)">Próximo</button>
+            </div>
+          </div>
+
+          <div class="wizard-pane" id="pane-4">
+            <div class="wizard-title">Seus dados de contato</div>
+            <input type="text" class="w-input" placeholder="Nome completo">
+            <input type="text" class="w-input" placeholder="WhatsApp">
+            <input type="email" class="w-input" placeholder="E-mail">
+            <div class="wizard-footer" style="justify-content: space-between;">
+              <button class="w-btn w-btn-back" onclick="wizGo(3)">Voltar</button>
+              <button class="w-btn w-btn-next" onclick="alert('Recebemos! Entraremos em contato em até 24h.')">Enviar solicitação</button>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card summary">
+    <h3>Resumo do Investimento</h3>
+    <div class="summary-row">
+      <span>Desenvolvimento Base</span>
+      <span>R$ 1.400</span>
+    </div>
+    <div class="summary-row">
+      <span>Publicação e Hospedagem (1 ano)</span>
+      <span>R$ 200</span>
+    </div>
+    <div class="summary-row" id="row-galeria" style="display: none; color: #adb5bd;">
+      <span>Galeria de Obras</span>
+      <span>+ R$ 200</span>
+    </div>
+    <div class="summary-row" id="row-wizard" style="display: none; color: #adb5bd;">
+      <span>Formulário em Etapas</span>
+      <span>+ R$ 150</span>
+    </div>
+    <div class="summary-row total">
+      <span>Total Previsto</span>
+      <span id="total-price">R$ 1.600</span>
+    </div>
+  </div>
+
+  <div class="payments">
+    <div class="pay-card">
+      <div style="color: var(--text-muted); font-size: 0.9rem;">Entrada (Início do projeto)</div>
+      <div class="pay-val" id="pay-half-1">R$ 800</div>
+      <div style="font-size: 0.85rem; color: var(--text-muted);">50% para reserva de agenda</div>
+    </div>
+    <div class="pay-card">
+      <div style="color: var(--text-muted); font-size: 0.9rem;">Entrega (Aprovação final)</div>
+      <div class="pay-val" id="pay-half-2">R$ 800</div>
+      <div style="font-size: 0.85rem; color: var(--text-muted);">50% com o site pronto e no ar</div>
+    </div>
+  </div>
+
+  <footer>
+    <div>Validade desta proposta: 7 dias</div>
+    <div class="footer-links">
+      <a href="https://gdsdesign.site" target="_blank">gdsdesign.site</a> • +595 973 953 874
+    </div>
+    <div style="margin-top: 0.5rem;">Pagamentos via Pix, Transferência PY ou Espécie.</div>
+  </footer>
+
+</div>
+
+<script>
+  let baseTotal = 1600;
+  let addons = { galeria: false, wizard: false };
+  
+  function toggleAddon(id, price) {
+    addons[id] = !addons[id];
+    
+    // Toggle UI
+    document.getElementById('card-' + id).classList.toggle('active');
+    document.getElementById('row-' + id).style.display = addons[id] ? 'flex' : 'none';
+    
+    updateTotal();
+  }
+
+  function updateTotal() {
+    let total = baseTotal;
+    if (addons.galeria) total += 200;
+    if (addons.wizard) total += 150;
+
+    const formattedTotal = 'R$ ' + total.toLocaleString('pt-BR');
+    const formattedHalf = 'R$ ' + (total / 2).toLocaleString('pt-BR');
+
+    document.getElementById('total-price').innerText = formattedTotal;
+    document.getElementById('pay-half-1').innerText = formattedHalf;
+    document.getElementById('pay-half-2').innerText = formattedHalf;
+  }
+
+  function wizGo(step) {
+    for(let i=1; i<=4; i++) {
+      document.getElementById('pane-'+i).classList.remove('active');
+      if(i <= step) {
+        document.getElementById('w-step-'+i).classList.add('active');
+      } else {
+        document.getElementById('w-step-'+i).classList.remove('active');
+      }
+    }
+    document.getElementById('pane-'+step).classList.add('active');
+  }
+
+  // Prevenir click de propagar ao clicar nos botões do wizard ou inputs, para não fechar o toggle
+  document.querySelectorAll('.wizard-preview').forEach(el => {
+    el.addEventListener('click', e => e.stopPropagation());
+  });
+</script>
+
+</body>
+</html>
