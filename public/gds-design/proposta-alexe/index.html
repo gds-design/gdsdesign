@@ -122,10 +122,10 @@ footer { text-align: center; color: var(--text-muted); font-size: 0.85rem; borde
     <h3>Complementos Opcionais</h3>
     
     <!-- Galeria -->
-    <div class="toggle-card" id="card-galeria" onclick="toggleAddon('galeria', 200)">
+    <div class="toggle-card" id="card-galeria" onclick="toggleAddon('galeria')">
       <div class="toggle-header">
         <div class="toggle-title">Galeria de Obras</div>
-        <div class="toggle-price">+ R$ 200</div>
+        <div class="toggle-price" id="label-price-galeria"></div>
       </div>
       <div class="toggle-content" onclick="event.stopPropagation()">
         <p style="font-size: 0.9rem; color: var(--text-muted); margin-top: 0; margin-bottom: 1rem;">Mostre o portfólio da sua construtora com fotos em alta qualidade organizadas em grid.</p>
@@ -141,10 +141,10 @@ footer { text-align: center; color: var(--text-muted); font-size: 0.85rem; borde
     </div>
 
     <!-- Wizard -->
-    <div class="toggle-card" id="card-wizard" onclick="toggleAddon('wizard', 150)">
+    <div class="toggle-card" id="card-wizard" onclick="toggleAddon('wizard')">
       <div class="toggle-header">
         <div class="toggle-title">Formulário de Orçamento em Etapas</div>
-        <div class="toggle-price">+ R$ 150</div>
+        <div class="toggle-price" id="label-price-wizard"></div>
       </div>
       <div class="toggle-content" onclick="event.stopPropagation()">
         <p style="font-size: 0.9rem; color: var(--text-muted); margin-top: 0; margin-bottom: 1rem;">Capte clientes qualificados com um formulário interativo focado na conversão.</p>
@@ -215,23 +215,23 @@ footer { text-align: center; color: var(--text-muted); font-size: 0.85rem; borde
     <h3>Resumo do Investimento</h3>
     <div class="summary-row">
       <span>Desenvolvimento Base</span>
-      <span>R$ 1.400</span>
+      <span id="label-summary-base"></span>
     </div>
     <div class="summary-row">
       <span>Publicação e Hospedagem (1 ano)</span>
-      <span>R$ 200</span>
+      <span id="label-summary-host"></span>
     </div>
     <div class="summary-row" id="row-galeria" style="display: none; color: #adb5bd;">
       <span>Galeria de Obras</span>
-      <span>+ R$ 200</span>
+      <span id="label-summary-galeria"></span>
     </div>
     <div class="summary-row" id="row-wizard" style="display: none; color: #adb5bd;">
       <span>Formulário em Etapas</span>
-      <span>+ R$ 150</span>
+      <span id="label-summary-wizard"></span>
     </div>
     <div class="summary-row total">
       <span>Total Previsto</span>
-      <span id="total-price">R$ 1.600</span>
+      <span id="total-price"></span>
     </div>
   </div>
 
@@ -259,10 +259,37 @@ footer { text-align: center; color: var(--text-muted); font-size: 0.85rem; borde
 </div>
 
 <script>
-  let baseTotal = 1600;
+  // ==========================================
+  // CONFIGURAÇÃO DE VALORES (ATUALIZE AQUI)
+  // ==========================================
+  const VALORES = {
+    base: 997,       // Valor do desenvolvimento do site
+    hospedagem: 200, // Valor da publicação/hospedagem
+    galeria: 200,    // Valor do adicional de galeria
+    wizard: 150      // Valor do adicional do formulário em etapas
+  };
+  // ==========================================
+
   let addons = { galeria: false, wizard: false };
   
-  function toggleAddon(id, price) {
+  function formatMoney(value) {
+    return 'R$ ' + value.toLocaleString('pt-BR');
+  }
+
+  function initPrices() {
+    document.getElementById('label-summary-base').innerText = formatMoney(VALORES.base);
+    document.getElementById('label-summary-host').innerText = formatMoney(VALORES.hospedagem);
+    
+    document.getElementById('label-price-galeria').innerText = '+ ' + formatMoney(VALORES.galeria);
+    document.getElementById('label-summary-galeria').innerText = '+ ' + formatMoney(VALORES.galeria);
+    
+    document.getElementById('label-price-wizard').innerText = '+ ' + formatMoney(VALORES.wizard);
+    document.getElementById('label-summary-wizard').innerText = '+ ' + formatMoney(VALORES.wizard);
+    
+    updateTotal();
+  }
+
+  function toggleAddon(id) {
     addons[id] = !addons[id];
     
     // Toggle UI
@@ -273,17 +300,19 @@ footer { text-align: center; color: var(--text-muted); font-size: 0.85rem; borde
   }
 
   function updateTotal() {
-    let total = baseTotal;
-    if (addons.galeria) total += 200;
-    if (addons.wizard) total += 150;
+    let total = VALORES.base + VALORES.hospedagem;
+    if (addons.galeria) total += VALORES.galeria;
+    if (addons.wizard) total += VALORES.wizard;
 
-    const formattedTotal = 'R$ ' + total.toLocaleString('pt-BR');
-    const formattedHalf = 'R$ ' + (total / 2).toLocaleString('pt-BR');
+    const formattedTotal = formatMoney(total);
+    const formattedHalf = formatMoney(total / 2);
 
     document.getElementById('total-price').innerText = formattedTotal;
     document.getElementById('pay-half-1').innerText = formattedHalf;
     document.getElementById('pay-half-2').innerText = formattedHalf;
   }
+  
+  initPrices();
 
   function wizGo(step) {
     for(let i=1; i<=4; i++) {
