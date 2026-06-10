@@ -184,7 +184,7 @@ const translations = {
         faq3_a: "Não se preocupe com isso! Eu te guio na elaboração do conteúdo e ajudo a estruturar os textos ideais focados em convencer o seu cliente.",
         
         faq4_q: "O site será meu após a entrega?",
-        faq4_a: "Sim, o projeto é 100% seu! O registro e o custo do domínio (o endereço do site) ficam por conta do cliente, garantindo que a propriedade esteja no seu nome ou da sua empresa. Após a finalização, você recebe o arquivo do site pronto.<br><br>Para sua tranquilidade, a hospedagem técnica fica sob nossa responsabilidade. E se você não quiser se preocupar com atualizações, oferecemos um serviço opcional de manutenção para realizar trocas de textos e outros ajustes simples sempre que precisar.",
+        faq4_a: "Sim. Após a entrega, o site é seu e pode ser utilizado livremente.",
         
         faq5_q: "Vocês fazem sites para empresas do Paraguai?",
         faq5_a: "Sim, atendemos e criamos páginas específicas focadas no público paraguaio e nas particularidades do mercado local em Cidade de Leste ou Assunção.",
@@ -379,7 +379,7 @@ const translations = {
         faq3_a: "¡No te preocupes por eso! Yo te guío en la elaboración del contenido y te ayudo a estructurar los textos ideales enfocados en convencer a tu cliente.",
         
         faq4_q: "¿El sitio será mío tras la entrega?",
-        faq4_a: "Sí, ¡el proyecto es 100% tuyo! El registro y el costo del dominio (la dirección del sitio) corren por cuenta del cliente, garantizando que la propiedad esté a tu nombre o el de tu empresa. Al finalizar, recibes el archivo del sitio listo.<br><br>Para tu tranquilidad, el alojamiento técnico queda bajo nuestra responsabilidad. Y si no quieres preocuparte por actualizaciones, ofrecemos un servicio opcional de mantenimiento para realizar cambios de textos y otros ajustes simples siempre que lo necesites.",
+        faq4_a: "Sí. Después de la entrega, el sitio es tuyo y puede ser utilizado libremente.",
         
         faq5_q: "¿Hacen sitios web para empresas de Paraguay?",
         faq5_a: "Sí, creamos páginas específicas adaptadas al público paraguayo y a las particularidades del mercado local en Ciudad del Este o Asunción.",
