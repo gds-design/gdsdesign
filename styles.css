@@ -878,7 +878,7 @@ button, input, select, textarea {
 
 .badge-web {
     top: 5%;
-    left: -40px;
+    left: -85px;
     animation: float-badge-1 6s ease-in-out infinite;
 }
 
@@ -953,7 +953,7 @@ button, input, select, textarea {
         width: 310px;
         height: 310px;
     }
-    .badge-web { left: 0; }
+    .badge-web { left: -50px; }
     .badge-social { left: 10px; }
     .badge-lang { right: 0; }
     .badge-creds { right: 10px; }
@@ -996,7 +996,7 @@ button, input, select, textarea {
     .badge-card-desc {
         font-size: 9px;
     }
-    .badge-web { left: -15px; top: 12%; }
+    .badge-web { left: -45px; top: 12%; }
     .badge-social { left: -10px; bottom: 18%; }
     .badge-lang { right: -15px; top: 32%; }
     .badge-creds { right: -10px; bottom: 8%; }
