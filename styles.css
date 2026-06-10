@@ -58,6 +58,7 @@ body {
     color: var(--text-primary);
     line-height: 1.6;
     overflow-x: hidden;
+    max-width: 100%;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -995,9 +996,9 @@ button, input, select, textarea {
     .badge-card-desc {
         font-size: 9px;
     }
-    .badge-web { left: -20px; top: 10%; }
+    .badge-web { left: -25px; top: 2%; }
     .badge-social { left: -10px; bottom: 15%; }
-    .badge-lang { right: -20px; top: 30%; }
+    .badge-lang { right: -25px; top: 50%; }
     .badge-creds { right: -10px; bottom: 5%; }
     
     .profile-content h2 {
