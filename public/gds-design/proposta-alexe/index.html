@@ -87,6 +87,35 @@ h3 { margin-top: 0; font-size: 1.2rem; margin-bottom: 1rem; border-bottom: 1px s
 footer { text-align: center; color: var(--text-muted); font-size: 0.85rem; border-top: 1px solid var(--border); padding-top: 1.5rem; margin-top: 2rem; }
 .footer-links { margin: 0.5rem 0; }
 .footer-links a { color: var(--primary); text-decoration: none; font-weight: 500; }
+
+.whatsapp-container { margin-top: 1.5rem; }
+.whatsapp-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  background: #25D366;
+  color: #fff;
+  border: none;
+  border-radius: var(--radius);
+  padding: 1rem 2rem;
+  font-size: 1.1rem;
+  font-weight: 700;
+  cursor: pointer;
+  width: 100%;
+  box-sizing: border-box;
+  transition: background 0.2s, transform 0.1s;
+  font-family: inherit;
+}
+.whatsapp-btn:hover {
+  background: #20BA5A;
+}
+.whatsapp-btn:active {
+  transform: scale(0.99);
+}
+.whatsapp-icon {
+  flex-shrink: 0;
+}
 </style>
 </head>
 <body>
@@ -263,6 +292,15 @@ footer { text-align: center; color: var(--text-muted); font-size: 0.85rem; borde
     </div>
   </div>
 
+  <div class="whatsapp-container">
+    <button class="whatsapp-btn" onclick="sendToWhatsApp()">
+      <svg class="whatsapp-icon" width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+        <path d="M12.012 2c-5.506 0-9.989 4.478-9.99 9.984a9.96 9.96 0 0 0 1.333 4.982L2 22l5.202-1.362a9.961 9.961 0 0 0 4.807 1.226h.003c5.507 0 9.99-4.478 9.99-9.985 0-2.67-1.037-5.18-2.92-7.062C17.201 3.037 14.686 2 12.012 2zm5.72 14.288c-.245.69-1.42 1.353-1.954 1.41-.486.053-.961.272-3.113-.572-2.753-1.079-4.524-3.882-4.662-4.066-.138-.184-1.12-1.488-1.12-2.837 0-1.35.706-2.013.958-2.273.251-.26.549-.325.732-.325.184 0 .367.002.527.01.166.007.39-.063.61.465.228.55.778 1.9.846 2.04.068.14.115.302.022.487-.092.185-.138.302-.275.462-.137.16-.29.358-.413.48-.138.138-.282.288-.12.567.162.28.718 1.186 1.54 1.916.858.761 1.58.997 1.808 1.112.228.115.362.097.497-.059.137-.156.594-.693.753-.929.16-.237.319-.199.537-.12.218.08 1.385.653 1.624.772.238.12.398.179.457.28.06.1.06.58-.186 1.269z"/>
+      </svg>
+      Enviar Proposta no WhatsApp
+    </button>
+  </div>
+
   <footer>
     <div>Validade desta proposta: 7 dias</div>
     <div class="footer-links">
@@ -362,6 +400,33 @@ footer { text-align: center; color: var(--text-muted); font-size: 0.85rem; borde
   document.querySelectorAll('.wizard-preview').forEach(el => {
     el.addEventListener('click', e => e.stopPropagation());
   });
+
+  function sendToWhatsApp() {
+    const phone = "595973953874";
+    let total = VALORES.base + VALORES.hospedagem;
+    let text = "Olá! Gostaria de fechar a proposta para o site da *Alex Construções* com as seguintes opções:\n\n";
+    text += "*✓ Pacote Base (Desenvolvimento + Hospedagem 1 ano):* " + formatMoney(VALORES.base + VALORES.hospedagem) + "\n";
+    
+    if (addons.galeria) {
+      total += VALORES.galeria;
+      text += "*✓ Adicional: Galeria de Obras:* " + formatMoney(VALORES.galeria) + "\n";
+    } else {
+      text += "*✕ Adicional: Galeria de Obras:* Não selecionado\n";
+    }
+    
+    if (addons.wizard) {
+      total += VALORES.wizard;
+      text += "*✓ Adicional: Formulário de Orçamento:* " + formatMoney(VALORES.wizard) + "\n";
+    } else {
+      text += "*✕ Adicional: Formulário de Orçamento:* Não selecionado\n";
+    }
+    
+    text += "\n*Total Previsto:* " + formatMoney(total) + "\n";
+    text += "*Forma de Pagamento:* " + formatMoney(total / 2) + " de entrada (Início do projeto) + " + formatMoney(total / 2) + " na entrega (Aprovação final).";
+    
+    const url = "https://wa.me/" + phone + "?text=" + encodeURIComponent(text);
+    window.open(url, '_blank');
+  }
 </script>
 
 </body>
