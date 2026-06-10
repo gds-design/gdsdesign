@@ -996,10 +996,10 @@ button, input, select, textarea {
     .badge-card-desc {
         font-size: 9px;
     }
-    .badge-web { left: -25px; top: 2%; }
-    .badge-social { left: -10px; bottom: 15%; }
-    .badge-lang { right: -25px; top: 50%; }
-    .badge-creds { right: -10px; bottom: 5%; }
+    .badge-web { left: -15px; top: 12%; }
+    .badge-social { left: -10px; bottom: 18%; }
+    .badge-lang { right: -15px; top: 32%; }
+    .badge-creds { right: -10px; bottom: 8%; }
     
     .profile-content h2 {
         font-size: 32px;
@@ -1736,7 +1736,7 @@ textarea.form-control {
         font-size: 11px;
     }
     
-    .hero-visual .badge-card-desc {
+    .floating-badge-card .badge-card-desc {
         display: none !important;
     }
     
