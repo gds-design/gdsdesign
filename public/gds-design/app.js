@@ -20,9 +20,9 @@ const translations = {
         hero_badge: "Estúdio de Web Design & Social Media",
         hero_title: "Seu negócio merece um site que <span class='grad-text'>trabalha por você 24 horas por dia</span>",
         hero_desc: "Transforme visitantes em clientes com páginas profissionais, rápidas e pensadas para gerar contatos, vendas e autoridade para sua marca.",
-        hero_btn_briefing: "Simular Meu Projeto",
-        hero_btn_portfolio: "Ver Quem Somos",
-        btn_whatsapp: "Conversar no WhatsApp",
+        hero_btn_briefing: "Quero um site que vende",
+        hero_btn_portfolio: "",
+        btn_whatsapp: "Falar no WhatsApp",
         
         // Seção Por Que (Dor / Copys)
         why_tagline: "Oportunidade de Mercado",
@@ -192,7 +192,10 @@ const translations = {
         footer_quick_links: "Links Rápidos",
         footer_contact: "Contato",
         footer_faith: "Guiados pela fé, criamos com propósito. 'Tudo posso naquele que me fortalece.'",
-        footer_rights: "© 2026 GDS Design. Todos os direitos reservados."
+        footer_rights: "© 2026 GDS Design. Todos os direitos reservados.",
+        final_cta_title: "Você não precisa de mais um site.",
+        final_cta_subtitle: "Você precisa de um sistema que vende.",
+        final_cta_btn: "Quero um site que vende"
     },
     es: {
         // Navegação
@@ -210,9 +213,9 @@ const translations = {
         hero_badge: "Estudio de Web Design & Social Media",
         hero_title: "Tu negocio merece un sitio web que <span class='grad-text'>trabaje para ti las 24 horas del día</span>",
         hero_desc: "Transforma visitantes en clientes con páginas profesionales, rápidas y pensadas para generar contactos, ventas y autoridad para tu marca.",
-        hero_btn_briefing: "Simular Mi Proyecto",
-        hero_btn_portfolio: "Ver Quiénes Somos",
-        btn_whatsapp: "Conversar en WhatsApp",
+        hero_btn_briefing: "Quiero un sitio que venda",
+        hero_btn_portfolio: "",
+        btn_whatsapp: "Hablar por WhatsApp",
         
         // Seção Por Que (Dor / Copys)
         why_tagline: "Oportunidad de Mercado",
@@ -378,11 +381,14 @@ const translations = {
         faq5_a: "Sí, creamos páginas específicas adaptadas al público paraguayo y a las particularidades del mercado local en Ciudad del Este o Asunción.",
         
         // Footer
-        footer_brand_desc: "GDS Design — Creación de landing pages y diseño estratégico para empresas brasileñas y paraguayas. Elevando negocios a través del diseño.",
+        footer_brand_desc: "GDS Design — Creación de landing pages y diseño estratégico para empresas brasileñas y paraguaias. Elevando negocios a través del diseño.",
         footer_quick_links: "Enlaces Rápidos",
         footer_contact: "Contacto",
         footer_faith: "Guiados por la fe, creamos con propósito. 'Todo lo puedo en Cristo que me fortalece.'",
-        footer_rights: "© 2026 GDS Design. Todos los derechos reservados."
+        footer_rights: "© 2026 GDS Design. Todos os direitos reservados.",
+        final_cta_title: "No necesitas un sitio web más.",
+        final_cta_subtitle: "Necesitas un sistema que venda.",
+        final_cta_btn: "Quiero un sitio que venda"
     }
 };
 
