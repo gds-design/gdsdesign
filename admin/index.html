@@ -63,15 +63,14 @@
 <body>
     
     <div class="hero-glow"></div>
-
+    
     <div class="glass-card login-card">
         <div class="login-icon">
             <i class="fa-solid fa-lock-open"></i>
         </div>
         
         <div class="login-logo">
-            <div class="logo-dot"></div>
-            <span>GDS CRM</span>
+            <div class="logo-dot"></div> <span>GDS CRM</span>
         </div>
         
         <h2 class="login-title">Acesso Restrito</h2>
@@ -81,7 +80,7 @@
             <div class="form-group" style="margin-bottom: 24px;">
                 <label for="password">Senha de Administrador</label>
                 <div style="position: relative;">
-                    <i class="fa-solid fa-key" style="position: absolute; left: 16px; top: 50%; transform: translateY(-50%); color: var(--text-muted);"></i>
+                    <i class="fa-solid fa-key" style="position: absolute; left: 16px; top: 50%; transform: translateY(-100%); color: var(--text-muted);"></i>
                     <input type="password" id="password" class="form-control" placeholder="Digite sua senha" style="padding-left: 48px;" required>
                 </div>
                 <div class="error-message" id="errorMessage">Senha incorreta. Tente novamente!</div>
@@ -93,26 +92,26 @@
         </form>
         
         <div style="margin-top: 30px;">
-            <a href="https://gdsdesign.site" style="font-size: 13px; color: var(--text-muted);"><i class="fa-solid fa-arrow-left"></i> Voltar para o Site</a>
+            <a href="../" style="font-size: 13px; color: var(--text-muted);"><i class="fa-solid fa-arrow-left"></i> Voltar para o Site</a>
         </div>
     </div>
-
+    
     <!-- Admin Authentication Logic -->
     <script>
         // Senha padrão de acesso
         const DEFAULT_PASSWORD = "gds123";
-
+        
         // Verifica se já está logado e sessão ativa
         const session = localStorage.getItem('gds_admin_session');
         if (session) {
             try {
                 const sessionData = JSON.parse(session);
                 if (Date.now() < sessionData.expireAt) {
-                    window.location.href = 'https://gdsdesign.site/admin/dashboard.html';
+                    window.location.href = 'dashboard.html';
                 }
             } catch(e) {}
         }
-
+        
         // Lógica de Rate Limiting
         function checkRateLimit() {
             const attempts = JSON.parse(localStorage.getItem('gds_login_attempts') || '{"count": 0, "blockedUntil": 0}');
@@ -122,7 +121,7 @@
             }
             return { blocked: false };
         }
-
+        
         function registerAttempt(success) {
             let attempts = JSON.parse(localStorage.getItem('gds_login_attempts') || '{"count": 0, "blockedUntil": 0}');
             if (success) {
@@ -136,13 +135,13 @@
                 localStorage.setItem('gds_login_attempts', JSON.stringify(attempts));
             }
         }
-
+        
         document.getElementById('loginForm').addEventListener('submit', function(e) {
             e.preventDefault();
             
             const errorEl = document.getElementById('errorMessage');
             errorEl.style.display = 'none';
-
+            
             // Verifica rate limit
             const limit = checkRateLimit();
             if (limit.blocked) {
@@ -150,10 +149,10 @@
                 errorEl.style.display = 'block';
                 return;
             }
-
+            
             const inputPassword = document.getElementById('password').value.trim();
             const actualPassword = localStorage.getItem('gds_admin_password') || DEFAULT_PASSWORD;
-
+            
             if (inputPassword === actualPassword) {
                 // Sucesso
                 registerAttempt(true);
@@ -165,7 +164,7 @@
                 };
                 localStorage.setItem('gds_admin_session', JSON.stringify(sessionData));
                 
-                window.location.href = 'https://gdsdesign.site/admin/index.html';
+                window.location.href = 'dashboard.html';
             } else {
                 // Erro
                 registerAttempt(false);

@@ -1,10 +1,15 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="pt-BR">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Briefing do Projeto — GDS Design</title>
 <meta name="robots" content="noindex, nofollow">
+<script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-storage-compat.js"></script>
+<script src="db.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 <style>
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -296,8 +301,12 @@
       <div class="step-sub">Essas informações ficam só comigo para montar a proposta.</div>
 
       <div class="field">
-        <label>Nome completo ou empresa *</label>
-        <input type="text" id="nome" placeholder="Ex.: Clínica Dr. Silva / Maria Souza">
+        <label>Nome completo *</label>
+        <input type="text" id="nome" placeholder="Ex.: João Silva">
+      </div>
+      <div class="field">
+        <label>Nome da Empresa *</label>
+        <input type="text" id="empresa" placeholder="Ex.: My Paraguay">
       </div>
       <div class="field">
         <label>WhatsApp (com DDD/DDI) *</label>
@@ -376,7 +385,7 @@
     <div class="card">
       <div class="step-title">Etapa 3 de 5</div>
       <div class="step-heading">Materiais e referências</div>
-      <div class="step-sub">Envie o que tiver agora. O que faltar você manda depois pelo WhatsApp.</div>
+      <div class="step-sub">Envie o que tiver agora. O que faltar você manda depois.</div>
 
       <div class="field">
         <label>Logotipo da empresa</label>
@@ -399,6 +408,46 @@
           <div class="upload-text"><strong>Clique para enviar fotos</strong></div>
           <div class="upload-text" style="font-size:0.75rem;margin-top:2px;">JPG, PNG • Múltiplos arquivos aceitos</div>
           <div class="upload-name" id="fotosName"></div>
+        </div>
+      </div>
+
+      <div class="field">
+        <label>Instagram da empresa (Link ou @usuario)</label>
+        <input type="text" id="instagram" placeholder="Ex.: @myparaguay">
+      </div>
+
+      <div class="field">
+        <label>Facebook da empresa (Link ou Página)</label>
+        <input type="text" id="facebook" placeholder="Ex.: facebook.com/myparaguay">
+      </div>
+
+      <div class="field">
+        <label>Link do canal ou vídeos no YouTube (Opcional)</label>
+        <input type="text" id="youtube" placeholder="Ex.: https://youtube.com/...">
+      </div>
+
+      <div class="field">
+        <label>Link do Google Meu Negócio / Reviews (Opcional)</label>
+        <input type="text" id="google_reviews" placeholder="Ex.: https://g.page/r/...">
+      </div>
+
+      <div class="field">
+        <label>Foto do Carro / Fachada Secundária (Opcional)</label>
+        <div class="upload-zone" id="fotoCarroZone" onclick="document.getElementById('fotoCarroInput').click()">
+          <input type="file" id="fotoCarroInput" accept="image/*" onchange="setFile('foto_carro',this,'fotoCarroZone','fotoCarroName')">
+          <div class="upload-icon">🚗</div>
+          <div class="upload-text"><strong>Clique para enviar foto do veículo/fachada</strong></div>
+          <div class="upload-name" id="fotoCarroName"></div>
+        </div>
+      </div>
+
+      <div class="field">
+        <label>Vídeo de Depoimento / Apresentação (Opcional)</label>
+        <div class="upload-zone" id="videoDepoimentoZone" onclick="document.getElementById('videoDepoimentoInput').click()">
+          <input type="file" id="videoDepoimentoInput" accept="video/*" onchange="setFile('video_depoimento',this,'videoDepoimentoZone','videoDepoimentoName')">
+          <div class="upload-icon">🎥</div>
+          <div class="upload-text"><strong>Clique para enviar vídeo depoimento</strong></div>
+          <div class="upload-name" id="videoDepoimentoName"></div>
         </div>
       </div>
 
@@ -533,6 +582,17 @@
         <input type="hidden" id="prazo">
       </div>
 
+      <div class="field">
+        <label>Dúvidas Frequentes (FAQ) para o site</label>
+        <div class="hint">Escreva perguntas e respostas frequentes para ajudar no layout de FAQ (Pergunta / Resposta).</div>
+        <textarea id="faq" placeholder="P: Pergunta 1?&#10;R: Resposta 1.&#10;&#10;P: Pergunta 2?&#10;R: Resposta 2."></textarea>
+      </div>
+
+      <div class="field">
+        <label>Configurações Técnicas e Hospedagem</label>
+        <div class="hint">Indique qual servidor de hospedagem deseja utilizar ou integrações necessárias (Facebook Pixel, Analytics, etc).</div>
+        <textarea id="tecnico" placeholder="Ex: Conta na Hostinger ativa. Integração com Pixel do Facebook necessária."></textarea>
+      </div>
 
       <div class="field">
         <label>Alguma observação extra? (opcional)</label>
@@ -550,11 +610,12 @@
   <div class="step" id="stepSuccess">
     <div class="card">
       <div class="success-box">
-        <div class="success-icon">🎉</div>
+        <div class="success-icon">✅</div>
         <h2>Briefing enviado com sucesso!</h2>
-        <p>Recebi suas informações e entrarei em contato em até <strong>24 horas úteis</strong> pelo WhatsApp para apresentar a proposta do seu projeto.</p>
-        <br>
-        <p style="color:#7c3aed;font-weight:600;">✦ GDS Design — obrigada pela confiança!</p>
+        <p style="margin-top: 15px; font-size: 0.95rem; color: var(--text-muted);">Recebemos todas as informações. Nossa equipe iniciará a análise e você poderá acompanhar o andamento pelo painel.</p>
+        <button id="btnBaixarPDF" class="btn-next" style="margin-top: 24px; padding: 12px 24px; display: inline-flex; align-items: center; gap: 8px; justify-content: center; font-weight: 700;"><span style="font-size: 1.1rem;">📥</span> Baixar PDF do Briefing</button>
+        <br><br>
+        <p style="color:#7c3aed;font-weight:600;">✦ GDS Design — obrigado pela confiança!</p>
       </div>
     </div>
   </div>
@@ -566,6 +627,11 @@
   let current = 0;
   const files = {};
   const selectedPaleta = [];
+  
+  // Lê parâmetros da URL
+  const urlParams = new URLSearchParams(window.location.search);
+  const briefingId = urlParams.get('id');
+  let currentBriefing = null;
 
   const labels = [
     "Etapa 1 de 5 — Seus dados",
@@ -574,6 +640,36 @@
     "Etapa 4 de 5 — Estilo visual",
     "Etapa 5 de 5 — Finalização"
   ];
+
+  document.addEventListener('DOMContentLoaded', async () => {
+    // Inicializa conexão do db.js
+    initDatabase();
+    
+    if (briefingId) {
+      currentBriefing = await getBriefingById(briefingId);
+      if (currentBriefing) {
+        // Pre-preenche campos de contato se já existirem no briefing gerado pelo admin
+        if (currentBriefing.contato) {
+          document.getElementById('nome').value = currentBriefing.contato.nome || '';
+          document.getElementById('whatsapp').value = currentBriefing.contato.whatsapp || '';
+          document.getElementById('email').value = currentBriefing.contato.email || '';
+        }
+        document.getElementById('empresa').value = currentBriefing.empresa || '';
+        document.getElementById('cidade').value = currentBriefing.cidade || '';
+        
+        // Registra automaticamente que o cliente abriu o formulário no histórico
+        const abriuLog = currentBriefing.historico ? currentBriefing.historico.some(h => h.acao === 'Cliente abriu o briefing') : false;
+        if (!abriuLog) {
+          if (!currentBriefing.historico) currentBriefing.historico = [];
+          currentBriefing.historico.push({
+            data: new Date().toISOString(),
+            acao: 'Cliente abriu o briefing'
+          });
+          await saveBriefing(currentBriefing);
+        }
+      }
+    }
+  });
 
   function goStep(n) {
     document.getElementById('step' + current).classList.remove('active');
@@ -631,81 +727,229 @@
   function coletarDados() {
     const objetivos = Array.from(document.querySelectorAll('#objetivos input:checked')).map(c => c.value);
     return {
-      nome: document.getElementById('nome').value,
-      whatsapp: document.getElementById('whatsapp').value,
-      email: document.getElementById('email').value,
-      cidade: document.getElementById('cidade').value,
+      nome: document.getElementById('nome').value.trim(),
+      empresa: document.getElementById('empresa').value.trim(),
+      whatsapp: document.getElementById('whatsapp').value.trim(),
+      email: document.getElementById('email').value.trim(),
+      cidade: document.getElementById('cidade').value.trim(),
       tipo: document.getElementById('tipo').value,
-      nicho: document.getElementById('nicho').value,
+      nicho: document.getElementById('nicho').value.trim(),
       objetivos: objetivos.join(' | '),
-      publico: document.getElementById('publico').value,
-      referencias: document.getElementById('referencias').value,
+      publico: document.getElementById('publico').value.trim(),
+      instagram: document.getElementById('instagram').value.trim(),
+      facebook: document.getElementById('facebook').value.trim(),
+      youtube: document.getElementById('youtube').value.trim(),
+      google_reviews: document.getElementById('google_reviews').value.trim(),
+      referencias: document.getElementById('referencias').value.trim(),
       dominio: document.getElementById('dominio').value,
-      dominioNome: document.getElementById('dominioNome').value,
+      dominioNome: document.getElementById('dominioNome').value.trim(),
       tom: document.getElementById('tom').value,
       cores: document.getElementById('cores').value,
-      obsVisual: document.getElementById('obsVisual').value,
-      descricao: document.getElementById('descricao').value,
-      textos: document.getElementById('textos').value,
+      obsVisual: document.getElementById('obsVisual').value.trim(),
+      descricao: document.getElementById('descricao').value.trim(),
+      textos: document.getElementById('textos').value.trim(),
+      faq: document.getElementById('faq').value.trim(),
+      tecnico: document.getElementById('tecnico').value.trim(),
       prazo: document.getElementById('prazo').value,
-      obs: document.getElementById('obs').value,
-      logoAnexado: files['logo'] ? 'Sim — ' + Array.from(files['logo']).map(f=>f.name).join(', ') : 'Não',
-      fotosAnexadas: files['fotos'] ? 'Sim — ' + Array.from(files['fotos']).map(f=>f.name).join(', ') : 'Não',
+      obs: document.getElementById('obs').value.trim(),
     };
   }
 
-  function enviar() {
+  async function enviar() {
     const d = coletarDados();
-    if (!d.nome || !d.whatsapp || !d.email || !d.descricao) {
-      alert('Por favor, preencha pelo menos nome, WhatsApp, e-mail e descrição do projeto.');
+    if (!d.nome || !d.empresa || !d.whatsapp || !d.email || !d.descricao) {
+      alert('Por favor, preencha pelo menos Nome, Empresa, WhatsApp, E-mail e Descrição do projeto.');
       return;
     }
 
-    const assunto = encodeURIComponent(`[GDS Design] Novo briefing — ${d.nome}`);
-    const corpo = encodeURIComponent(
-`NOVO BRIEFING — GDS DESIGN
-=============================
-NOME: ${d.nome}
-WHATSAPP: ${d.whatsapp}
-E-MAIL: ${d.email}
-CIDADE: ${d.cidade}
+    const btnEnviar = document.getElementById('btnEnviar');
+    btnEnviar.disabled = true;
+    const originalText = btnEnviar.innerHTML;
+    btnEnviar.innerHTML = '⌛ Enviando arquivos para a nuvem...';
 
-PROJETO
--------
-Tipo: ${d.tipo}
-Nicho: ${d.nicho}
-Objetivos: ${d.objetivos}
-Público-alvo: ${d.publico}
-Prazo desejado: ${d.prazo}
+    try {
+      // 1. Upload do Logotipo
+      let logoUrl = currentBriefing ? (currentBriefing.logo || '') : '';
+      if (files['logo']) {
+        btnEnviar.innerHTML = '⌛ Fazendo upload do logotipo...';
+        const fileObj = files['logo'][0];
+        const uploadRes = await uploadFile(fileObj, 'logos');
+        logoUrl = uploadRes.url;
+      }
 
-MATERIAIS
----------
-Logo anexada: ${d.logoAnexado}
-Fotos anexadas: ${d.fotosAnexadas}
-Domínio: ${d.dominio} ${d.dominioNome ? '— '+d.dominioNome : ''}
-Referências: ${d.referencias}
+      // 2. Upload da Foto do Carro
+      let fotoCarroUrl = currentBriefing ? (currentBriefing.foto_carro || '') : '';
+      if (files['foto_carro']) {
+        btnEnviar.innerHTML = '⌛ Fazendo upload da foto do carro...';
+        const fileObj = files['foto_carro'][0];
+        const uploadRes = await uploadFile(fileObj, 'carros');
+        fotoCarroUrl = uploadRes.url;
+      }
 
-VISUAL
-------
-Tom: ${d.tom}
-Cores: ${d.cores}
-Obs visual: ${d.obsVisual}
+      // 3. Upload do Vídeo Depoimento
+      let videoDepoimentoUrl = currentBriefing ? (currentBriefing.video_depoimento || '') : '';
+      if (files['video_depoimento']) {
+        btnEnviar.innerHTML = '⌛ Fazendo upload do vídeo de depoimento...';
+        const fileObj = files['video_depoimento'][0];
+        const uploadRes = await uploadFile(fileObj, 'videos');
+        videoDepoimentoUrl = uploadRes.url;
+      }
 
-DESCRIÇÃO DO NEGÓCIO
---------------------
-${d.descricao}
+      // 4. Upload de Múltiplas Fotos
+      let fotosUrls = currentBriefing ? (currentBriefing.fotos || []) : [];
+      if (files['fotos'] && files['fotos'].length > 0) {
+        btnEnviar.innerHTML = `⌛ Enviando fotos do produto (0/${files['fotos'].length})...`;
+        const uploadedArray = [];
+        for (let i = 0; i < files['fotos'].length; i++) {
+          btnEnviar.innerHTML = `⌛ Enviando fotos do produto (${i + 1}/${files['fotos'].length})...`;
+          const uploadRes = await uploadFile(files['fotos'][i], 'fotos_negocio');
+          uploadedArray.push(uploadRes.url);
+        }
+        fotosUrls = [...fotosUrls, ...uploadedArray];
+      }
 
-TEXTOS / SLOGAN
----------------
-${d.textos}
+      // 5. Monta registro final do Briefing
+      const finalBriefing = {
+        id: briefingId || ('briefing_' + Math.random().toString(36).substr(2, 9)),
+        cliente_id: currentBriefing ? currentBriefing.cliente_id : ('cli_' + Math.random().toString(36).substr(2, 9)),
+        empresa: d.empresa,
+        contato: {
+          nome: d.nome,
+          whatsapp: d.whatsapp,
+          email: d.email
+        },
+        instagram: d.instagram,
+        facebook: d.facebook,
+        cidade: d.cidade,
+        logo: logoUrl,
+        foto_carro: fotoCarroUrl,
+        fotos: fotosUrls,
+        youtube: d.youtube,
+        google_reviews: d.google_reviews,
+        video_depoimento: videoDepoimentoUrl,
+        faq: d.faq,
+        textos: d.textos,
+        tecnico: d.tecnico,
+        observacoes: d.obs,
+        tipo: d.tipo,
+        nicho: d.nicho,
+        objetivos: d.objetivos,
+        publico: d.publico,
+        referencias: d.referencias,
+        dominio: d.dominio,
+        dominioNome: d.dominioNome,
+        tom: d.tom,
+        cores: d.cores,
+        obsVisual: d.obsVisual,
+        descricao: d.descricao,
+        prazo: d.prazo,
+        status: 'Novo',
+        responsavel: currentBriefing ? (currentBriefing.responsavel || '-') : '-',
+        comentarios: currentBriefing ? (currentBriefing.comentarios || []) : [],
+        historico: currentBriefing ? (currentBriefing.historico || []) : [],
+        created_at: currentBriefing ? currentBriefing.created_at : new Date().toISOString(),
+        updated_at: new Date().toISOString()
+      };
 
-OBSERVAÇÕES EXTRAS
-------------------
-${d.obs}
-`);
+      // Adiciona histórico
+      finalBriefing.historico.push({
+        data: new Date().toISOString(),
+        acao: 'Cliente enviou o briefing'
+      });
 
-    window.location.href = `mailto:contato@gdsdesign.site?subject=${assunto}&body=${corpo}`;
-    setTimeout(() => goStep(5), 800);
+      // Salva no banco (Local ou Firebase)
+      const savedData = await saveBriefing(finalBriefing);
+
+      // Associa cliente no CRM (local storage fallback)
+      const clients = JSON.parse(localStorage.getItem('gds_clientes') || '[]');
+      const cleanPhone = d.whatsapp.replace(/\D/g, '');
+      const clientExists = clients.some(c => c.telefone.replace(/\D/g, '') === cleanPhone);
+      if (!clientExists) {
+        clients.push({
+          id: finalBriefing.cliente_id,
+          nome: d.nome,
+          telefone: d.whatsapp,
+          email: d.email,
+          createdAt: new Date().toISOString()
+        });
+        localStorage.setItem('gds_clientes', JSON.stringify(clients));
+      }
+
+      // Vincula PDF
+      document.getElementById('btnBaixarPDF').onclick = () => gerarPDF(savedData);
+
+      // Mostra tela de sucesso
+      goStep(5);
+    } catch (e) {
+      console.error("Erro ao enviar o briefing:", e);
+      alert("Ocorreu um erro ao salvar suas informações. Por favor, tente novamente.");
+      btnEnviar.disabled = false;
+      btnEnviar.innerHTML = originalText;
+    }
+  }
+
+  // Função para gerar o resumo do Briefing em PDF
+  function gerarPDF(d) {
+    try {
+      const { jsPDF } = window.jspdf;
+      const doc = new jsPDF();
+      
+      // Cabeçalho
+      doc.setFillColor(26, 26, 46); // Cor --brand
+      doc.rect(0, 0, 210, 40, 'F');
+      
+      doc.setTextColor(255, 255, 255);
+      doc.setFont("helvetica", "bold");
+      doc.setFontSize(22);
+      doc.text("GDS DESIGN - BRIEFING DE PROJETO", 15, 26);
+      
+      doc.setTextColor(30, 27, 46); // Cor normal
+      doc.setFontSize(11);
+      
+      let y = 55;
+      
+      const printField = (title, value) => {
+        if (y > 275) {
+          doc.addPage();
+          y = 20;
+        }
+        doc.setFont("helvetica", "bold");
+        doc.text(title + ":", 15, y);
+        doc.setFont("helvetica", "normal");
+        const lines = doc.splitTextToSize(String(value || 'Não informado'), 130);
+        doc.text(lines, 65, y);
+        y += (lines.length * 5) + 3;
+      };
+
+      printField("ID do Briefing", d.id);
+      printField("Cliente / Responsável", d.contato.nome);
+      printField("Empresa", d.empresa);
+      printField("WhatsApp", d.contato.whatsapp);
+      printField("E-mail", d.contato.email);
+      printField("Cidade/País", d.cidade);
+      printField("Instagram", d.instagram);
+      printField("Facebook", d.facebook);
+      printField("Tipo de Site / Projeto", d.tipo);
+      printField("Nicho de Atuação", d.nicho);
+      printField("Principais Objetivos", d.objetivos);
+      printField("Público-alvo", d.publico);
+      printField("Domínio Registrado", d.dominio + (d.dominioNome ? ` - ${d.dominioNome}` : ''));
+      printField("Cores Recomendadas", d.cores);
+      printField("Tom e Sensação", d.tom);
+      printField("Estilo Visual Obs.", d.obsVisual);
+      printField("Descrição do Negócio", d.descricao);
+      printField("Slogan / Textos", d.textos);
+      printField("Estrutura FAQ", d.faq);
+      printField("Requisitos Técnicos", d.tecnico);
+      printField("Prazo Desejado", d.prazo);
+      printField("Observações Gerais", d.observacoes);
+      printField("Data Envio", new Date(d.created_at).toLocaleString('pt-BR'));
+      
+      doc.save(`briefing_${d.empresa.replace(/[^a-zA-Z0-9]/g, '_')}.pdf`);
+    } catch(err) {
+      console.error("Erro ao gerar PDF:", err);
+      alert("Não foi possível gerar o PDF. Mas não se preocupe, os dados já foram salvos com sucesso!");
+    }
   }
 </script>
 </body>
