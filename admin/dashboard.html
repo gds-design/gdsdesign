@@ -12,6 +12,7 @@
             padding-top: 80px;
             background-color: hsl(230, 40%, 5%);
         }
+        
         .crm-wrapper {
             display: grid;
             grid-template-columns: 240px 1fr;
@@ -19,11 +20,14 @@
             margin-top: 30px;
             min-height: calc(100vh - 150px);
         }
+        
+        /* Sidebar do CRM */
         .crm-sidebar {
             display: flex;
             flex-direction: column;
             gap: 8px;
         }
+        
         .sidebar-btn {
             display: flex;
             align-items: center;
@@ -38,79 +42,414 @@
             background: rgba(255,255,255,0.02);
             border: 1px solid rgba(255,255,255,0.04);
         }
+        
         .sidebar-btn:hover, .sidebar-btn.active {
             background: var(--grad-primary);
             color: #fff;
             border-color: transparent;
             box-shadow: 0 4px 12px rgba(124, 58, 237, 0.2);
         }
+        
+        /* Content Area */
         .crm-content {
             display: flex;
             flex-direction: column;
             gap: 30px;
         }
-        .tab-pane { display: none; animation: fadeIn var(--transition-normal); }
-        .tab-pane.active { display: block; }
-        .stats-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 20px; margin-bottom: 30px; }
-        .stat-card { padding: 24px; display: flex; flex-direction: column; gap: 10px; }
-        .stat-header { display: flex; align-items: center; justify-content: space-between; color: var(--text-muted); font-size: 14px; }
-        .stat-icon { font-size: 20px; color: var(--accent-pink); }
-        .stat-value { font-size: 28px; font-family: 'Outfit', sans-serif; font-weight: 800; }
-        .stat-footer { font-size: 12px; color: var(--text-muted); }
-        .kanban-board { display: grid; grid-template-columns: repeat(5, 1fr); gap: 20px; align-items: start; overflow-x: auto; padding-bottom: 20px; }
-        .kanban-col { background: rgba(255,255,255,0.02); border: 1px solid var(--border-color); border-radius: var(--radius-sm); padding: 16px; min-height: 500px; display: flex; flex-direction: column; gap: 12px; }
-        .kanban-col-header { display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid var(--border-color); padding-bottom: 10px; margin-bottom: 10px; }
-        .col-title { font-size: 14px; font-family: 'Outfit', sans-serif; font-weight: 700; text-transform: uppercase; }
-        .col-count { background: rgba(255,255,255,0.06); padding: 2px 8px; border-radius: 20px; font-size: 11px; font-weight: 600; }
-        .kanban-cards { display: flex; flex-direction: column; gap: 12px; min-height: 400px; }
-        .kanban-card { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.06); border-radius: var(--radius-sm); padding: 16px; cursor: pointer; transition: var(--transition-fast); }
-        .kanban-card:hover { border-color: var(--accent-pink); transform: translateY(-2px); }
-        .card-tag { font-size: 10px; font-weight: 700; text-transform: uppercase; color: var(--accent-orange); margin-bottom: 6px; }
-        .card-name { font-size: 15px; font-weight: 600; margin-bottom: 6px; }
-        .card-info { font-size: 12px; color: var(--text-muted); margin-bottom: 12px; }
-        .card-footer { display: flex; align-items: center; justify-content: space-between; border-top: 1px solid rgba(255,255,255,0.05); padding-top: 8px; font-size: 12px; }
-        .card-price { font-weight: 700; color: var(--text-primary); }
-        .table-card { padding: 32px; }
-        .table-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 24px; }
-        .crm-table { width: 100%; border-collapse: collapse; text-align: left; }
-        .crm-table th, .crm-table td { padding: 16px; border-bottom: 1px solid var(--border-color); font-size: 14px; }
-        .crm-table th { font-family: 'Outfit', sans-serif; color: var(--text-muted); text-transform: uppercase; font-weight: 600; }
-        .crm-table tr:hover td { background: rgba(255,255,255,0.01); }
-        .ideas-board { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 20px; }
-        .idea-postit { background: linear-gradient(135deg, #2e1065 0%, #1e1b4b 100%); border: 1px solid rgba(255,255,255,0.08); border-radius: var(--radius-sm); padding: 24px; min-height: 200px; display: flex; flex-direction: column; justify-content: space-between; position: relative; }
-        .idea-postit:nth-child(2n) { background: linear-gradient(135deg, #581c87 0%, #311042 100%); }
-        .idea-text { font-size: 14px; color: var(--text-primary); white-space: pre-wrap; margin-bottom: 20px; }
-        .idea-footer { display: flex; justify-content: space-between; align-items: center; font-size: 11px; color: var(--text-muted); }
-        .idea-delete { cursor: pointer; color: #ff5f56; font-size: 14px; }
-        .modal { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); display: flex; align-items: center; justify-content: center; z-index: 2000; visibility: hidden; opacity: 0; transition: var(--transition-normal); }
-        .modal.active { visibility: visible; opacity: 1; }
-        .modal-content { width: 100%; max-width: 500px; padding: 40px; position: relative; }
-        .modal-close { position: absolute; top: 20px; right: 20px; font-size: 24px; cursor: pointer; color: var(--text-muted); }
-        @media (max-width: 992px) {
-            .crm-wrapper { grid-template-columns: 1fr; }
-            .crm-sidebar { flex-direction: row; overflow-x: auto; padding-bottom: 10px; }
-            .sidebar-btn { flex-shrink: 0; }
-            .kanban-board { grid-template-columns: repeat(5, 260px); }
+        
+        .tab-pane {
+            display: none;
+            animation: fadeIn var(--transition-normal);
         }
-        .sub-tab-btn { padding: 8px 16px; font-size: 13px; background: rgba(255,255,255,0.02); border: 1px solid var(--border-color); }
-        .sub-tab-btn.active { background: var(--grad-primary); color: #fff; border-color: transparent; }
-        .briefing-tabs { display: flex; gap: 6px; border-bottom: 1px solid rgba(255,255,255,0.1); margin-bottom: 20px; overflow-x: auto; padding-bottom: 8px; }
-        .briefing-tab-btn { padding: 8px 16px; border-radius: 4px; font-size: 13px; font-weight: 500; color: var(--text-secondary); cursor: pointer; background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.05); white-space: nowrap; }
-        .briefing-tab-btn.active { background: var(--primary); color: #fff; border-color: transparent; }
-        .briefing-tab-pane { display: none; animation: fadeIn 0.2s ease; }
-        .briefing-tab-pane.active { display: block; }
-        .timeline-container { border-left: 2px solid var(--primary); padding-left: 15px; margin-left: 10px; display: flex; flex-direction: column; gap: 15px; }
-        .timeline-item { position: relative; }
-        .timeline-item::before { content: ''; position: absolute; left: -21px; top: 6px; width: 10px; height: 10px; border-radius: 50%; background: var(--accent-orange); }
-        .timeline-date { font-size: 11px; color: var(--text-muted); margin-bottom: 2px; }
-        .timeline-desc { font-size: 13px; color: var(--text-secondary); }
-        .progress-bar-container { width: 100%; height: 8px; background: rgba(255,255,255,0.05); border-radius: 10px; overflow: hidden; margin: 10px 0; }
-        .progress-bar-fill { height: 100%; background: var(--grad-primary); width: 0%; transition: width 0.4s ease; }
-        .notification-toast { position: fixed; bottom: 20px; right: 20px; background: var(--grad-sunset); color: white; padding: 16px 24px; border-radius: var(--radius-sm); box-shadow: var(--shadow-lg); z-index: 9999; display: flex; align-items: center; gap: 12px; animation: slideInUp 0.3s ease; }
-        @keyframes slideInUp { from { transform: translateY(100px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
+        
+        .tab-pane.active {
+            display: block;
+        }
+        
+        /* Dashboard Stats Grid */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+        
+        .stat-card {
+            padding: 24px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        
+        .stat-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            color: var(--text-muted);
+            font-size: 14px;
+        }
+        
+        .stat-icon {
+            font-size: 20px;
+            color: var(--accent-pink);
+        }
+        
+        .stat-value {
+            font-size: 28px;
+            font-family: 'Outfit', sans-serif;
+            font-weight: 800;
+        }
+        
+        .stat-footer {
+            font-size: 12px;
+            color: var(--text-muted);
+        }
+        
+        /* Kanban Board */
+        .kanban-board {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 20px;
+            align-items: start;
+            overflow-x: auto;
+            padding-bottom: 20px;
+        }
+        
+        .kanban-col {
+            background: rgba(255,255,255,0.02);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-sm);
+            padding: 16px;
+            min-height: 500px;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+        
+        .kanban-col-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 10px;
+            margin-bottom: 10px;
+        }
+        
+        .col-title {
+            font-size: 14px;
+            font-family: 'Outfit', sans-serif;
+            font-weight: 700;
+            text-transform: uppercase;
+        }
+        
+        .col-count {
+            background: rgba(255,255,255,0.06);
+            padding: 2px 8px;
+            border-radius: 20px;
+            font-size: 11px;
+            font-weight: 600;
+        }
+        
+        .kanban-cards {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            min-height: 400px;
+        }
+        
+        .kanban-card {
+            background: rgba(255,255,255,0.04);
+            border: 1px solid rgba(255,255,255,0.06);
+            border-radius: var(--radius-sm);
+            padding: 16px;
+            cursor: pointer;
+            transition: var(--transition-fast);
+        }
+        
+        .kanban-card:hover {
+            border-color: var(--accent-pink);
+            transform: translateY(-2px);
+        }
+        
+        .card-tag {
+            font-size: 10px;
+            font-weight: 700;
+            text-transform: uppercase;
+            color: var(--accent-orange);
+            margin-bottom: 6px;
+        }
+        
+        .card-name {
+            font-size: 15px;
+            font-weight: 600;
+            margin-bottom: 6px;
+        }
+        
+        .card-info {
+            font-size: 12px;
+            color: var(--text-muted);
+            margin-bottom: 12px;
+        }
+        
+        .card-footer {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border-top: 1px solid rgba(255,255,255,0.05);
+            padding-top: 8px;
+            font-size: 12px;
+        }
+        
+        .card-price {
+            font-weight: 700;
+            color: var(--text-primary);
+        }
+        
+        /* Formulários e Tabelas */
+        .table-card {
+            padding: 32px;
+        }
+        
+        .table-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 24px;
+        }
+        
+        .crm-table {
+            width: 100%;
+            border-collapse: collapse;
+            text-align: left;
+        }
+        
+        .crm-table th, .crm-table td {
+            padding: 16px;
+            border-bottom: 1px solid var(--border-color);
+            font-size: 14px;
+        }
+        
+        .crm-table th {
+            font-family: 'Outfit', sans-serif;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            font-weight: 600;
+        }
+        
+        .crm-table tr:hover td {
+            background: rgba(255,255,255,0.01);
+        }
+        
+        /* Quadro de Ideias Post-its */
+        .ideas-board {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+            gap: 20px;
+        }
+        
+        .idea-postit {
+            background: linear-gradient(135deg, #2e1065 0%, #1e1b4b 100%);
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: var(--radius-sm);
+            padding: 24px;
+            min-height: 200px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            position: relative;
+        }
+        
+        .idea-postit:nth-child(2n) {
+            background: linear-gradient(135deg, #581c87 0%, #311042 100%);
+        }
+        
+        .idea-text {
+            font-size: 14px;
+            color: var(--text-primary);
+            white-space: pre-wrap;
+            margin-bottom: 20px;
+        }
+        
+        .idea-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 11px;
+            color: var(--text-muted);
+        }
+        
+        .idea-delete {
+            cursor: pointer;
+            color: #ff5f56;
+            font-size: 14px;
+        }
+        
+        /* Modais */
+        .modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.8);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 2000;
+            visibility: hidden;
+            opacity: 0;
+            transition: var(--transition-normal);
+        }
+        
+        .modal.active {
+            visibility: visible;
+            opacity: 1;
+        }
+        
+        .modal-content {
+            width: 100%;
+            max-width: 500px;
+            padding: 40px;
+            position: relative;
+        }
+        
+        .modal-close {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            font-size: 24px;
+            cursor: pointer;
+            color: var(--text-muted);
+        }
+        
+        /* Responsivo CRM */
+        @media (max-width: 992px) {
+            .crm-wrapper {
+                grid-template-columns: 1fr;
+            }
+            .crm-sidebar {
+                flex-direction: row;
+                overflow-x: auto;
+                padding-bottom: 10px;
+            }
+            .sidebar-btn {
+                flex-shrink: 0;
+            }
+            .kanban-board {
+                grid-template-columns: repeat(5, 260px);
+            }
+        }
+        
+        /* Estilos do Módulo de Briefings */
+        .sub-tab-btn {
+            padding: 8px 16px;
+            font-size: 13px;
+            background: rgba(255,255,255,0.02);
+            border: 1px solid var(--border-color);
+        }
+        .sub-tab-btn.active {
+            background: var(--grad-primary);
+            color: #fff;
+            border-color: transparent;
+        }
+        .briefing-tabs {
+            display: flex;
+            gap: 6px;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+            margin-bottom: 20px;
+            overflow-x: auto;
+            padding-bottom: 8px;
+        }
+        .briefing-tab-btn {
+            padding: 8px 16px;
+            border-radius: 4px;
+            font-size: 13px;
+            font-weight: 500;
+            color: var(--text-secondary);
+            cursor: pointer;
+            background: rgba(255,255,255,0.02);
+            border: 1px solid rgba(255,255,255,0.05);
+            white-space: nowrap;
+        }
+        .briefing-tab-btn.active {
+            background: var(--primary);
+            color: #fff;
+            border-color: transparent;
+        }
+        .briefing-tab-pane {
+            display: none;
+            animation: fadeIn 0.2s ease;
+        }
+        .briefing-tab-pane.active {
+            display: block;
+        }
+        .timeline-container {
+            border-left: 2px solid var(--primary);
+            padding-left: 15px;
+            margin-left: 10px;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+        .timeline-item {
+            position: relative;
+        }
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -21px;
+            top: 6px;
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: var(--accent-orange);
+        }
+        .timeline-date {
+            font-size: 11px;
+            color: var(--text-muted);
+            margin-bottom: 2px;
+        }
+        .timeline-desc {
+            font-size: 13px;
+            color: var(--text-secondary);
+        }
+        .progress-bar-container {
+            width: 100%;
+            height: 8px;
+            background: rgba(255,255,255,0.05);
+            border-radius: 10px;
+            overflow: hidden;
+            margin: 10px 0;
+        }
+        .progress-bar-fill {
+            height: 100%;
+            background: var(--grad-primary);
+            width: 0%;
+            transition: width 0.4s ease;
+        }
+        .notification-toast {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: var(--grad-sunset);
+            color: white;
+            padding: 16px 24px;
+            border-radius: var(--radius-sm);
+            box-shadow: var(--shadow-lg);
+            z-index: 9999;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            animation: slideInUp 0.3s ease;
+        }
+        @keyframes slideInUp {
+            from { transform: translateY(100px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
     </style>
 </head>
 <body>
+
     <!-- Header Panel -->
     <header class="header scrolled">
         <div class="container header-container">
@@ -118,78 +457,134 @@
                 <div class="logo-dot"></div>
                 <span>GDS CRM</span>
             </a>
+            
             <div class="header-actions">
                 <span style="font-size: 13px; color: var(--text-secondary);"><i class="fa-solid fa-user-gear"></i> Maria Gilmara</span>
-                <button id="logoutBtn" class="btn btn-secondary" style="padding: 8px 16px; font-size: 13px;"> <i class="fa-solid fa-right-from-bracket"></i> Sair</button>
+                <button id="logoutBtn" class="btn btn-secondary" style="padding: 8px 16px; font-size: 13px;"><i class="fa-solid fa-right-from-bracket"></i> Sair</button>
             </div>
         </div>
     </header>
+
     <div class="container">
         <div class="crm-wrapper">
+            
             <!-- Sidebar CRM -->
             <aside class="crm-sidebar">
-                <div class="sidebar-btn active" onclick="switchTab('dashboard', this)"><i class="fa-solid fa-chart-pie"></i> Dashboard</div>
-                <div class="sidebar-btn" id="sidebar-btn-briefings" onclick="switchTab('briefings', this)"><i class="fa-solid fa-file-signature"></i> Briefings</div>
-                <div class="sidebar-btn" onclick="switchTab('kanban', this)"><i class="fa-solid fa-bars-progress"></i> Projetos</div>
-                <div class="sidebar-btn" onclick="switchTab('clientes', this)"><i class="fa-solid fa-address-book"></i> Clientes</div>
-                <div class="sidebar-btn" onclick="switchTab('financeiro', this)"><i class="fa-solid fa-money-bill-trend-up"></i> Financeiro</div>
-                <div class="sidebar-btn" onclick="switchTab('calendario', this)"><i class="fa-solid fa-calendar-days"></i> Calendário & iPhone</div>
-                <div class="sidebar-btn" onclick="switchTab('ideias', this)"><i class="fa-solid fa-lightbulb"></i> Quadro de Ideias</div>
-                <div class="sidebar-btn" onclick="switchTab('configuracoes', this)"><i class="fa-solid fa-gears"></i> Configurações</div>
+                <div class="sidebar-btn active" onclick="switchTab('dashboard', this)">
+                    <i class="fa-solid fa-chart-pie"></i> Dashboard
+                </div>
+                <div class="sidebar-btn" id="sidebar-btn-briefings" onclick="switchTab('briefings', this)">
+                    <i class="fa-solid fa-file-signature"></i> Briefings
+                </div>
+                <div class="sidebar-btn" onclick="switchTab('kanban', this)">
+                    <i class="fa-solid fa-bars-progress"></i> Projetos
+                </div>
+                <div class="sidebar-btn" onclick="switchTab('clientes', this)">
+                    <i class="fa-solid fa-address-book"></i> Clientes
+                </div>
+                <div class="sidebar-btn" onclick="switchTab('financeiro', this)">
+                    <i class="fa-solid fa-money-bill-trend-up"></i> Financeiro
+                </div>
+                <div class="sidebar-btn" onclick="switchTab('calendario', this)">
+                    <i class="fa-solid fa-calendar-days"></i> Calendário & iPhone
+                </div>
+                <div class="sidebar-btn" onclick="switchTab('ideias', this)">
+                    <i class="fa-solid fa-lightbulb"></i> Quadro de Ideias
+                </div>
+                <div class="sidebar-btn" onclick="switchTab('configuracoes', this)">
+                    <i class="fa-solid fa-gears"></i> Configurações
+                </div>
             </aside>
+            
             <!-- Content Area -->
             <main class="crm-content">
+                
                 <!-- TAB 1: DASHBOARD STATS -->
                 <section class="tab-pane active" id="tab-dashboard">
                     <div class="stats-grid">
                         <div class="glass-card stat-card">
-                            <div class="stat-header"><span>Faturamento Mensal</span><i class="fa-solid fa-wallet stat-icon"></i></div>
+                            <div class="stat-header">
+                                <span>Faturamento Mensal</span>
+                                <i class="fa-solid fa-wallet stat-icon"></i>
+                            </div>
                             <div class="stat-value" id="stat-revenue" style="color: #27c93f;">R$ 0,00</div>
                             <div class="stat-footer">Ganhos neste mês</div>
                         </div>
                         <div class="glass-card stat-card">
-                            <div class="stat-header"><span>Despesas Mensais</span><i class="fa-solid fa-circle-minus stat-icon" style="color: #ff5f56;"></i></div>
+                            <div class="stat-header">
+                                <span>Despesas Mensais</span>
+                                <i class="fa-solid fa-circle-minus stat-icon" style="color: #ff5f56;"></i>
+                            </div>
                             <div class="stat-value" id="stat-expenses" style="color: #ff5f56;">R$ 0,00</div>
                             <div class="stat-footer">Gastos deste mês</div>
                         </div>
                         <div class="glass-card stat-card">
-                            <div class="stat-header"><span>Lucro Líquido</span><i class="fa-solid fa-scale-balanced stat-icon"></i></div>
+                            <div class="stat-header">
+                                <span>Lucro Líquido</span>
+                                <i class="fa-solid fa-scale-balanced stat-icon"></i>
+                            </div>
                             <div class="stat-value" id="stat-profit">R$ 0,00</div>
                             <div class="stat-footer">Faturamento menos gastos</div>
                         </div>
                         <div class="glass-card stat-card">
-                            <div class="stat-header"><span>Projetos Ativos</span><i class="fa-solid fa-diagram-project stat-icon"></i></div>
+                            <div class="stat-header">
+                                <span>Projetos Ativos</span>
+                                <i class="fa-solid fa-diagram-project stat-icon"></i>
+                            </div>
                             <div class="stat-value" id="stat-projects">0</div>
                             <div class="stat-footer">Não concluídos</div>
                         </div>
                         <div class="glass-card stat-card" style="cursor: pointer;" onclick="switchTab('briefings', document.getElementById('sidebar-btn-briefings'))">
-                            <div class="stat-header"><span>Briefings Enviados</span><i class="fa-solid fa-file-signature stat-icon" style="color: var(--primary);"></i></div>
+                            <div class="stat-header">
+                                <span>Briefings Enviados</span>
+                                <i class="fa-solid fa-file-signature stat-icon" style="color: var(--primary);"></i>
+                            </div>
                             <div class="stat-value" id="stat-briefings-total">0</div>
                             <div class="stat-footer" id="stat-briefings-breakdown" style="font-size: 11px; line-height: 1.4; color: var(--text-muted);">0 pendentes • 0 em andamento</div>
                         </div>
                     </div>
+                    
                     <!-- Últimos Leads / Briefings -->
                     <div class="glass-card table-card">
-                        <div class="table-header"><h3>Briefings Recebidos Recentemente</h3><a href="#kanban" onclick="switchTab('kanban', document.querySelector('[onclick*=\'kanban\']'))" class="btn btn-secondary" style="padding: 8px 16px; font-size: 13px;">Ver Kanban Completo</a></div>
+                        <div class="table-header">
+                            <h3>Briefings Recebidos Recentemente</h3>
+                            <a href="#kanban" onclick="switchTab('kanban', document.querySelector('[onclick*=\'kanban\']'))" class="btn btn-secondary" style="padding: 8px 16px; font-size: 13px;">Ver Kanban Completo</a>
+                        </div>
                         <div style="overflow-x: auto;">
                             <table class="crm-table">
                                 <thead>
-                                    <tr><th>Cliente</th><th>Serviço</th><th>Valor Estimado</th><th>Data</th><th>Ações</th></tr>
+                                    <tr>
+                                        <th>Cliente</th>
+                                        <th>Serviço</th>
+                                        <th>Valor Estimado</th>
+                                        <th>Data</th>
+                                        <th>Ações</th>
+                                    </tr>
                                 </thead>
-                                <tbody id="recentLeadsTable"><!-- Populado via JS --></tbody>
+                                <tbody id="recentLeadsTable">
+                                    <!-- Populado via JS -->
+                                </tbody>
                             </table>
                         </div>
                     </div>
                 </section>
+
                 <!-- TAB: BRIEFINGS -->
                 <section class="tab-pane" id="tab-briefings">
-                    <div class="table-header"><h2>Módulo de Briefings</h2><button class="btn btn-primary" onclick="openCreateBriefingModal()"><i class="fa-solid fa-plus"></i> Novo Link de Briefing</button></div>
+                    <div class="table-header">
+                        <h2>Módulo de Briefings</h2>
+                        <button class="btn btn-primary" onclick="openCreateBriefingModal()"><i class="fa-solid fa-plus"></i> Novo Link de Briefing</button>
+                    </div>
+
+                    <!-- Sub-abas / Filtros Rápidos -->
                     <div style="display: flex; gap: 10px; margin-bottom: 20px; flex-wrap: wrap;">
                         <button class="btn sub-tab-btn active" data-subtab="all" onclick="filterBriefingsBySubTab('all', this)">Todos os Briefings</button>
                         <button class="btn sub-tab-btn" data-subtab="Aguardando cliente" onclick="filterBriefingsBySubTab('Aguardando cliente', this)">Pendentes</button>
                         <button class="btn sub-tab-btn" data-subtab="Em andamento" onclick="filterBriefingsBySubTab('Em andamento', this)">Em andamento</button>
                         <button class="btn sub-tab-btn" data-subtab="Concluído" onclick="filterBriefingsBySubTab('Concluído', this)">Concluídos</button>
                     </div>
+
+                    <!-- Filtros Gerais -->
                     <div class="glass-card" style="padding: 20px; display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 15px; margin-bottom: 24px; border: 1px solid var(--border-color);">
                         <div>
                             <label style="font-size:12px; color:var(--text-muted); font-weight:600; display:block; margin-bottom:6px;">Pesquisar</label>
@@ -217,135 +612,287 @@
                             <input type="date" id="filter-briefing-date" onchange="applyBriefingFilters()" style="background: rgba(255,255,255,0.03); border:1px solid var(--border-color); padding: 8px 12px; border-radius:6px; width:100%; color:#fff; height:40px; outline:none;">
                         </div>
                     </div>
+
+                    <!-- Tabela de Briefings -->
                     <div class="glass-card table-card">
                         <div style="overflow-x: auto;">
                             <table class="crm-table">
                                 <thead>
-                                    <tr><th>Cliente</th><th>Empresa</th><th>Data</th><th>Status</th><th>Responsável</th><th>Ações</th></tr>
+                                    <tr>
+                                        <th>Cliente</th>
+                                        <th>Empresa</th>
+                                        <th>Data</th>
+                                        <th>Status</th>
+                                        <th>Responsável</th>
+                                        <th>Ações</th>
+                                    </tr>
                                 </thead>
-                                <tbody id="briefingsTableBody"><!-- Dinâmico --></tbody>
+                                <tbody id="briefingsTableBody">
+                                    <!-- Dinâmico -->
+                                </tbody>
                             </table>
                         </div>
                     </div>
                 </section>
+
                 <!-- TAB 2: KANBAN BOARD -->
                 <section class="tab-pane" id="tab-kanban">
-                    <div class="table-header"><h2>Quadro de Projetos (Kanban)</h2><button class="btn btn-primary" onclick="openModal('modalProject')"><i class="fa-solid fa-plus"></i> Novo Projeto</button></div>
+                    <div class="table-header">
+                        <h2>Quadro de Projetos (Kanban)</h2>
+                        <button class="btn btn-primary" onclick="openModal('modalProject')"><i class="fa-solid fa-plus"></i> Novo Projeto</button>
+                    </div>
+                    
                     <div class="kanban-board">
+                        <!-- Briefing -->
                         <div class="kanban-col">
-                            <div class="kanban-col-header"><span class="col-title" style="color: var(--accent-orange);">Briefing / Lead</span><span class="col-count" id="count-Briefing">0</span></div>
-                            <div class="kanban-cards" id="col- Briefing" ondragover="allowDrop(event)" ondrop="dropCard(event, 'Briefing')"></div>
+                            <div class="kanban-col-header">
+                                <span class="col-title" style="color: var(--accent-orange);">Briefing / Lead</span>
+                                <span class="col-count" id="count-Briefing">0</span>
+                            </div>
+                            <div class="kanban-cards" id="col-Briefing" ondragover="allowDrop(event)" ondrop="dropCard(event, 'Briefing')"></div>
                         </div>
+                        <!-- Design -->
                         <div class="kanban-col">
-                            <div class="kanban-col-header"><span class="col-title" style="color: var(--accent-pink);">Em Design</span><span class="col-count" id="count-Design">0</span></div>
+                            <div class="kanban-col-header">
+                                <span class="col-title" style="color: var(--accent-pink);">Em Design</span>
+                                <span class="col-count" id="count-Design">0</span>
+                            </div>
                             <div class="kanban-cards" id="col-Design" ondragover="allowDrop(event)" ondrop="dropCard(event, 'Design')"></div>
                         </div>
+                        <!-- Desenvolvimento -->
                         <div class="kanban-col">
-                            <div class="kanban-col-header"><span class="col-title" style="color: var(--primary);">Desenvolvimento</span><span class="col-count" id="count-Desenvolvimento">0</span></div>
+                            <div class="kanban-col-header">
+                                <span class="col-title" style="color: var(--primary);">Desenvolvimento</span>
+                                <span class="col-count" id="count-Desenvolvimento">0</span>
+                            </div>
                             <div class="kanban-cards" id="col-Desenvolvimento" ondragover="allowDrop(event)" ondrop="dropCard(event, 'Desenvolvimento')"></div>
                         </div>
+                        <!-- Revisao -->
                         <div class="kanban-col">
-                            <div class="kanban-col-header"><span class="col-title" style="color: #ffbd2e;">Revisão</span><span class="col-count" id="count-Revisao">0</span></div>
+                            <div class="kanban-col-header">
+                                <span class="col-title" style="color: #ffbd2e;">Revisão</span>
+                                <span class="col-count" id="count-Revisao">0</span>
+                            </div>
                             <div class="kanban-cards" id="col-Revisao" ondragover="allowDrop(event)" ondrop="dropCard(event, 'Revisão')"></div>
                         </div>
+                        <!-- Concluido -->
                         <div class="kanban-col">
-                            <div class="kanban-col-header"><span class="col-title" style="color: #27c93f;">Concluído</span><span class="col-count" id="count-Concluido">0</span></div>
+                            <div class="kanban-col-header">
+                                <span class="col-title" style="color: #27c93f;">Concluído</span>
+                                <span class="col-count" id="count-Concluido">0</span>
+                            </div>
                             <div class="kanban-cards" id="col-Concluido" ondragover="allowDrop(event)" ondrop="dropCard(event, 'Concluído')"></div>
                         </div>
                     </div>
                 </section>
+
                 <!-- TAB 3: CLIENTES -->
                 <section class="tab-pane" id="tab-clientes">
                     <div class="glass-card table-card">
-                        <div class="table-header"><h2>Clientes Cadastrados</h2><button class="btn btn-primary" onclick="openModal('modalClient')"><i class="fa-solid fa-plus"></i> Novo Cliente</button></div>
+                        <div class="table-header">
+                            <h2>Clientes Cadastrados</h2>
+                            <button class="btn btn-primary" onclick="openModal('modalClient')"><i class="fa-solid fa-plus"></i> Novo Cliente</button>
+                        </div>
                         <div style="overflow-x: auto;">
                             <table class="crm-table">
                                 <thead>
-                                    <tr><th>Nome</th><th>WhatsApp</th><th>E-mail</th><th>Projetos Solicitados</th><th>Ações</th></tr>
+                                    <tr>
+                                        <th>Nome</th>
+                                        <th>WhatsApp</th>
+                                        <th>E-mail</th>
+                                        <th>Projetos Solicitados</th>
+                                        <th>Ações</th>
+                                    </tr>
                                 </thead>
-                                <tbody id="clientsTableBody"><!-- Populado via JS --></tbody>
+                                <tbody id="clientsTableBody">
+                                    <!-- Populado via JS -->
+                                </tbody>
                             </table>
                         </div>
                     </div>
                 </section>
+
                 <!-- TAB 4: FINANCEIRO -->
                 <section class="tab-pane" id="tab-financeiro">
                     <div style="display: grid; grid-template-columns: 1fr 2fr; gap: 40px;">
+                        
                         <!-- Lançar Nova Transação -->
                         <div class="glass-card table-card" style="height: fit-content;">
                             <h3>Lançar Transação</h3>
                             <form id="financeForm" style="margin-top: 20px;">
-                                <div class="form-group"><label for="fin-desc">Descrição</label><input type="text" id="fin-desc" class="form-control" placeholder="Ex: Entrada Landing Page Clinica" required></div>
-                                <div class="form-group"><label for="fin-type">Tipo</label><select id="fin-type" class="form-control" required style="background-color: var(--bg-surface); padding: 10px;"><option value="income">Receita (Entrada)</option><option value="expense">Despesa (Saída)</option></select></div>
-                                <div class="form-group"><label for="fin-val">Valor (R$)</label><input type="number" id="fin-val" step="0.01" class="form-control" placeholder="Ex: 1500.00" required></div>
+                                <div class="form-group">
+                                    <label for="fin-desc">Descrição</label>
+                                    <input type="text" id="fin-desc" class="form-control" placeholder="Ex: Entrada Landing Page Clinica" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="fin-type">Tipo</label>
+                                    <select id="fin-type" class="form-control" required style="background-color: var(--bg-surface); padding: 10px;">
+                                        <option value="income">Receita (Entrada)</option>
+                                        <option value="expense">Despesa (Saída)</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label for="fin-val">Valor (R$)</label>
+                                    <input type="number" id="fin-val" step="0.01" class="form-control" placeholder="Ex: 1500.00" required>
+                                </div>
                                 <button type="submit" class="btn btn-primary" style="width: 100%; margin-top: 10px;">Lançar Transação</button>
                             </form>
                         </div>
+                        
                         <!-- Extrato Financeiro -->
                         <div class="glass-card table-card">
                             <h3>Histórico Financeiro</h3>
                             <div style="overflow-x: auto; margin-top: 20px;">
                                 <table class="crm-table">
                                     <thead>
-                                        <tr><th>Data</th><th>Descrição</th><th>Tipo</th><th>Valor</th><th>Excluir</th></tr>
+                                        <tr>
+                                            <th>Data</th>
+                                            <th>Descrição</th>
+                                            <th>Tipo</th>
+                                            <th>Valor</th>
+                                            <th>Excluir</th>
+                                        </tr>
                                     </thead>
-                                    <tbody id="financeTableBody"><!-- Populado via JS --></tbody>
+                                    <tbody id="financeTableBody">
+                                        <!-- Populado via JS -->
+                                    </tbody>
                                 </table>
                             </div>
                         </div>
                     </div>
                 </section>
-                <!-- TAB 5: CALENDÁRIO & iPhone Sync -->
+
+                <!-- TAB 5: CALENDÁRIO & IPHONE SYNC -->
                 <section class="tab-pane" id="tab-calendario">
                     <div style="display: grid; grid-template-columns: 1fr 1.5fr; gap: 40px;">
+                        
                         <!-- Agendar Evento -->
                         <div class="glass-card table-card" style="height: fit-content;">
                             <h3>Novo Compromisso / Entrega</h3>
                             <form id="calendarForm" style="margin-top: 20px;">
-                                <div class="form-group"><label for="event-title">Nome da Atividade</label><input type="text" id="event-title" class="form-control" placeholder="Ex: Entrega LP Odonto" required></div>
-                                <div class="form-group"><label for="event-date">Data</label><input type="date" id="event-date" class="form-control" required></div>
-                                <div class="form-group"><label for="event-time">Horário</label><input type="time" id="event-time" class="form-control" required></div>
-                                <div class="form-group"><label for="event-desc">Detalhes / Observações</label><textarea id="event-desc" class="form-control" placeholder="Reunião de feedback via Zoom..."></textarea></div>
+                                <div class="form-group">
+                                    <label for="event-title">Nome da Atividade</label>
+                                    <input type="text" id="event-title" class="form-control" placeholder="Ex: Entrega LP Odonto" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="event-date">Data</label>
+                                    <input type="date" id="event-date" class="form-control" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="event-time">Horário</label>
+                                    <input type="time" id="event-time" class="form-control" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="event-desc">Detalhes / Observações</label>
+                                    <textarea id="event-desc" class="form-control" placeholder="Reunião de feedback via Zoom..."></textarea>
+                                </div>
                                 <button type="submit" class="btn btn-primary" style="width: 100%; margin-top: 10px;">Adicionar Compromisso</button>
                             </form>
                         </div>
+                        
                         <!-- Lista de Compromissos e Exportador -->
                         <div class="glass-card table-card">
-                            <div class="table-header" style="margin-bottom: 16px;"><h3>Agenda de Projetos & Reuniões</h3><button class="btn btn-sunset" onclick="exportToIphone()"><i class="fa-solid fa-mobile-screen-button"></i> Exportar p/ iPhone (.ics)</button></div>
+                            <div class="table-header" style="margin-bottom: 16px;">
+                                <h3>Agenda de Projetos & Reuniões</h3>
+                                <button class="btn btn-sunset" onclick="exportToIphone()"><i class="fa-solid fa-mobile-screen-button"></i> Exportar p/ iPhone (.ics)</button>
+                            </div>
                             <p style="font-size: 13px; color: var(--text-muted); margin-bottom: 20px;">Adicione compromissos e clique em "Exportar p/ iPhone" para baixar um arquivo compatível com o calendário do seu iPhone/iOS.</p>
+                            
                             <div style="overflow-x: auto;">
                                 <table class="crm-table">
                                     <thead>
-                                        <tr><th>Data/Horário</th><th>Compromisso</th><th>Descrição</th><th>Ações</th></tr>
+                                        <tr>
+                                            <th>Data/Horário</th>
+                                            <th>Compromisso</th>
+                                            <th>Descrição</th>
+                                            <th>Ações</th>
+                                        </tr>
                                     </thead>
-                                    <tbody id="eventsTableBody"><!-- Populado via JS --></tbody>
+                                    <tbody id="eventsTableBody">
+                                        <!-- Populado via JS -->
+                                    </tbody>
                                 </table>
                             </div>
                         </div>
                     </div>
                 </section>
+
                 <!-- TAB 6: QUADRO DE IDEIAS -->
                 <section class="tab-pane" id="tab-ideias">
-                    <div class="table-header"><h2>Quadro de Ideias e Insights</h2><button class="btn btn-primary" onclick="openModal('modalIdea')"><i class="fa-solid fa-lightbulb"></i> Nova Ideia</button></div>
-                    <div class="ideas-board" id="ideasContainer"><!-- Populado via JS --></div>
+                    <div class="table-header">
+                        <h2>Quadro de Ideias e Insights</h2>
+                        <button class="btn btn-primary" onclick="openModal('modalIdea')"><i class="fa-solid fa-lightbulb"></i> Nova Ideia</button>
+                    </div>
+                    
+                    <div class="ideas-board" id="ideasContainer">
+                        <!-- Populado via JS -->
+                    </div>
                 </section>
+
                 <!-- TAB 7: CONFIGURAÇÕES -->
                 <section class="tab-pane" id="tab-configuracoes">
                     <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 40px;">
+                        
                         <!-- Alterar Senha -->
                         <div class="glass-card table-card">
                             <h3>Alterar Senha do CRM</h3>
                             <form id="settingsPasswordForm" style="margin-top: 20px;">
-                                <div class="form-group"><label for="new-pass">Nova Senha</label><input type="password" id="new-pass" class="form-control" placeholder="Mínimo 6 caracteres" required></div>
+                                <div class="form-group">
+                                    <label for="new-pass">Nova Senha</label>
+                                    <input type="password" id="new-pass" class="form-control" placeholder="Mínimo 6 caracteres" required>
+                                </div>
                                 <button type="submit" class="btn btn-primary" style="width: 100%; margin-top: 10px;">Salvar Senha</button>
                             </form>
                         </div>
+                        
                         <!-- Alterar WhatsApp de Destino -->
                         <div class="glass-card table-card">
                             <h3>Telefone do WhatsApp (Receber Briefings)</h3>
                             <form id="settingsPhoneForm" style="margin-top: 20px;">
-                                <div class="form-group"><label for="new-phone">Número de WhatsApp (Somente números com código de país)</label><input type="text" id="new-phone" class="form-control" placeholder="Ex: 595973977991" required><small style="color: var(--text-muted); font-size: 11px;">Insira o DDI + DDD + Telefone. Sem espaços ou traços.</small></div>
+                                <div class="form-group">
+                                    <label for="new-phone">Número de WhatsApp (Somente números com código de país)</label>
+                                    <input type="text" id="new-phone" class="form-control" placeholder="Ex: 595973977991" required>
+                                    <small style="color: var(--text-muted); font-size: 11px;">Insira o DDI + DDD + Telefone. Sem espaços ou traços.</small>
+                                </div>
                                 <button type="submit" class="btn btn-primary" style="width: 100%; margin-top: 10px;">Salvar Telefone</button>
+                            </form>
+                        </div>
+                        
+                        <!-- Conexão Cloud Firebase -->
+                        <div class="glass-card table-card" style="grid-column: 1 / -1; margin-top: 20px;">
+                            <h3>Conexão de Banco de Dados Cloud (Firebase Integrado)</h3>
+                            <p style="font-size: 13px; color: var(--text-muted); margin-bottom: 20px;">Forneça os dados de acesso da sua conta Firebase para sincronizar dados automaticamente na nuvem e habilitar uploads reais de arquivos grandes (Storage). Se deixado vazio, os dados serão salvos somente localmente (neste navegador).</p>
+                            <form id="settingsFirebaseForm">
+                                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px;">
+                                    <div class="form-group">
+                                        <label>API Key</label>
+                                        <input type="text" id="fb-api-key" class="form-control" placeholder="AIzaSy...">
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Auth Domain</label>
+                                        <input type="text" id="fb-auth-domain" class="form-control" placeholder="projeto.firebaseapp.com">
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Project ID</label>
+                                        <input type="text" id="fb-project-id" class="form-control" placeholder="projeto-id">
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Storage Bucket</label>
+                                        <input type="text" id="fb-storage-bucket" class="form-control" placeholder="projeto.appspot.com">
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Messaging Sender ID</label>
+                                        <input type="text" id="fb-sender-id" class="form-control" placeholder="1234567890">
+                                    </div>
+                                    <div class="form-group">
+                                        <label>App ID</label>
+                                        <input type="text" id="fb-app-id" class="form-control" placeholder="1:1234:web:abcd...">
+                                    </div>
+                                </div>
+                                <div style="display: flex; gap: 10px; margin-top: 20px;">
+                                    <button type="submit" class="btn btn-primary">Salvar Configuração Cloud</button>
+                                    <button type="button" id="btnClearFirebase" class="btn btn-secondary" style="color: #ff5f56; border-color: rgba(255, 95, 86, 0.2);">Desativar Nuvem</button>
+                                </div>
                             </form>
                         </div>
                     </div>
@@ -353,45 +900,81 @@
             </main>
         </div>
     </div>
+
     <!-- MODAL 1: NOVO PROJETO KANBAN -->
     <div class="modal" id="modalProject">
         <div class="glass-card modal-content">
             <span class="modal-close" onclick="closeModal('modalProject')">&times;</span>
             <h3 style="margin-bottom: 24px;">Adicionar Novo Projeto</h3>
             <form id="projectForm">
-                <div class="form-group"><label for="proj-client">Nome do Cliente</label><input type="text" id="proj-client" class="form-control" placeholder="Nome do Cliente" required></div>
-                <div class="form-group"><label for="proj-service">Serviço</label><select id="proj-service" class="form-control" style="background-color: var(--bg-surface); padding: 10px;"><option value="Landing Page">Landing Page</option><option value="Flyers Instagram">Flyers Instagram</option><option value="Identidade Visual">Identidade Visual</option><option value="Outro Projeto">Outro Projeto</option></select></div>
-                <div class="form-group"><label for="proj-details">Detalhes do Escopo</label><input type="text" id="proj-details" class="form-control" placeholder="Ex: Nicho clínica de estética"></div>
-                <div class="form-group"><label for="proj-price">Orçamento / Valor Cobrado</label><input type="text" id="proj-price" class="form-control" placeholder="Ex: R$ 1.500 ou U$ 300" required></div>
-                <div class="form-group"><label for="proj-deadline">Prazo</label><input type="text" id="proj-deadline" class="form-control" placeholder="Ex: 3 semanas"></div>
+                <div class="form-group">
+                    <label for="proj-client">Nome do Cliente</label>
+                    <input type="text" id="proj-client" class="form-control" placeholder="Nome do Cliente" required>
+                </div>
+                <div class="form-group">
+                    <label for="proj-service">Serviço</label>
+                    <select id="proj-service" class="form-control" style="background-color: var(--bg-surface); padding: 10px;">
+                        <option value="Landing Page">Landing Page</option>
+                        <option value="Flyers Instagram">Flyers Instagram</option>
+                        <option value="Identidade Visual">Identidade Visual</option>
+                        <option value="Outro Projeto">Outro Projeto</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="proj-details">Detalhes do Escopo</label>
+                    <input type="text" id="proj-details" class="form-control" placeholder="Ex: Nicho clínica de estética">
+                </div>
+                <div class="form-group">
+                    <label for="proj-price">Orçamento / Valor Cobrado</label>
+                    <input type="text" id="proj-price" class="form-control" placeholder="Ex: R$ 1.500 ou U$ 300" required>
+                </div>
+                <div class="form-group">
+                    <label for="proj-deadline">Prazo</label>
+                    <input type="text" id="proj-deadline" class="form-control" placeholder="Ex: 3 semanas">
+                </div>
                 <button type="submit" class="btn btn-primary" style="width: 100%; margin-top: 10px;">Adicionar Projeto</button>
             </form>
         </div>
     </div>
+
     <!-- MODAL 2: NOVO CLIENTE -->
     <div class="modal" id="modalClient">
         <div class="glass-card modal-content">
             <span class="modal-close" onclick="closeModal('modalClient')">&times;</span>
             <h3 style="margin-bottom: 24px;">Adicionar Novo Cliente</h3>
             <form id="clientForm">
-                <div class="form-group"><label for="cli-name">Nome Completo</label><input type="text" id="cli-name" class="form-control" placeholder="Nome do cliente" required></div>
-                <div class="form-group"><label for="cli-phone">WhatsApp</label><input type="text" id="cli-phone" class="form-control" placeholder="Ex: +55 45 99999-9999" required></div>
-                <div class="form-group"><label for="cli-email">E-mail</label><input type="email" id="cli-email" class="form-control" placeholder="Ex: cliente@email.com"></div>
+                <div class="form-group">
+                    <label for="cli-name">Nome Completo</label>
+                    <input type="text" id="cli-name" class="form-control" placeholder="Nome do cliente" required>
+                </div>
+                <div class="form-group">
+                    <label for="cli-phone">WhatsApp</label>
+                    <input type="text" id="cli-phone" class="form-control" placeholder="Ex: +55 45 99999-9999" required>
+                </div>
+                <div class="form-group">
+                    <label for="cli-email">E-mail</label>
+                    <input type="email" id="cli-email" class="form-control" placeholder="Ex: cliente@email.com">
+                </div>
                 <button type="submit" class="btn btn-primary" style="width: 100%; margin-top: 10px;">Adicionar Cliente</button>
             </form>
         </div>
     </div>
+
     <!-- MODAL 3: NOVA IDEIA -->
     <div class="modal" id="modalIdea">
         <div class="glass-card modal-content">
             <span class="modal-close" onclick="closeModal('modalIdea')">&times;</span>
             <h3 style="margin-bottom: 24px;">Adicionar Nova Ideia</h3>
             <form id="ideaForm">
-                <div class="form-group"><label for="idea-desc">Texto / Anotação da Ideia</label><textarea id="idea-desc" class="form-control" placeholder="Escreva sua ideia de conteúdo, briefing ou layout..." style="min-height: 140px;" required></textarea></div>
+                <div class="form-group">
+                    <label for="idea-desc">Texto / Anotação da Ideia</label>
+                    <textarea id="idea-desc" class="form-control" placeholder="Escreva sua ideia de conteúdo, briefing ou layout..." style="min-height: 140px;" required></textarea>
+                </div>
                 <button type="submit" class="btn btn-primary" style="width: 100%; margin-top: 10px;">Criar Bloco</button>
             </form>
         </div>
     </div>
+
     <!-- MODAL DE VISUALIZAÇÃO DETALHADA DO PROJETO / LEAD -->
     <div class="modal" id="modalProjectDetail">
         <div class="glass-card modal-content">
@@ -406,14 +989,267 @@
                 <p><strong>Orçamento:</strong> <span id="det-price"></span></p>
                 <p><strong>Prazo Solicitado:</strong> <span id="det-deadline"></span></p>
                 <p><strong>Criado em:</strong> <span id="det-date"></span></p>
-                <div class="form-group" style="margin-top: 12px;"><label for="det-status-select">Alterar Status (Kanban)</label><select id="det-status-select" class="form-control" style="background-color: var(--bg-surface); padding: 8px;"><option value="Briefing">Briefing / Lead</option><option value="Design">Em Design</option><option value="Desenvolvimento">Desenvolvimento</option><option value="Revisão">Revisão</option><option value="Concluído">Concluído</option></select></div>
+                
+                <div class="form-group" style="margin-top: 12px;">
+                    <label for="det-status-select">Alterar Status (Kanban)</label>
+                    <select id="det-status-select" class="form-control" style="background-color: var(--bg-surface); padding: 8px;">
+                        <option value="Briefing">Briefing / Lead</option>
+                        <option value="Design">Em Design</option>
+                        <option value="Desenvolvimento">Desenvolvimento</option>
+                        <option value="Revisão">Revisão</option>
+                        <option value="Concluído">Concluído</option>
+                    </select>
+                </div>
             </div>
+            
             <div style="display: flex; gap: 12px;">
                 <button class="btn btn-secondary" id="btnDeleteProject" style="background: rgba(255, 95, 86, 0.1); color: #ff5f56; border-color: rgba(255, 95, 86, 0.2); flex-grow: 1;">Excluir Projeto</button>
                 <button class="btn btn-primary" id="btnSaveProjectDetail" style="flex-grow: 1;">Salvar Alterações</button>
             </div>
         </div>
     </div>
+
+    <!-- MODAL: GERAR LINK DE BRIEFING -->
+    <div class="modal" id="modalCreateBriefing">
+        <div class="glass-card modal-content">
+            <span class="modal-close" onclick="closeModal('modalCreateBriefing')">&times;</span>
+            <h3 style="margin-bottom: 24px;">Gerar Novo Link de Briefing</h3>
+            <form id="createBriefingForm">
+                <div class="form-group">
+                    <label>Selecione o Cliente (CRM)</label>
+                    <select id="cb-client-select" class="form-control" style="background-color: var(--bg-surface); padding: 10px;" onchange="handleCBClientSelect(this)">
+                        <!-- Carregado via JS -->
+                    </select>
+                </div>
+                <div id="cb-new-client-fields">
+                    <div class="form-group">
+                        <label>Nome Completo do Cliente</label>
+                        <input type="text" id="cb-client-name" class="form-control" placeholder="Ex: João Silva">
+                    </div>
+                    <div class="form-group">
+                        <label>WhatsApp</label>
+                        <input type="text" id="cb-client-phone" class="form-control" placeholder="Ex: +55 45 99999-9999">
+                    </div>
+                    <div class="form-group">
+                        <label>E-mail</label>
+                        <input type="email" id="cb-client-email" class="form-control" placeholder="Ex: joao@email.com">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Empresa</label>
+                    <input type="text" id="cb-company-name" class="form-control" placeholder="Ex: My Paraguay" required>
+                </div>
+                <div class="form-group">
+                    <label>Responsável</label>
+                    <select id="cb-responsible" class="form-control" style="background-color: var(--bg-surface); padding: 10px;">
+                        <option value="-">-</option>
+                        <option value="Maria Gilmara">Maria Gilmara</option>
+                    </select>
+                </div>
+                <button type="submit" class="btn btn-primary" style="width: 100%; margin-top: 10px;">Gerar e Copiar Link Único</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- MODAL: DETALHES COMPLETOS DO BRIEFING -->
+    <div class="modal" id="modalBriefingDetail">
+        <div class="glass-card modal-content modal-lg">
+            <span class="modal-close" onclick="closeModal('modalBriefingDetail')">&times;</span>
+            <h3 id="bd-company-title" style="margin-bottom: 6px;">Empresa S/A</h3>
+            <p style="font-size: 13px; color: var(--text-muted); margin-bottom: 20px;">Visualização de Briefing Recebido</p>
+            
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 20px;">
+                <div class="form-group">
+                    <label>Responsável pelo Projeto</label>
+                    <select id="bd-responsible-select" class="form-control" style="background-color: var(--bg-surface); padding: 8px;">
+                        <option value="-">-</option>
+                        <option value="Maria Gilmara">Maria Gilmara</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Alterar Status</label>
+                    <select id="bd-status-select" class="form-control" style="background-color: var(--bg-surface); padding: 8px;" onchange="handleBriefingStatusChange()">
+                        <option value="Aguardando cliente">🔴 Aguardando cliente</option>
+                        <option value="Novo">🟡 Novo</option>
+                        <option value="Em andamento">🔵 Em andamento</option>
+                        <option value="Concluído">🟢 Concluído</option>
+                    </select>
+                </div>
+            </div>
+
+            <!-- Progresso e Timeline de Produção -->
+            <div class="glass-card" style="padding: 16px; margin-bottom: 24px; border: 1px solid var(--border-color);">
+                <div style="display: flex; justify-content: space-between; align-items: center; font-size: 12px; font-weight: 600;">
+                    <span>Progresso do Site</span>
+                    <span id="bd-progress-val">0%</span>
+                </div>
+                <div class="progress-bar-container">
+                    <div class="progress-bar-fill" id="bd-progress-bar"></div>
+                </div>
+                <input type="range" id="bd-progress-slider" min="0" max="100" step="5" style="width: 100%; accent-color: var(--primary); margin-top: 5px;" oninput="handleProgressSlider(this.value)">
+            </div>
+
+            <!-- Abas do Briefing -->
+            <div class="briefing-tabs">
+                <div class="briefing-tab-btn active" onclick="switchBriefingTab('empresa', this)">Empresa</div>
+                <div class="briefing-tab-btn" onclick="switchBriefingTab('contato', this)">Contato</div>
+                <div class="briefing-tab-btn" onclick="switchBriefingTab('arquivos', this)">Arquivos</div>
+                <div class="briefing-tab-btn" onclick="switchBriefingTab('videos', this)">Vídeos</div>
+                <div class="briefing-tab-btn" onclick="switchBriefingTab('depoimentos', this)">Depoimentos</div>
+                <div class="briefing-tab-btn" onclick="switchBriefingTab('faq', this)">FAQ</div>
+                <div class="briefing-tab-btn" onclick="switchBriefingTab('textos', this)">Textos</div>
+                <div class="briefing-tab-btn" onclick="switchBriefingTab('tecnico', this)">Config. Técnicas</div>
+                <div class="briefing-tab-btn" onclick="switchBriefingTab('observacoes', this)">Observações</div>
+            </div>
+
+            <!-- Conteúdo das Abas -->
+            <div style="max-height: 250px; overflow-y: auto; margin-bottom: 24px; padding-right: 8px;">
+                <div class="briefing-tab-pane active" id="btab-empresa">
+                    <div class="form-group"><label>Empresa</label><input type="text" id="bd-empresa" class="form-control"></div>
+                    <div class="form-group" style="margin-top:10px;"><label>Nicho</label><input type="text" id="bd-nicho" class="form-control"></div>
+                    <div class="form-group" style="margin-top:10px;"><label>Instagram</label><input type="text" id="bd-instagram" class="form-control"></div>
+                    <div class="form-group" style="margin-top:10px;"><label>Facebook</label><input type="text" id="bd-facebook" class="form-control"></div>
+                    <div class="form-group" style="margin-top:10px;"><label>Cidade/País</label><input type="text" id="bd-cidade" class="form-control"></div>
+                    <div class="form-group" style="margin-top:10px;"><label>Objetivos</label><input type="text" id="bd-objetivos" class="form-control"></div>
+                    <div class="form-group" style="margin-top:10px;"><label>Público Alvo</label><input type="text" id="bd-publico" class="form-control"></div>
+                    <div class="form-group" style="margin-top:10px;"><label>Site Referência</label><input type="text" id="bd-referencias" class="form-control"></div>
+                    <div class="form-group" style="margin-top:10px;"><label>Domínio</label><input type="text" id="bd-dominio" class="form-control"></div>
+                    <div class="form-group" style="margin-top:10px;"><label>Nome Domínio</label><input type="text" id="bd-dominio-nome" class="form-control"></div>
+                </div>
+                <div class="briefing-tab-pane" id="btab-contato">
+                    <div class="form-group"><label>Nome Cliente</label><input type="text" id="bd-nome-contato" class="form-control"></div>
+                    <div class="form-group" style="margin-top:10px;"><label>WhatsApp</label>
+                        <div style="display:flex; gap:10px;">
+                            <input type="text" id="bd-whatsapp-contato" class="form-control">
+                            <a id="bd-whatsapp-link" href="#" target="_blank" class="btn btn-secondary" style="padding: 8px 16px; display:inline-flex; align-items:center;"><i class="fa-brands fa-whatsapp"></i> Falar</a>
+                        </div>
+                    </div>
+                    <div class="form-group" style="margin-top:10px;"><label>E-mail</label><input type="text" id="bd-email-contato" class="form-control"></div>
+                </div>
+                <div class="briefing-tab-pane" id="btab-arquivos">
+                    <div class="form-group"><label>Logotipo Anexado</label><div id="bd-logo-container" style="margin-top:8px;">Sem arquivos</div></div>
+                    <div class="form-group" style="margin-top:15px;"><label>Fotos Adicionais</label><div id="bd-fotos-container" style="margin-top:8px;">Sem arquivos</div></div>
+                    <div class="form-group" style="margin-top:15px;"><label>Foto do Carro / Fachada</label><div id="bd-foto-carro-container" style="margin-top:8px;">Sem arquivos</div></div>
+                </div>
+                <div class="briefing-tab-pane" id="btab-videos">
+                    <div class="form-group"><label>Canal / Links YouTube</label><input type="text" id="bd-youtube" class="form-control"></div>
+                    <div class="form-group" style="margin-top:15px;"><label>Vídeo Depoimento Anexado</label><div id="bd-video-depoimento-container" style="margin-top:8px;">Sem arquivos</div></div>
+                </div>
+                <div class="briefing-tab-pane" id="btab-depoimentos">
+                    <div class="form-group"><label>Google Reviews Link</label><input type="text" id="bd-google-reviews" class="form-control"></div>
+                </div>
+                <div class="briefing-tab-pane" id="btab-faq">
+                    <div class="form-group"><label>Estrutura FAQ Informada</label><textarea id="bd-faq" class="form-control" style="min-height: 120px;"></textarea></div>
+                </div>
+                <div class="briefing-tab-pane" id="btab-textos">
+                    <div class="form-group"><label>Slogan e Informações Principais</label><textarea id="bd-textos" class="form-control" style="min-height: 120px;"></textarea></div>
+                </div>
+                <div class="briefing-tab-pane" id="btab-tecnico">
+                    <div class="form-group"><label>Requisitos Técnicos / Hospedagem</label><textarea id="bd-tecnico" class="form-control" style="min-height: 120px;"></textarea></div>
+                </div>
+                <div class="briefing-tab-pane" id="btab-observacoes">
+                    <div class="form-group"><label>Tom e Cores Solicitadas</label>
+                        <input type="text" id="bd-tom" class="form-control" placeholder="Tom" style="margin-bottom:8px;">
+                        <input type="text" id="bd-cores" class="form-control" placeholder="Paleta Cores">
+                    </div>
+                    <div class="form-group" style="margin-top:15px;"><label>Obs Visual</label><textarea id="bd-obs-visual" class="form-control" style="min-height: 60px;"></textarea></div>
+                    <div class="form-group" style="margin-top:15px;"><label>Observações Extras</label><textarea id="bd-obs" class="form-control" style="min-height: 80px;"></textarea></div>
+                    <div class="form-group" style="margin-top:15px;"><label>Descrição Principal do Negócio</label><textarea id="bd-descricao" class="form-control" style="min-height: 100px;"></textarea></div>
+                </div>
+            </div>
+
+            <!-- Comentários Internos e Histórico -->
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 30px; border-top: 1px solid rgba(255,255,255,0.08); padding-top: 20px;">
+                <div>
+                    <h4>Comentários Internos</h4>
+                    <div id="bd-comments-list" style="max-height: 120px; overflow-y: auto; background: rgba(0,0,0,0.2); border-radius: 6px; padding: 10px; margin-top: 10px; font-size:12px; display:flex; flex-direction:column; gap:8px;">
+                        <!-- Comentários -->
+                    </div>
+                    <form id="bd-comment-form" style="display: flex; gap: 8px; margin-top: 10px;" onsubmit="handleCommentSubmit(event)">
+                        <input type="text" id="bd-comment-input" class="form-control" placeholder="Adicionar comentário..." required style="font-size:13px; padding: 8px;">
+                        <button type="submit" class="btn btn-primary" style="padding: 8px 12px; font-size:12px;">Enviar</button>
+                    </form>
+                </div>
+                <div>
+                    <h4>Histórico do Projeto</h4>
+                    <div id="bd-history-list" class="timeline-container" style="max-height: 150px; overflow-y: auto; margin-top: 10px; padding-top: 5px;">
+                        <!-- Histórico -->
+                    </div>
+                </div>
+            </div>
+
+            <div style="display: flex; gap: 12px; margin-top: 30px; flex-wrap: wrap;">
+                <button class="btn btn-secondary" onclick="exportBriefingPDF()"><i class="fa-solid fa-file-pdf"></i> Exportar PDF</button>
+                <button class="btn btn-secondary" onclick="exportBriefingExcel()"><i class="fa-solid fa-file-excel"></i> Exportar Excel</button>
+                <button class="btn btn-sunset" onclick="convertBriefingToProject()"><i class="fa-solid fa-diagram-project"></i> Criar Projeto Kanban</button>
+                <button class="btn btn-secondary" style="background: rgba(255, 95, 86, 0.1); color: #ff5f56; border-color: transparent;" onclick="handleDeleteBriefingClick()"><i class="fa-solid fa-trash"></i> Excluir</button>
+                <button class="btn btn-primary" style="margin-left: auto;" onclick="saveBriefingEdits()"><i class="fa-solid fa-check"></i> Salvar Edições</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL: DETALHES DO CLIENTE COM ABA DE BRIEFINGS -->
+    <div class="modal" id="modalClientDetail">
+        <div class="glass-card modal-content modal-lg">
+            <span class="modal-close" onclick="closeModal('modalClientDetail')">&times;</span>
+            <h3 id="mcd-name" style="margin-bottom: 6px;">Nome do Cliente</h3>
+            <p style="font-size: 13px; color: var(--text-muted); margin-bottom: 20px;">Ficha cadastral do Cliente</p>
+
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 24px; font-size: 14px;">
+                <p><strong>WhatsApp:</strong> <span id="mcd-phone"></span></p>
+                <p><strong>E-mail:</strong> <span id="mcd-email"></span></p>
+            </div>
+
+            <!-- Sub-abas do Cliente -->
+            <div class="briefing-tabs">
+                <div class="briefing-tab-btn active" id="mcd-tab-btn-briefings" onclick="switchClientDetailTab('briefings')">Briefings</div>
+                <div class="briefing-tab-btn" id="mcd-tab-btn-projetos" onclick="switchClientDetailTab('projetos')">Projetos no Kanban</div>
+            </div>
+
+            <!-- Conteúdos das Abas -->
+            <div style="min-height: 200px; max-height: 300px; overflow-y: auto;">
+                <div id="mcd-pane-briefings" class="briefing-tab-pane active">
+                    <table class="crm-table">
+                        <thead>
+                            <tr>
+                                <th>Empresa</th>
+                                <th>Status</th>
+                                <th>Data Envio</th>
+                                <th>Última Atualização</th>
+                                <th>Ação</th>
+                            </tr>
+                        </thead>
+                        <tbody id="mcd-briefings-list">
+                            <!-- Dinâmico -->
+                        </tbody>
+                    </table>
+                </div>
+                <div id="mcd-pane-projetos" class="briefing-tab-pane">
+                    <table class="crm-table">
+                        <thead>
+                            <tr>
+                                <th>Serviço</th>
+                                <th>Valor</th>
+                                <th>Status (Kanban)</th>
+                                <th>Prazo</th>
+                            </tr>
+                        </thead>
+                        <tbody id="mcd-projects-list">
+                            <!-- Dinâmico -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Firebase & Database & PDF/Excel scripts -->
+    <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-storage-compat.js"></script>
+    <script src="../db.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
     <!-- Script do Painel CRM -->
     <script src="admin.js"></script>
 </body>
